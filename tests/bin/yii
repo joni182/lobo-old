@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Yii console bootstrap file.
+ *
+ * @link http://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license http://www.yiiframework.com/license/
+ */
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+if (file_exists($file = __DIR__ . '/../../.env')) {
+    (new \Symfony\Component\Dotenv\Dotenv())->load($file);
+}
+
+define('YII_ENV', getenv('YII_ENV') ?: 'test');
+define('YII_DEBUG', getenv('YII_DEBUG') ?: YII_ENV == 'test' || YII_ENV == 'dev');
+
+require __DIR__ . '/../../vendor/yiisoft/yii2/Yii.php';
+
+$config = yii\helpers\ArrayHelper::merge(
+    require __DIR__ . '/../../config/console.php',
+    [
+        'components' => [
+            'db' => require __DIR__ . '/../../config/test_db.php'
+        ]
+    ]
+);
+
+$application = new yii\console\Application($config);
+$exitCode = $application->run();
+exit($exitCode);
