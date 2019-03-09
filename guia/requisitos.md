@@ -8,6 +8,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [1](https://github.com/joni182/lobo/issues/1) |
 
 | **R02**     | **Código fuente**         |
 | --------------: | :------------------- |
@@ -16,6 +17,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [2](https://github.com/joni182/lobo/issues/2) |
 
 | **R03**     | **Estilo del código**         |
 | --------------: | :------------------- |
@@ -24,6 +26,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [3](https://github.com/joni182/lobo/issues/3) |
 
 | **R04**     | **Tres lanzamientos**         |
 | --------------: | :------------------- |
@@ -32,6 +35,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [4](https://github.com/joni182/lobo/issues/4) |
 
 | **R05**     | **README.md**         |
 | --------------: | :------------------- |
@@ -40,6 +44,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [5](https://github.com/joni182/lobo/issues/5) |
 
 | **R06**     | **Documentación**         |
 | --------------: | :------------------- |
@@ -48,6 +53,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [6](https://github.com/joni182/lobo/issues/6) |
 
 | **R07**     | **Incidencias en GitHub**         |
 | --------------: | :------------------- |
@@ -56,6 +62,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [7](https://github.com/joni182/lobo/issues/7) |
 
 | **R08**     | **Etiquetas e hitos**         |
 | --------------: | :------------------- |
@@ -64,6 +71,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [8](https://github.com/joni182/lobo/issues/8) |
 
 | **R09**     | **Rama master**         |
 | --------------: | :------------------- |
@@ -72,6 +80,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [9](https://github.com/joni182/lobo/issues/9) |
 
 | **R10**     | **Gestión del proyecto**         |
 | --------------: | :------------------- |
@@ -80,6 +89,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [10](https://github.com/joni182/lobo/issues/10) |
 
 | **R11**     | **Final de cada iteración**         |
 | --------------: | :------------------- |
@@ -88,6 +98,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [11](https://github.com/joni182/lobo/issues/11) |
 
 | **R12**     | **Validación de formularios**         |
 | --------------: | :------------------- |
@@ -96,6 +107,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [12](https://github.com/joni182/lobo/issues/12) |
 
 | **R13**     | **Gestión de ventanas**         |
 | --------------: | :------------------- |
@@ -104,6 +116,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [13](https://github.com/joni182/lobo/issues/13) |
 
 | **R14**     | **Manejo de eventos**         |
 | --------------: | :------------------- |
@@ -112,6 +125,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [14](https://github.com/joni182/lobo/issues/14) |
 
 | **R15**     | **DOM**         |
 | --------------: | :------------------- |
@@ -120,6 +134,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [15](https://github.com/joni182/lobo/issues/15) |
 
 | **R16**     | **Almacenamiento en el lado del cliente**         |
 | --------------: | :------------------- |
@@ -128,6 +143,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [16](https://github.com/joni182/lobo/issues/16) |
 
 | **R17**     | **jQuery, jQuery UI**         |
 | --------------: | :------------------- |
@@ -136,6 +152,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [17](https://github.com/joni182/lobo/issues/17) |
 
 | **R18**     | **Plugin no trabajado en clase**         |
 | --------------: | :------------------- |
@@ -144,6 +161,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [18](https://github.com/joni182/lobo/issues/18) |
 
 | **R19**     | **Utilización de AJAX**         |
 | --------------: | :------------------- |
@@ -152,6 +170,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [19](https://github.com/joni182/lobo/issues/19) |
 
 | **R20**     | **ECMAScript2015 (ES6)**         |
 | --------------: | :------------------- |
@@ -160,6 +179,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [20](https://github.com/joni182/lobo/issues/20) |
 
 | **R21**     | **PHP**         |
 | --------------: | :------------------- |
@@ -168,6 +188,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [21](https://github.com/joni182/lobo/issues/21) |
 
 | **R22**     | **Yii2 Framework**         |
 | --------------: | :------------------- |
@@ -176,6 +197,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [22](https://github.com/joni182/lobo/issues/22) |
 
 | **R23**     | **PostgreSQL**         |
 | --------------: | :------------------- |
@@ -184,6 +206,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [23](https://github.com/joni182/lobo/issues/23) |
 
 | **R24**     | **Heroku**         |
 | --------------: | :------------------- |
@@ -192,6 +215,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [24](https://github.com/joni182/lobo/issues/24) |
 
 | **R25**     | **Codeception**         |
 | --------------: | :------------------- |
@@ -200,6 +224,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [25](https://github.com/joni182/lobo/issues/25) |
 
 | **R26**     | **Code Climate**         |
 | --------------: | :------------------- |
@@ -208,6 +233,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [26](https://github.com/joni182/lobo/issues/26) |
 
 | **R27**     | **Aplicación escalable**         |
 | --------------: | :------------------- |
@@ -216,6 +242,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [27](https://github.com/joni182/lobo/issues/27) |
 
 | **R28**     | **Tecnología AJAX**         |
 | --------------: | :------------------- |
@@ -224,6 +251,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [28](https://github.com/joni182/lobo/issues/28) |
 
 | **R29**     | **Etiquetas semánticas de HTML5**         |
 | --------------: | :------------------- |
@@ -232,6 +260,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [29](https://github.com/joni182/lobo/issues/29) |
 
 | **R30**     | **Presentación mediante CSS**         |
 | --------------: | :------------------- |
@@ -240,6 +269,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [30](https://github.com/joni182/lobo/issues/30) |
 
 | **R31**     | **Diseño flexible**         |
 | --------------: | :------------------- |
@@ -248,6 +278,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [31](https://github.com/joni182/lobo/issues/31) |
 
 | **R32**     | **Transiciones, transformaciones, animaciones y contenido multimedia**         |
 | --------------: | :------------------- |
@@ -256,6 +287,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [32](https://github.com/joni182/lobo/issues/32) |
 
 | **R33**     | **Uso de microdatos**         |
 | --------------: | :------------------- |
@@ -264,6 +296,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [33](https://github.com/joni182/lobo/issues/33) |
 
 | **R34**     | **Validación HTML5, CSS3 y accesibilidad**         |
 | --------------: | :------------------- |
@@ -272,6 +305,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [34](https://github.com/joni182/lobo/issues/34) |
 
 | **R35**     | **Diseño para varias resoluciones**         |
 | --------------: | :------------------- |
@@ -280,6 +314,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [35](https://github.com/joni182/lobo/issues/35) |
 
 | **R36**     | **Varios navegadores**         |
 | --------------: | :------------------- |
@@ -288,6 +323,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [36](https://github.com/joni182/lobo/issues/36) |
 
 | **R37**     | **Despliegue en un Host**         |
 | --------------: | :------------------- |
@@ -296,6 +332,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [37](https://github.com/joni182/lobo/issues/37) |
 
 | **R38**     | **Despliegue en un servidor local**         |
 | --------------: | :------------------- |
@@ -304,47 +341,268 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
+| **Incidencia**  | [38](https://github.com/joni182/lobo/issues/38) |
+
+| **R39**     | **Tabla Animales**         |
+| --------------: | :------------------- |
+| **Descripción** | Contendrá: Nombre, especie, raza, colores,  sexo y chip             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [39](https://github.com/joni182/lobo/issues/39) |
+
+| **R40**     | **Tabla Personas**         |
+| --------------: | :------------------- |
+| **Descripción** | Contendrá: Nombre, apellidos, teléfono, dirección,  email             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [40](https://github.com/joni182/lobo/issues/40) |
+
+| **R41**     | **Tabla Usuarios**         |
+| --------------: | :------------------- |
+| **Descripción** | Contendrá: Nombre, login, password, email             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [41](https://github.com/joni182/lobo/issues/41) |
+
+| **R42**     | **Tabla Medicamentos**         |
+| --------------: | :------------------- |
+| **Descripción** | Contendrá: Nombre, principio activo             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [42](https://github.com/joni182/lobo/issues/42) |
+
+| **R43**     | **Tabla Vacunas**         |
+| --------------: | :------------------- |
+| **Descripción** | Contendrá: Nombre, enfermedades de las que protege, número de dosis             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [43](https://github.com/joni182/lobo/issues/43) |
+
+| **R44**     | **Tabla Enfermedades**         |
+| --------------: | :------------------- |
+| **Descripción** | Contendrá: Nombre, sintomas, notas de interés             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [44](https://github.com/joni182/lobo/issues/44) |
+
+| **R45**     | **Tabla Vacunaciones**         |
+| --------------: | :------------------- |
+| **Descripción** | Esta tabla relacionara las tablas Animales y Vacunas             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [45](https://github.com/joni182/lobo/issues/45) |
+
+| **R46**     | **Tabla Tatamientos**         |
+| --------------: | :------------------- |
+| **Descripción** | Esta tabla relacionara las tablas Animales , Medicamentos y Enfermedades             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [46](https://github.com/joni182/lobo/issues/46) |
+
+| **R47**     | **Tabla Adopciones**         |
+| --------------: | :------------------- |
+| **Descripción** | Esta tabla relacionará las tablas Presonas y Animales             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Información                |
+| **Complejidad** | Fácil         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [47](https://github.com/joni182/lobo/issues/47) |
+
+| **R48**     | **Implementar gestión de usuarios**         |
+| --------------: | :------------------- |
+| **Descripción** | La aplicación debe de poder gestionar usuarios, esto engloba poder registrarse, modificar sus datos ,  iniciar sesión , etc             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [48](https://github.com/joni182/lobo/issues/48) |
+
+| **R49**     | **Implementar gestión de personas**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrán hacer altas, bajas y modificaciones de personas, estas toman el rol de casa de acogida o adoptante. No confundir con usuarios de la aplicación             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [49](https://github.com/joni182/lobo/issues/49) |
+
+| **R50**     | **Implementar gestión de animales**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrán hacer altas, bajas y modificaciones de animales, los cuales representará a un animal rescatado de la calle y contendrá toda la información relevante para su identificación             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [50](https://github.com/joni182/lobo/issues/50) |
+
+| **R51**     | **Implementar gestión de adopciones**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrán hacer altas, bajas y modificaciones de adopciones, estas son una relación entre personas y animales y simboliza una tramite de adopción entre un humano y un animal de la protectora             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [51](https://github.com/joni182/lobo/issues/51) |
+
+| **R52**     | **Implementar gestión de medicamentos**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrán hacer altas, bajas y modificaciones de medicamentos, estos representa a un medicamento que pudiera usarse en un posible tratamiento para un animal, este contendrán información relevante sobre su función y uso, así como comentarios útiles de experiencias con tal medicamento             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [52](https://github.com/joni182/lobo/issues/52) |
+
+| **R53**     | **Implementar gestión de tratamientos**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrán hacer altas, bajas y modificaciones de tratamientos, estos son una relación entre medicamento, centro veterinario que lo ha recetado y animal. Contendrá ademas fecha de inicio y fin del tratamiento, y dosis diarias del medicamento.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [53](https://github.com/joni182/lobo/issues/53) |
+
+| **R54**     | **Implementar gestión de vacunas**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrán hacer altas, bajas y modificaciones de vacuna, estos representa a una vacuna como podría ser la de la rabia o la de parvovirosis, esta contendrá información relevante sobre la vacuna: precio, periodicidad, edad ...etc.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [54](https://github.com/joni182/lobo/issues/54) |
+
+| **R55**     | **Implementación de alertas**         |
+| --------------: | :------------------- |
+| **Descripción** | Se generarán alertas automáticas para avisar de vacunaciones, castraciones, seguimientos de adopciones etc.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [55](https://github.com/joni182/lobo/issues/55) |
+
+| **R56**     | **Consultar medicación**         |
+| --------------: | :------------------- |
+| **Descripción** | Se podrá consultar la medicación para un día especifico, ya sea para el total de animales como para uno en concreto             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [56](https://github.com/joni182/lobo/issues/56) |
+
+| **R57**     | **Implementar gestión de enfermedades**         |
+| --------------: | :------------------- |
+| **Descripción** | Formará un catálogo de enfermedades con sus síntomas y posibles tratamientos para una detección temprana.             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [57](https://github.com/joni182/lobo/issues/57) |
+
+| **R58**     | **Subir y almacenar imágenes.**         |
+| --------------: | :------------------- |
+| **Descripción** | Cada animal podrá tener un catálogo de fotos             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Difícil         |
+| **Entrega**     | v2             |
+| **Incidencia**  | [58](https://github.com/joni182/lobo/issues/58) |
+
+| **R59**     | **Integrar BootStrap4 con Yii2**         |
+| --------------: | :------------------- |
+| **Descripción** | Integrar Bootstrap4 con el framewrok Yii2             |
+| **Prioridad**   | Importante           |
+| **Tipo**        | Técnico                |
+| **Complejidad** | Media         |
+| **Entrega**     | v1             |
+| **Incidencia**  | [59](https://github.com/joni182/lobo/issues/59) |
+
+| **R60**     | **Enviar alertas**         |
+| --------------: | :------------------- |
+| **Descripción** | Envia las alertas al email de las personas responsables             |
+| **Prioridad**   | Opcional           |
+| **Tipo**        | Funcional                |
+| **Complejidad** | Media         |
+| **Entrega**     | v3             |
+| **Incidencia**  | [60](https://github.com/joni182/lobo/issues/60) |
 
 
 ## Cuadro resumen
 
 | **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** | **Incidencia** |
 | :------------ | :-----------: | :------: | :-------------: | :---------: | :------------: |
-| (**R01**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 |
-| (**R02**) Código fuente | Mínimo | Técnico | Fácil | v1 |
-| (**R03**) Estilo del código | Mínimo | Técnico | Fácil | v1 |
-| (**R04**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 |
-| (**R05**) README.md | Mínimo | Técnico | Fácil | v1 |
-| (**R06**) Documentación | Mínimo | Técnico | Fácil | v1 |
-| (**R07**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 |
-| (**R08**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 |
-| (**R09**) Rama master | Mínimo | Técnico | Fácil | v1 |
-| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 |
-| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 |
-| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 |
-| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 |
-| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 |
-| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 |
-| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 |
-| (**R17**) jQuery, jQuery UI | Mínimo | Técnico | Fácil | v1 |
-| (**R18**) Plugin no trabajado en clase | Mínimo | Técnico | Fácil | v1 |
-| (**R19**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 |
-| (**R20**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 |
-| (**R21**) PHP | Mínimo | Técnico | Fácil | v1 |
-| (**R22**) Yii2 Framework | Mínimo | Técnico | Fácil | v1 |
-| (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 |
-| (**R24**) Heroku | Mínimo | Técnico | Fácil | v1 |
-| (**R25**) Codeception | Mínimo | Técnico | Fácil | v1 |
-| (**R26**) Code Climate | Mínimo | Técnico | Fácil | v1 |
-| (**R27**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 |
-| (**R28**) Tecnología AJAX | Mínimo | Técnico | Fácil | v1 |
-| (**R29**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 |
-| (**R30**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 |
-| (**R31**) Diseño flexible | Mínimo | Técnico | Fácil | v1 |
-| (**R32**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 |
-| (**R33**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 |
-| (**R34**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 |
-| (**R35**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 |
-| (**R36**) Varios navegadores | Mínimo | Técnico | Fácil | v1 |
-| (**R37**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 |
-| (**R38**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 |
+| (**R01**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | [1](https://github.com/joni182/lobo/issues/1) |
+| (**R02**) Código fuente | Mínimo | Técnico | Fácil | v1 | [2](https://github.com/joni182/lobo/issues/2) |
+| (**R03**) Estilo del código | Mínimo | Técnico | Fácil | v1 | [3](https://github.com/joni182/lobo/issues/3) |
+| (**R04**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | [4](https://github.com/joni182/lobo/issues/4) |
+| (**R05**) README.md | Mínimo | Técnico | Fácil | v1 | [5](https://github.com/joni182/lobo/issues/5) |
+| (**R06**) Documentación | Mínimo | Técnico | Fácil | v1 | [6](https://github.com/joni182/lobo/issues/6) |
+| (**R07**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | [7](https://github.com/joni182/lobo/issues/7) |
+| (**R08**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | [8](https://github.com/joni182/lobo/issues/8) |
+| (**R09**) Rama master | Mínimo | Técnico | Fácil | v1 | [9](https://github.com/joni182/lobo/issues/9) |
+| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | [10](https://github.com/joni182/lobo/issues/10) |
+| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | [11](https://github.com/joni182/lobo/issues/11) |
+| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | [12](https://github.com/joni182/lobo/issues/12) |
+| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | [13](https://github.com/joni182/lobo/issues/13) |
+| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | [14](https://github.com/joni182/lobo/issues/14) |
+| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | [15](https://github.com/joni182/lobo/issues/15) |
+| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | [16](https://github.com/joni182/lobo/issues/16) |
+| (**R17**) jQuery, jQuery UI | Mínimo | Técnico | Fácil | v1 | [17](https://github.com/joni182/lobo/issues/17) |
+| (**R18**) Plugin no trabajado en clase | Mínimo | Técnico | Fácil | v1 | [18](https://github.com/joni182/lobo/issues/18) |
+| (**R19**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | [19](https://github.com/joni182/lobo/issues/19) |
+| (**R20**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | [20](https://github.com/joni182/lobo/issues/20) |
+| (**R21**) PHP | Mínimo | Técnico | Fácil | v1 | [21](https://github.com/joni182/lobo/issues/21) |
+| (**R22**) Yii2 Framework | Mínimo | Técnico | Fácil | v1 | [22](https://github.com/joni182/lobo/issues/22) |
+| (**R23**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | [23](https://github.com/joni182/lobo/issues/23) |
+| (**R24**) Heroku | Mínimo | Técnico | Fácil | v1 | [24](https://github.com/joni182/lobo/issues/24) |
+| (**R25**) Codeception | Mínimo | Técnico | Fácil | v1 | [25](https://github.com/joni182/lobo/issues/25) |
+| (**R26**) Code Climate | Mínimo | Técnico | Fácil | v1 | [26](https://github.com/joni182/lobo/issues/26) |
+| (**R27**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | [27](https://github.com/joni182/lobo/issues/27) |
+| (**R28**) Tecnología AJAX | Mínimo | Técnico | Fácil | v1 | [28](https://github.com/joni182/lobo/issues/28) |
+| (**R29**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | [29](https://github.com/joni182/lobo/issues/29) |
+| (**R30**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | [30](https://github.com/joni182/lobo/issues/30) |
+| (**R31**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | [31](https://github.com/joni182/lobo/issues/31) |
+| (**R32**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | [32](https://github.com/joni182/lobo/issues/32) |
+| (**R33**) Uso de microdatos | Mínimo | Técnico | Fácil | v1 | [33](https://github.com/joni182/lobo/issues/33) |
+| (**R34**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | [34](https://github.com/joni182/lobo/issues/34) |
+| (**R35**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | [35](https://github.com/joni182/lobo/issues/35) |
+| (**R36**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | [36](https://github.com/joni182/lobo/issues/36) |
+| (**R37**) Despliegue en un Host | Mínimo | Técnico | Fácil | v1 | [37](https://github.com/joni182/lobo/issues/37) |
+| (**R38**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | [38](https://github.com/joni182/lobo/issues/38) |
+| (**R39**) Tabla Animales | Importante | Información | Fácil | v1 | [39](https://github.com/joni182/lobo/issues/39) |
+| (**R40**) Tabla Personas | Importante | Información | Fácil | v1 | [40](https://github.com/joni182/lobo/issues/40) |
+| (**R41**) Tabla Usuarios | Importante | Información | Fácil | v1 | [41](https://github.com/joni182/lobo/issues/41) |
+| (**R42**) Tabla Medicamentos | Importante | Información | Fácil | v1 | [42](https://github.com/joni182/lobo/issues/42) |
+| (**R43**) Tabla Vacunas | Importante | Información | Fácil | v1 | [43](https://github.com/joni182/lobo/issues/43) |
+| (**R44**) Tabla Enfermedades | Importante | Información | Fácil | v1 | [44](https://github.com/joni182/lobo/issues/44) |
+| (**R45**) Tabla Vacunaciones | Importante | Información | Fácil | v1 | [45](https://github.com/joni182/lobo/issues/45) |
+| (**R46**) Tabla Tatamientos | Importante | Información | Fácil | v1 | [46](https://github.com/joni182/lobo/issues/46) |
+| (**R47**) Tabla Adopciones | Importante | Información | Fácil | v1 | [47](https://github.com/joni182/lobo/issues/47) |
+| (**R48**) Implementar gestión de usuarios | Importante | Funcional | Media | v1 | [48](https://github.com/joni182/lobo/issues/48) |
+| (**R49**) Implementar gestión de personas | Importante | Funcional | Media | v2 | [49](https://github.com/joni182/lobo/issues/49) |
+| (**R50**) Implementar gestión de animales | Importante | Funcional | Media | v1 | [50](https://github.com/joni182/lobo/issues/50) |
+| (**R51**) Implementar gestión de adopciones | Importante | Funcional | Media | v3 | [51](https://github.com/joni182/lobo/issues/51) |
+| (**R52**) Implementar gestión de medicamentos | Importante | Funcional | Media | v2 | [52](https://github.com/joni182/lobo/issues/52) |
+| (**R53**) Implementar gestión de tratamientos | Importante | Funcional | Media | v2 | [53](https://github.com/joni182/lobo/issues/53) |
+| (**R54**) Implementar gestión de vacunas | Importante | Funcional | Media | v1 | [54](https://github.com/joni182/lobo/issues/54) |
+| (**R55**) Implementación de alertas | Importante | Funcional | Difícil | v2 | [55](https://github.com/joni182/lobo/issues/55) |
+| (**R56**) Consultar medicación | Importante | Funcional | Media | v3 | [56](https://github.com/joni182/lobo/issues/56) |
+| (**R57**) Implementar gestión de enfermedades | Importante | Funcional | Media | v1 | [57](https://github.com/joni182/lobo/issues/57) |
+| (**R58**) Subir y almacenar imágenes. | Importante | Funcional | Difícil | v2 | [58](https://github.com/joni182/lobo/issues/58) |
+| (**R59**) Integrar BootStrap4 con Yii2 | Importante | Técnico | Media | v1 | [59](https://github.com/joni182/lobo/issues/59) |
+| (**R60**) Enviar alertas | Opcional | Funcional | Media | v3 | [60](https://github.com/joni182/lobo/issues/60) |
