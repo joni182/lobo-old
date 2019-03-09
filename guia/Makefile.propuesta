@@ -1,0 +1,14 @@
+.PHONY: all check pro
+
+all: check pro
+
+check:
+	./check-packages.sh
+	./check-vendor.sh
+
+pro:
+	php requisitos.php
+	pandoc -f markdown-smart -s propuesta.md requisitos.md -o pro.adoc
+	./replace.sh
+	asciidoctor-pdf propuesta.adoc
+	rm -f pro.adoc propuesta.adoc
