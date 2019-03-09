@@ -38,3 +38,6 @@ tests/chromedriver
 
 # local environment variables
 .env
+
+# vendor de la carpeta guia
+guia/vendor/*
