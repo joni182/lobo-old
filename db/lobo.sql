@@ -2,6 +2,15 @@
 -- Archivo de base de datos --
 ------------------------------
 
+DROP TABLE IF EXISTS colores CASCADE;
+
+CREATE TABLE colores
+(
+      id BIGSERIAL PRIMARY KEY
+    , color VARCHAR(255) NOT NULL
+                           UNIQUE
+);
+
 DROP TABLE IF EXISTS especies CASCADE;
 
 CREATE TABLE especies
@@ -22,6 +31,7 @@ CREATE TABLE razas
                         REFERENCES especies(id)
                         ON UPDATE CASCADE
                         ON DELETE NO ACTION
+    , UNIQUE(raza,especie_id)
 );
 
 DROP TABLE IF EXISTS animales CASCADE;
@@ -30,4 +40,12 @@ CREATE TABLE animales
 (
       id BIGSERIAL PRIMARY KEY
     , nombre VARCHAR(255) NOT NULL
+    , nacimiento TIMESTAMP
+    , chip VARCHAR(255) UNIQUE
+    , peso NUMERIC(5,2)
+    , ppp  BOOL DEFAULT FALSE
+    , sexo VARCHAR(6)   CONSTRAINT ck_sexo_valido
+                        CHECK (sexo = 'h' OR sexo = 'm') --HEMBRA/MACHO--
+    , observaciones TEXT
+    , created_at TIMESTAMP DEFAULT LOCALTIMESTAMP
 );
