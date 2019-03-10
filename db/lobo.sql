@@ -7,8 +7,10 @@ DROP TABLE IF EXISTS colores CASCADE;
 CREATE TABLE colores
 (
       id BIGSERIAL PRIMARY KEY
+    , nombre VARCHAR(255) UNIQUE
     , color VARCHAR(255) NOT NULL
                            UNIQUE
+                           CHECK (color ~* '^#[a-fA-F0-9]{6}')
 );
 
 DROP TABLE IF EXISTS especies CASCADE;
