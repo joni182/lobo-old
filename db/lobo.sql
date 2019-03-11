@@ -58,14 +58,40 @@ DROP TABLE IF EXISTS animales_razas CASCADE;
 
 CREATE TABLE animales_razas
 (
-      id        BIGSERIAL PRIMARY KEY
-    , animal_id BIGINT    NOT NULL
-                          REFERENCES animales(id)
-                          ON UPDATE CASCADE
-                          ON DELETE NO ACTION
-    , raza_id   BIGINT    NOT NULL
-                          REFERENCES razas(id)
-                          ON UPDATE CASCADE
-                          ON DELETE NO ACTION
-    , UNIQUE(animal_id, raza_id)
+      --id        BIGSERIAL PRIMARY KEY--,
+      animal_id BIGINT REFERENCES animales(id)
+                       ON UPDATE CASCADE
+                       ON DELETE NO ACTION
+    , raza_id BIGINT   REFERENCES razas(id)
+                       ON UPDATE CASCADE
+                       ON DELETE NO ACTION
+    , PRIMARY KEY (animal_id, raza_id)
+);
+
+DROP TABLE IF EXISTS animales_colores CASCADE;
+
+CREATE TABLE animales_colores
+(
+      --id        BIGSERIAL PRIMARY KEY--,
+      animal_id BIGINT REFERENCES animales(id)
+                       ON UPDATE CASCADE
+                       ON DELETE NO ACTION
+    , color_id BIGINT  REFERENCES colores(id)
+                       ON UPDATE CASCADE
+                       ON DELETE NO ACTION
+    , PRIMARY KEY (animal_id, color_id)
+);
+
+DROP TABLE IF EXISTS personas CASCADE;
+
+CREATE TABLE personas
+(
+      id               BIGSERIAL    PRIMARY KEY
+    , nombre           VARCHAR(255) NOT NULL
+    , primer_apellido  VARCHAR(255)
+    , segundo_apellido VARCHAR(255)
+    , direccion        VARCHAR(255)
+    , telefono         VARCHAR(255)
+    , email            VARCHAR(255)
+    , observaciones    TEXT
 );
