@@ -95,3 +95,35 @@ CREATE TABLE personas
     , email            VARCHAR(255)
     , observaciones    TEXT
 );
+
+DROP TABLE IF EXISTS tipos CASCADE;
+
+CREATE TABLE tipos
+(
+      id   BIGSERIAL    PRIMARY KEY
+    -- ACOGIDA, ACOGIDA REMUNERADA, RESIDENCIA, ADOPCIÓN --
+    , tipo VARCHAR(255) NOT NULL
+                        UNIQUE
+);
+
+CREATE TABLE acogidas
+(
+      id            BIGSERIAL    PRIMARY KEY
+    , precio        NUMERIC(6,2)
+    , fecha         TIMESTAMP
+    , duracion      INTERVAL
+    , observaciones TEXT
+    , tipo_id       BIGINT NOT NULL
+                           REFERENCES tipos(id)
+                           ON UPDATE CASCADE
+                           ON DELETE NO ACTION
+    , animal_id     BIGINT NOT NULL
+                           REFERENCES animales(id)
+                           ON UPDATE CASCADE
+                           ON DELETE NO ACTION
+    , persona_id    BIGINT NOT NULL
+                           REFERENCES personas(id)
+                           ON UPDATE CASCADE
+                           ON DELETE NO ACTION
+
+);
