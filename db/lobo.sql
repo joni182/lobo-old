@@ -129,3 +129,38 @@ CREATE TABLE acogidas
                            ON DELETE NO ACTION
 
 );
+
+DROP TABLE IF EXISTS sintomas CASCADE;
+
+CREATE TABLE sintomas
+(
+      id          BIGSERIAL    PRIMARY KEY
+    , sintoma     VARCHAR(255) NOT NULL UNIQUE
+    , descripcion TEXT
+);
+
+DROP TABLE IF EXISTS enfermedades CASCADE;
+
+CREATE TABLE enfermedades
+(
+      id          BIGSERIAL    PRIMARY KEY
+    , enfermedad   VARCHAR(255) NOT NULL UNIQUE
+    , descripcion TEXT
+);
+
+
+DROP TABLE IF EXISTS enfermedades_sintomas CASCADE;
+
+CREATE TABLE enfermedades_sintomas
+(
+      enfermedad_id BIGINT    NOT NULL
+                              REFERENCES enfermedades(id)
+                              ON UPDATE CASCADE
+                              ON DELETE NO ACTION
+    , sintoma_id    BIGINT    NOT NULL
+                              REFERENCES sintomas(id)
+                              ON UPDATE CASCADE
+                              ON DELETE NO ACTION
+    , fecha         TIMESTAMP DEFAULT LOCALTIMESTAMP
+    , PRIMARY KEY(enfermedad_id, sintoma_id)
+);
