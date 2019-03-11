@@ -8,7 +8,7 @@ CREATE TABLE colores
 (
       id     BIGSERIAL    PRIMARY KEY
     , nombre VARCHAR(255) UNIQUE
-    , color  VARCHAR(255) NOT NULL
+    , color  CHAR(7) NOT NULL
                           UNIQUE
                           CHECK (color ~* '^#[a-fA-F0-9]{6}')
 );
@@ -45,7 +45,8 @@ CREATE TABLE animales
     , nacimiento                 TIMESTAMP
     , chip          VARCHAR(255) UNIQUE
     , peso          NUMERIC(5,2)
-    , ppp           BOOL         DEFAULT FALSE
+    , ppp           BOOL
+    , esterilizado  BOOL
     , sexo          VARCHAR(6)   CONSTRAINT ck_sexo_valido
                                  CHECK (sexo = 'h' OR sexo = 'm') --HEMBRA/MACHO--
     , observaciones TEXT
@@ -67,5 +68,4 @@ CREATE TABLE animales_razas
                           ON UPDATE CASCADE
                           ON DELETE NO ACTION
     , UNIQUE(animal_id, raza_id)
-
 );
