@@ -106,6 +106,8 @@ CREATE TABLE tipos
                         UNIQUE
 );
 
+DROP TABLE IF EXISTS acogidas CASCADE;
+
 CREATE TABLE acogidas
 (
       id            BIGSERIAL    PRIMARY KEY
