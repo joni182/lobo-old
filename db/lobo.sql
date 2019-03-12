@@ -180,7 +180,7 @@ DROP TABLE IF EXISTS animales_enfermedades CASCADE;
 
 CREATE TABLE animales_enfermedades
 (
-    , enfermedad_id BIGINT    NOT NULL
+      enfermedad_id BIGINT    NOT NULL
                               REFERENCES enfermedades(id)
                               ON UPDATE CASCADE
                               ON DELETE NO ACTION
@@ -190,4 +190,36 @@ CREATE TABLE animales_enfermedades
                               ON DELETE NO ACTION
     , fecha         TIMESTAMP DEFAULT LOCALTIMESTAMP
     , PRIMARY KEY(enfermedad_id, animal_id, fecha)
+);
+
+DROP TABLE IF EXISTS vacunas CASCADE;
+
+CREATE TABLE vacunas
+(
+      id            BIGSERIAL    PRIMARY KEY
+    , vacuna        VARCHAR(255) NOT NULL UNIQUE
+    , dosis         SMALLINT
+    -- entre_dosis Representa el tiempo que tiene que pasar en tre dosis --
+    , entre_dosis   INTERVAL
+    /* periodicidad Representa cada cuanto se pone la vacuna, por ejemplo hay
+     * vacunas que se ponen todos los años y otras que solo se ponen una vez
+    */
+    , periodicidad   INTERVAL
+    , observaciones TEXT
+);
+
+DROP TABLE IF EXISTS vacunaciones CASCADE;
+
+CREATE TABLE vacunaciones
+(
+      vacuna_id BIGINT    NOT NULL
+                              REFERENCES enfermedades(id)
+                              ON UPDATE CASCADE
+                              ON DELETE NO ACTION
+    , animal_id     BIGINT    NOT NULL
+                              REFERENCES vacunas(id)
+                              ON UPDATE CASCADE
+                              ON DELETE NO ACTION
+    , fecha         TIMESTAMP DEFAULT LOCALTIMESTAMP
+    , PRIMARY KEY(vacuna_id, animal_id)
 );
