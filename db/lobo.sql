@@ -161,7 +161,6 @@ CREATE TABLE enfermedades
     , descripcion TEXT
 );
 
-
 DROP TABLE IF EXISTS enfermedades_sintomas CASCADE;
 
 CREATE TABLE enfermedades_sintomas
@@ -174,6 +173,21 @@ CREATE TABLE enfermedades_sintomas
                               REFERENCES sintomas(id)
                               ON UPDATE CASCADE
                               ON DELETE NO ACTION
-    , fecha         TIMESTAMP DEFAULT LOCALTIMESTAMP
     , PRIMARY KEY(enfermedad_id, sintoma_id)
+);
+
+DROP TABLE IF EXISTS animales_enfermedades CASCADE;
+
+CREATE TABLE animales_enfermedades
+(
+    , enfermedad_id BIGINT    NOT NULL
+                              REFERENCES enfermedades(id)
+                              ON UPDATE CASCADE
+                              ON DELETE NO ACTION
+    , animal_id     BIGINT    NOT NULL
+                              REFERENCES animales(id)
+                              ON UPDATE CASCADE
+                              ON DELETE NO ACTION
+    , fecha         TIMESTAMP DEFAULT LOCALTIMESTAMP
+    , PRIMARY KEY(enfermedad_id, animal_id, fecha)
 );
