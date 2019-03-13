@@ -229,7 +229,7 @@ DROP TABLE IF EXISTS medicamentos CASCADE;
 CREATE TABLE medicamentos
 (
       id          BIGSERIAL    PRIMARY KEY
-    , medicamento VARCHAR(255) UNIQUE
+    , medicamento VARCHAR(255) NOT NULL UNIQUE
     , descripcion TEXT
     -- Principio activo --
     , principio   VARCHAR(255)
