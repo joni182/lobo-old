@@ -234,3 +234,24 @@ CREATE TABLE medicamentos
     -- Principio activo --
     , principio   VARCHAR(255)
 );
+
+DROP TABLE IF EXISTS tratamientos CASCADE;
+
+CREATE TABLE tratamientos
+(
+      id             BIGSERIAL    PRIMARY KEY
+    , medicamento_id BIGINT NOT NULL
+                            REFERENCES medicamentos(id)
+                            ON UPDATE CASCADE
+                            ON DELETE NO ACTION
+    , animal_id      BIGINT NOT NULL
+                            REFERENCES animales(id)
+                            ON UPDATE CASCADE
+                            ON DELETE NO ACTION
+    , inicio         TIMESTAMP
+    , duracion       INTERVAL DEFAULT '1 week'
+    , dosis          VARCHAR(255) DEFAULT 'un comprimido'
+    , veces_por_dia  SMALLINT DEFAULT 1
+    , observaciones  TEXT
+    , UNIQUE(medicamento_id, animal_id)
+);
