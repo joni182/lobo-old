@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EnfermedadesSearch */
+/* @var $searchModel app\models\EnfermedadesSintomasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Enfermedades';
+$this->title = 'Enfermedades Sintomas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="enfermedades-index">
+<div class="enfermedades-sintomas-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Enfermedades', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Enfermedades Sintomas', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -24,8 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'enfermedad',
-            'descripcion:ntext',
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'enfermedad.enfermedad',
+            'sintoma.sintoma',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
