@@ -223,3 +223,14 @@ CREATE TABLE vacunaciones
     , fecha         TIMESTAMP DEFAULT LOCALTIMESTAMP
     , PRIMARY KEY(vacuna_id, animal_id)
 );
+
+DROP TABLE IF EXISTS medicamentos CASCADE;
+
+CREATE TABLE medicamentos
+(
+      id          BIGSERIAL    PRIMARY KEY
+    , medicamento VARCHAR(255) UNIQUE
+    , descripcion TEXT
+    -- Principio activo --
+    , principio   VARCHAR(255)
+);
