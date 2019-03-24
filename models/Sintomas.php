@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "sintomas".
  *
@@ -63,5 +61,10 @@ class Sintomas extends \yii\db\ActiveRecord
     public function getEnfermedads()
     {
         return $this->hasMany(Enfermedades::className(), ['id' => 'enfermedad_id'])->viaTable('enfermedades_sintomas', ['sintoma_id' => 'id']);
+    }
+
+    public static function todos()
+    {
+        return static::find()->select('sintoma')->indexBy('id')->column();
     }
 }

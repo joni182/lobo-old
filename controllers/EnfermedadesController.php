@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\Enfermedades;
 use app\models\EnfermedadesSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * EnfermedadesController implements the CRUD actions for Enfermedades model.
@@ -46,7 +46,7 @@ class EnfermedadesController extends Controller
 
     /**
      * Displays a single Enfermedades model.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -78,7 +78,7 @@ class EnfermedadesController extends Controller
     /**
      * Updates an existing Enfermedades model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -98,7 +98,7 @@ class EnfermedadesController extends Controller
     /**
      * Deletes an existing Enfermedades model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -112,7 +112,7 @@ class EnfermedadesController extends Controller
     /**
      * Finds the Enfermedades model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param int $id
      * @return Enfermedades the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
