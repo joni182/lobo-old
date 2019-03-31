@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "enfermedades".
  *
@@ -17,6 +15,7 @@ use Yii;
  */
 class Enfermedades extends \yii\db\ActiveRecord
 {
+    public $sintomasQueNoTengo;
     /**
      * {@inheritdoc}
      */
@@ -32,10 +31,16 @@ class Enfermedades extends \yii\db\ActiveRecord
     {
         return [
             [['enfermedad'], 'required'],
+            [['sintomasQueNoTengo'], 'safe'],
             [['descripcion'], 'string'],
             [['enfermedad'], 'string', 'max' => 255],
             [['enfermedad'], 'unique'],
         ];
+    }
+
+    public function attributas()
+    {
+        return array_merge([parent::attributes(), ['sintomasQueNoTengo']]);
     }
 
     /**
@@ -72,5 +77,23 @@ class Enfermedades extends \yii\db\ActiveRecord
     public function getSintomas()
     {
         return $this->hasMany(Sintomas::className(), ['id' => 'sintoma_id'])->viaTable('enfermedades_sintomas', ['enfermedad_id' => 'id']);
+    }
+
+    public function getSintomasQueNoTengo()
+    {
+        // if (!isset($this->sintomasQueNoTengo)) {
+        //     return $this->sintomasQueNoTengo;
+        // }
+        $sql = <<<EOT
+select *
+  from sintomas
+except
+select sintomas.*
+  from sintomas
+  join enfermedades_sintomas
+    on sintomas.id = enfermedades_sintomas.sintoma_id
+ where enfermedades_sintomas.enfermedad_id = :enfermedad_id
+EOT;
+        return Sintomas::findBySql($sql, [':enfermedad_id' => $this->id])->all();
     }
 }

@@ -2,12 +2,13 @@
 
 namespace app\controllers;
 
-use Yii;
+use app\models\Enfermedades;
 use app\models\EnfermedadesSintomas;
 use app\models\EnfermedadesSintomasSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * EnfermedadesSintomasController implements the CRUD actions for EnfermedadesSintomas model.
@@ -44,10 +45,19 @@ class EnfermedadesSintomasController extends Controller
         ]);
     }
 
+    public function actionAgregarSintomas($enfermedad_id)
+    {
+        $model = Enfermedades::findOne($enfermedad_id);
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Displays a single EnfermedadesSintomas model.
-     * @param integer $enfermedad_id
-     * @param integer $sintoma_id
+     * @param int $enfermedad_id
+     * @param int $sintoma_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -65,22 +75,17 @@ class EnfermedadesSintomasController extends Controller
      */
     public function actionCreate()
     {
-        $model = new EnfermedadesSintomas();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'enfermedad_id' => $model->enfermedad_id, 'sintoma_id' => $model->sintoma_id]);
+        $model = new EnfermedadesSintomas(Yii::$app->request->post());
+        if (!$model->save()) {
+            throw new \Exception('No se ha ppodido agregar el sintoma a la enfermedad', 1);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
      * Updates an existing EnfermedadesSintomas model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $enfermedad_id
-     * @param integer $sintoma_id
+     * @param int $enfermedad_id
+     * @param int $sintoma_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -100,23 +105,20 @@ class EnfermedadesSintomasController extends Controller
     /**
      * Deletes an existing EnfermedadesSintomas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $enfermedad_id
-     * @param integer $sintoma_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($enfermedad_id, $sintoma_id)
+    public function actionDelete()
     {
+        extract(Yii::$app->request->post());
         $this->findModel($enfermedad_id, $sintoma_id)->delete();
-
-        return $this->redirect(['index']);
     }
 
     /**
      * Finds the EnfermedadesSintomas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $enfermedad_id
-     * @param integer $sintoma_id
+     * @param int $enfermedad_id
+     * @param int $sintoma_id
      * @return EnfermedadesSintomas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

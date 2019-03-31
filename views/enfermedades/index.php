@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\ListView;
@@ -25,25 +25,19 @@ $js = <<<EOT
         var enfermedad_id = $(e.target).data('enfermedad');
         var sintoma_id = $(e.target).siblings('select').val();
 
-        $('').change(function(e){
-            e.preventDefault();
-
-            $.ajax({
-                method: 'POST',
-                url: '$url',
-                data: {
-                    enfermedad_id: enfermedad_id,
-                    sintoma_id: sintoma_id
-                    },
-                success: function(result){
-
-                }
-            });
+        $.ajax({
+            method: 'POST',
+            url: '$url',
+            data: {
+                enfermedad_id: enfermedad_id,
+                sintoma_id: sintoma_id
+            },
+            success: function(result){
+                console.log(result)
+                console.log($('.panel-'+enfermedad_id))
+                $('#panel-'+enfermedad_id).html(result)
+            }
         });
-        EOF;
-
-        $this->registerJs($js);
-        ?>
     })
 EOT;
 

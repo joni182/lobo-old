@@ -65,6 +65,9 @@ class Sintomas extends \yii\db\ActiveRecord
 
     public static function todos()
     {
-        return static::find()->select('sintoma')->indexBy('id')->column();
+        return static::find()
+            ->select('sintoma')
+            //->indexBy('id')
+            ->column();
     }
 }
