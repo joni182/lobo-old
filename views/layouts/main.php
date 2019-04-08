@@ -22,24 +22,8 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-      <style>
-        #sortable1, #sortable2 {
-          border: 1px solid #eee;
-          width: 142px;
-          min-height: 20px;
-          list-style-type: none;
-          margin: 0;
-          padding: 5px 0 0 0;
-          float: left;
-          margin-right: 10px;
-        }
-        #sortable1 li, #sortable2 li {
-          margin: 0 5px 5px 5px;
-          padding: 5px;
-          font-size: 1.2em;
-          width: 120px;
-        }
-      </style>
+    <?php $this->registerCssFile("@web/css/custom.css");
+ ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -59,7 +43,6 @@ AppAsset::register($this);
             ['label' => 'Home','url' => ['site/index']],
             ['label' => 'Enfermedades', 'url' => ['/enfermedades/index']],
             ['label' => 'Síntomas', 'url' => ['/sintomas/index']],
-            ['label' => 'Enfermedades-Síntomas', 'url' => ['/enfermedades-sintomas/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Enfermedades;
 use app\models\EnfermedadesSearch;
+use app\models\EnfermedadesSintomas;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -105,7 +106,11 @@ class EnfermedadesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+
+        EnfermedadesSintomas::deleteAll(['enfermedad_id' => $id]);
+
+        $model->delete();
 
         return $this->redirect(['index']);
     }
