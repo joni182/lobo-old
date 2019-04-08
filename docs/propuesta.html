@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/44163efa/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/a44b40ab/solarized_light.css" rel="stylesheet">
+<link href="./assets/6b44dc31/style.css" rel="stylesheet">
+<script src="./assets/557a02ba/jquery.js"></script>
+<script src="./assets/44163efa/js/bootstrap.js"></script>
+<script src="./assets/ed73fd07/jssearch.js"></script>    <title>Guía del proyecto</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w118" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w118-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Guía del proyecto</a></div><div id="w118-collapse" class="collapse navbar-collapse"><ul id="w119" class="navbar-nav nav"><li><a href="./api/index.html">Class reference</a></li>
+<li><a href="./README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-108" data-toggle="collapse" data-parent="#navigation">Descripción general <b class="caret"></b></a><div id="navigation-108" class="submenu panel-collapse collapse"><a class="list-group-item" href="./descripcion.html#funcionalidad-principal-de-la-aplicacion">Funcionalidad principal de la aplicación</a>
+<a class="list-group-item" href="./descripcion.html#objetivos-generales">Objetivos generales</a>
+<a class="list-group-item" href="./descripcion.html#url-del-repositorio">URL del repositorio</a>
+<a class="list-group-item" href="./descripcion.html#url-de-la-documentacion">URL de la documentación</a></div>
+<a class="list-group-item" href="#navigation-109" data-toggle="collapse" data-parent="#navigation">Instrucciones de instalación y despliegue <b class="caret"></b></a><div id="navigation-109" class="submenu panel-collapse collapse"><a class="list-group-item" href="./instalacion.html#en-local">En local</a>
+<a class="list-group-item" href="./instalacion.html#en-la-nube">En la nube</a></div>
+<a class="list-group-item" href="#navigation-110" data-toggle="collapse" data-parent="#navigation">Catálogo de requisitos <b class="caret"></b></a><div id="navigation-110" class="submenu panel-collapse collapse"><a class="list-group-item" href="./requisitos.html#cuadro-resumen">Cuadro resumen</a></div>
+<a class="list-group-item" href="#navigation-111" data-toggle="collapse" data-parent="#navigation">Manual de usuario <b class="caret"></b></a><div id="navigation-111" class="submenu panel-collapse collapse"><a class="list-group-item" href="./manual.html">Manual de usuario</a></div>
+<a class="list-group-item" href="#navigation-112" data-toggle="collapse" data-parent="#navigation">Decisiones adoptadas <b class="caret"></b></a><div id="navigation-112" class="submenu panel-collapse collapse"><a class="list-group-item" href="./decisiones.html">Decisiones adoptadas</a></div>
+<a class="list-group-item" href="#navigation-113" data-toggle="collapse" data-parent="#navigation">Dificultades encontradas <b class="caret"></b></a><div id="navigation-113" class="submenu panel-collapse collapse"><a class="list-group-item" href="./dificultades.html">Dificultades encontradas</a></div>
+<a class="list-group-item" href="#navigation-114" data-toggle="collapse" data-parent="#navigation">Diagramas <b class="caret"></b></a><div id="navigation-114" class="submenu panel-collapse collapse"><a class="list-group-item" href="./diagramas.html#diagramas-de-clases">Diagramas de clases</a>
+<a class="list-group-item" href="./diagramas.html#diagramas-de-estructura-logica-de-datos">Diagramas de estructura lógica de datos</a></div>
+<a class="list-group-item" href="#navigation-115" data-toggle="collapse" data-parent="#navigation">Glosario de términos <b class="caret"></b></a><div id="navigation-115" class="submenu panel-collapse collapse"><a class="list-group-item" href="./glosario.html">Glosario de términos</a></div>
+<a class="list-group-item" href="#navigation-116" data-toggle="collapse" data-parent="#navigation">Conclusiones <b class="caret"></b></a><div id="navigation-116" class="submenu panel-collapse collapse"><a class="list-group-item" href="./conclusiones.html">Conclusiones</a></div>
+<a class="list-group-item" href="#navigation-117" data-toggle="collapse" data-parent="#navigation">Anexos <b class="caret"></b></a><div id="navigation-117" class="submenu panel-collapse collapse"><a class="list-group-item" href="./anexos.html">Anexos</a></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <p>% Lobo
+% Jonatan Cerezuela López
+% Curso 2018/19</p>
+<h1>Descripción general del proyecto <span id="descripcion-general-del-proyecto"></span><a href="#descripcion-general-del-proyecto" class="hashlink">&para;</a></h1>
+<div class="toc"><ol><li><a href="#funcionalidad-principal-de-la-aplicacion">Funcionalidad principal de la aplicación</a></li>
+<li><a href="#objetivos-generales">Objetivos generales</a></li></ol></div>
+<p>Lobo es una herramienta de gestión orientada protectoras de animales las cuales se enfrentan con la dificil tarea de tener que manejar los datos de cientos de animales y personas asociadas a esos animales sin aplicaciones especialmente diseñadas para esa tarea.</p>
+<h2>Funcionalidad principal de la aplicación <span id="funcionalidad-principal-de-la-aplicacion"></span><a href="#funcionalidad-principal-de-la-aplicacion" class="hashlink">&para;</a></h2><p>ACLARACIÓN: Cuando un animal es adoptado empieza un periodo de un año en el se controla que todo está yendo bien, se le recuerda al adoptante las vacunas y si el adoptado es cachorro el doptante tiene que acreditar que ha esterilizado al animal cuando el veterinario de el visto bueno. A esto lo llamamos seguimiento.</p>
+<p>Una de las dos grandes funcionalidades de la aplicacion seran la de crear perfiles de los animales y recoger en ellos datos de interes como pueden ser enfermedades, tratamientos, la localizacion actual del animal (ya que el animal puede estar tanto en la protectora como acogido por algun particular) asociadas a esos animales, y la segunda es un sistema de notificaciones que de forma autamatica avisara a los responsables cuando les toca por ejemplo una vacuna a un animal. Además ayudará a los encargados de los seguimientos a llevar el control de los animales adoptados.</p>
+<h2>Objetivos generales <span id="objetivos-generales"></span><a href="#objetivos-generales" class="hashlink">&para;</a></h2><ul>
+<li>La aplicación debe de poder gestionar usuarios.</li>
+<li>Se podrán gestionar personas, estas toman el rol de casa de acogida o adoptante. No confundir con usuarios de la aplicación.</li>
+<li>Se podrán gestionar animales, los cuales representará a un animal rescatado de la calle y contendrá toda la información relevante para su identificación</li>
+<li>Se podrán gestionar adopciones, estas son una relación entre personas y animales y simboliza una tramite de adopción entre un humano y un animal de la protectora</li>
+<li>Se podrán gestionar medicamentos, estos representa a un medicamento que pudiera usarse en un posible tratamiento para un animal, este contendrán información relevante sobre su función y uso, así como comentarios útiles de experiencias con tal medicamento</li>
+<li>Se podrán gestionar tratamientos, estos son una relación entre medicamento, centro veterinario que lo ha recetado y animal. Contendrá ademas fecha de inicio y fin del tratamiento, y dosis diarias del medicamento.</li>
+<li>Se podrán gestionar vacunas, estos representa a una vacuna como podría ser la de la rabia o la de parvovirosis, esta contendrá información relevante sobre la vacuna: precio, periodicidad, edad ...etc.</li>
+<li>Se generarán alertas automáticas para avisar de vacunaciones, castraciones, seguimientos de adopciones etc.</li>
+<li>Se podrá consultar la medicación para un día especifico, ya sea para el total de animales como para uno en concreto</li>
+<li>Formará un catálogo de enfermedades con sus síntomas y posibles tratamientos para una detección temprana.</li>
+<li>Cada animal podrá tener un catálogo de fotos</li>
+</ul>
+<h1>Elemento de innovación <span id="elemento-de-innovacion"></span><a href="#elemento-de-innovacion" class="hashlink">&para;</a></h1>
+<div class="toc"><ol><li><a href="#funcionalidad-principal-de-la-aplicacion">Funcionalidad principal de la aplicación</a></li>
+<li><a href="#objetivos-generales">Objetivos generales</a></li></ol></div>
+<p>Se integrará BootStrap 4 con el framework Yii2.</p>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Mon, 08 Apr 2019 13:14:27 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>
