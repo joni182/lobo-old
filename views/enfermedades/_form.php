@@ -17,7 +17,11 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::checkbox('sintomas', false, ['class' => 'form-check-input']) ?><span class="text-danger"> Agregar síntomas despues de guardar</span>
+    </div>
+
+    <div class="form-group">
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

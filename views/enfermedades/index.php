@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
@@ -49,7 +48,8 @@ $this->registerJs($js);
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Enfermedades', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Registrar una Enfermedad', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Registrar un Síntoma', ['/sintomas/create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php  echo $this->render('_search', ['model' => $searchModel]); ?>

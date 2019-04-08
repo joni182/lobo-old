@@ -29,6 +29,11 @@ class Sintomas extends \yii\db\ActiveRecord
     {
         return [
             [['sintoma'], 'required'],
+            [['sintoma'], 'trim'],
+            [['sintoma'], 'filter', 'filter' => 'strtolower'],
+            [['sintoma'], 'filter', 'filter' => function ($value) {
+                return str_replace('.', '', $value);
+            }],
             [['descripcion'], 'string'],
             [['sintoma'], 'string', 'max' => 255],
             [['sintoma'], 'unique'],

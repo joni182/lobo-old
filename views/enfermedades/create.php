@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Enfermedades */
 
-$this->title = 'Create Enfermedades';
+$this->title = 'Registra una enfermedad';
 $this->params['breadcrumbs'][] = ['label' => 'Enfermedades', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

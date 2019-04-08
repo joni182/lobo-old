@@ -1,8 +1,11 @@
-<?php use yii\helpers\Url; ?>
+<?php
+use yii\helpers\Url;
+use yii\helpers\Html;
+?>
 <div class="col-sm-4">
 
 <div class="panel panel-default">
-    <div class="panel-heading"><strong><?= $model->enfermedad ?></strong>
+    <div class="panel-heading"><strong><?= Html::a($model->enfermedad,['view','id' => $model->id]) ?></strong>
         <span class="glyphicon glyphicon-chevron-down text-right"></span>
     </div>
     <?php if ($model->descripcion != null): ?>
@@ -10,7 +13,7 @@
     <?php endif; ?>
   <div class="panel-body" id="panel-<?= $model->id ?>">
       <?php foreach ($model->sintomas as $key => $sintoma): ?>
-          <a href="<?= Url::to(['sintomas/update', 'id' => $sintoma->id]) ?>" class="btn btn-warning btn-xs" style='margin:3px' data-toggle="tooltip" data-placement="right" title="<?= $sintoma->descripcion ?>">
+          <a href="<?= Url::to(['sintomas/view', 'id' => $sintoma->id]) ?>" class="btn btn-warning btn-xs" style='margin:3px' data-toggle="tooltip" data-placement="right" title="<?= $sintoma->descripcion ?>">
               <?= $sintoma->sintoma ?>
           </a>
       <?php endforeach; ?>

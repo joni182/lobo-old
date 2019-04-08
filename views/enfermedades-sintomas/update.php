@@ -67,3 +67,7 @@ $this->title = $model->enfermedad;
         </li>
     <?php endforeach; ?>
 </ul>
+
+<div class="">
+    <?= Html::a('He terminado', ['enfermedades/index'], ['class' => 'btn btn-info']) ?>
+</div>

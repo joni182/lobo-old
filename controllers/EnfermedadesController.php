@@ -67,7 +67,8 @@ class EnfermedadesController extends Controller
         $model = new Enfermedades();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $url = Yii::$app->request->post('sintomas') == 1 ? ['enfermedades-sintomas/agregar-sintomas', 'enfermedad_id' => $model->id] : ['view', 'id' => $model->id];
+            return $this->redirect($url);
         }
 
         return $this->render('create', [
