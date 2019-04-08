@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace app\controllers;
 
-use Yii;
 use app\models\Razas;
 use app\models\RazasSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * RazasController implements the CRUD actions for Razas model.
@@ -46,7 +46,7 @@ class RazasController extends Controller
 
     /**
      * Displays a single Razas model.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -78,7 +78,7 @@ class RazasController extends Controller
     /**
      * Updates an existing Razas model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -98,7 +98,7 @@ class RazasController extends Controller
     /**
      * Deletes an existing Razas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -112,7 +112,7 @@ class RazasController extends Controller
     /**
      * Finds the Razas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param int $id
      * @return Razas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

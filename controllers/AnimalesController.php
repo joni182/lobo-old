@@ -1,18 +1,18 @@
 <?php
 
-namespace app\models;
+namespace app\controllers;
 
+use app\models\Animales;
+use app\models\AnimalesSearch;
 use Yii;
-use app\models\Colores;
-use app\models\ColoresSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
- * ColoresController implements the CRUD actions for Colores model.
+ * AnimalesController implements the CRUD actions for Animales model.
  */
-class ColoresController extends Controller
+class AnimalesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class ColoresController extends Controller
     }
 
     /**
-     * Lists all Colores models.
+     * Lists all Animales models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ColoresSearch();
+        $searchModel = new AnimalesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,8 +45,8 @@ class ColoresController extends Controller
     }
 
     /**
-     * Displays a single Colores model.
-     * @param integer $id
+     * Displays a single Animales model.
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -58,13 +58,13 @@ class ColoresController extends Controller
     }
 
     /**
-     * Creates a new Colores model.
+     * Creates a new Animales model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Colores();
+        $model = new Animales();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,9 +76,9 @@ class ColoresController extends Controller
     }
 
     /**
-     * Updates an existing Colores model.
+     * Updates an existing Animales model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -96,9 +96,9 @@ class ColoresController extends Controller
     }
 
     /**
-     * Deletes an existing Colores model.
+     * Deletes an existing Animales model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -110,15 +110,15 @@ class ColoresController extends Controller
     }
 
     /**
-     * Finds the Colores model based on its primary key value.
+     * Finds the Animales model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Colores the loaded model
+     * @param int $id
+     * @return Animales the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Colores::findOne($id)) !== null) {
+        if (($model = Animales::findOne($id)) !== null) {
             return $model;
         }
 

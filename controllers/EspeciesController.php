@@ -1,18 +1,18 @@
 <?php
 
-namespace app\models;
+namespace app\controllers;
 
+use app\models\Especies;
+use app\models\EspeciesSearch;
 use Yii;
-use app\models\Animales;
-use app\models\AnimalesSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
- * AnimalesController implements the CRUD actions for Animales model.
+ * EspeciesController implements the CRUD actions for Especies model.
  */
-class AnimalesController extends Controller
+class EspeciesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Lists all Animales models.
+     * Lists all Especies models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AnimalesSearch();
+        $searchModel = new EspeciesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,8 +45,8 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Displays a single Animales model.
-     * @param integer $id
+     * Displays a single Especies model.
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -58,13 +58,13 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Creates a new Animales model.
+     * Creates a new Especies model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Animales();
+        $model = new Especies();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,9 +76,9 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Updates an existing Animales model.
+     * Updates an existing Especies model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -96,9 +96,9 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Deletes an existing Animales model.
+     * Deletes an existing Especies model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -110,15 +110,15 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Finds the Animales model based on its primary key value.
+     * Finds the Especies model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Animales the loaded model
+     * @param int $id
+     * @return Especies the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Animales::findOne($id)) !== null) {
+        if (($model = Especies::findOne($id)) !== null) {
             return $model;
         }
 

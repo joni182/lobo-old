@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Razas */
 
-$this->title = 'Create Razas';
+$this->title = 'Registar una nueva raza';
 $this->params['breadcrumbs'][] = ['label' => 'Razas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
