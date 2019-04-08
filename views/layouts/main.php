@@ -22,6 +22,8 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?php $this->registerCssFile("@web/css/custom.css");
+ ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -38,9 +40,9 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Home','url' => ['site/index']],
+            ['label' => 'Enfermedades', 'url' => ['/enfermedades/index']],
+            ['label' => 'Síntomas', 'url' => ['/sintomas/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -73,9 +75,11 @@ AppAsset::register($this);
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
+
 </footer>
 
 <?php $this->endBody() ?>
 </body>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </html>
 <?php $this->endPage() ?>
