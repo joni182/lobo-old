@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'raza')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'especie_id')->textInput() ?>
+    <?= $form->field($model, 'especie_id')->dropDownList($especies) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

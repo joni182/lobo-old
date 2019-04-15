@@ -20,5 +20,10 @@
 }
 
 #colores-color {
-    
+    width: 100%;
+    height: 40px
+}
+
+.razas-list {
+    margin-top: 10px
 }

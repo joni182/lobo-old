@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Especies;
 use app\models\Razas;
 use app\models\RazasSearch;
+use Exception;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -66,12 +68,28 @@ class RazasController extends Controller
     {
         $model = new Razas();
 
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $especie_id = Yii::$app->request->post('especie_id');
+            $nombre_raza = Yii::$app->request->post('raza');
+            Razas::find()->where(['especie_id' => $especie_id])->andWhere(['raza' => $nombre_raza])->one();
+            if (Razas::find()->where(['especie_id' => $especie_id])->andWhere(['raza' => $nombre_raza])->one() === null) {
+                $model->especie_id = $especie_id;
+                $model->raza = $nombre_raza;
+                $model->save();
+                return $this->renderAjax('/razas/_listaRazas', [
+                    'items' => (Especies::findOne($especie_id))->razas,
+                ]);
+            }
+            throw new Exception('Ya existe una raza con ese nombre.');
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'especies' => Especies::todas(),
         ]);
     }
 
@@ -92,6 +110,7 @@ class RazasController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'especies' => Especies::todas(),
         ]);
     }
 

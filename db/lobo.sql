@@ -41,7 +41,6 @@ CREATE TABLE razas
 (
       id         BIGSERIAL    PRIMARY KEY
     , raza       VARCHAR(255) NOT NULL
-                              UNIQUE
     , especie_id BIGINT       NOT NULL
                               REFERENCES especies(id)
                               ON UPDATE CASCADE

@@ -7,7 +7,6 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\EspeciesSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
 <div class="especies-search">
 
     <?php $form = ActiveForm::begin([
@@ -15,7 +14,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'especie') ?>
+    <?= $form->field($model, 'especie')->label('Buca una especie') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
