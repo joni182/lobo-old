@@ -1,19 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\models;
 
-use app\components\Sortable;
-use app\models\Animales;
-use app\models\AnimalesSearch;
 use Yii;
-use yii\filters\VerbFilter;
+use app\models\AnimalesColores;
+use app\models\AnimalesColoresSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
- * AnimalesController implements the CRUD actions for Animales model.
+ * AnimalesColoresController implements the CRUD actions for AnimalesColores model.
  */
-class AnimalesController extends Controller
+class AnimalesColoresController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,19 +30,13 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Lists all Animales models.
+     * Lists all AnimalesColores models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AnimalesSearch();
+        $searchModel = new AnimalesColoresSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return Sortable::widget([
-            'sortable1' => 'sortable1',
-            'sortable2' => 'sortable2',
-            'view' => 'view',
-        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -52,29 +45,30 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Displays a single Animales model.
-     * @param int $id
+     * Displays a single AnimalesColores model.
+     * @param integer $animal_id
+     * @param integer $color_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($animal_id, $color_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($animal_id, $color_id),
         ]);
     }
 
     /**
-     * Creates a new Animales model.
+     * Creates a new AnimalesColores model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Animales();
+        $model = new AnimalesColores();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'animal_id' => $model->animal_id, 'color_id' => $model->color_id]);
         }
 
         return $this->render('create', [
@@ -83,18 +77,19 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Updates an existing Animales model.
+     * Updates an existing AnimalesColores model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id
+     * @param integer $animal_id
+     * @param integer $color_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($animal_id, $color_id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($animal_id, $color_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'animal_id' => $model->animal_id, 'color_id' => $model->color_id]);
         }
 
         return $this->render('update', [
@@ -103,29 +98,31 @@ class AnimalesController extends Controller
     }
 
     /**
-     * Deletes an existing Animales model.
+     * Deletes an existing AnimalesColores model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id
+     * @param integer $animal_id
+     * @param integer $color_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($animal_id, $color_id)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($animal_id, $color_id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Animales model based on its primary key value.
+     * Finds the AnimalesColores model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id
-     * @return Animales the loaded model
+     * @param integer $animal_id
+     * @param integer $color_id
+     * @return AnimalesColores the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($animal_id, $color_id)
     {
-        if (($model = Animales::findOne($id)) !== null) {
+        if (($model = AnimalesColores::findOne(['animal_id' => $animal_id, 'color_id' => $color_id])) !== null) {
             return $model;
         }
 

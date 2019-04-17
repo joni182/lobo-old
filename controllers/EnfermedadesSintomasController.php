@@ -75,7 +75,11 @@ class EnfermedadesSintomasController extends Controller
      */
     public function actionCreate()
     {
-        $model = new EnfermedadesSintomas(Yii::$app->request->post());
+        $model = new EnfermedadesSintomas([
+            'enfermedad_id' => Yii::$app->request->post('list'),
+            'sintoma_id' => Yii::$app->request->post('item'),
+        ]);
+        //dd($model->validate());
         if (!$model->save()) {
             throw new \Exception('No se ha ppodido agregar el sintoma a la enfermedad', 1);
         }
@@ -111,7 +115,7 @@ class EnfermedadesSintomasController extends Controller
     public function actionDelete()
     {
         extract(Yii::$app->request->post());
-        $this->findModel($enfermedad_id, $sintoma_id)->delete();
+        $this->findModel($list, $item)->delete();
     }
 
     /**
