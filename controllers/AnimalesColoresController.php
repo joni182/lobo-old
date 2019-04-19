@@ -1,13 +1,14 @@
 <?php
 
-namespace app\models;
+namespace app\controllers;
 
-use Yii;
+use app\models\Animales;
 use app\models\AnimalesColores;
 use app\models\AnimalesColoresSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * AnimalesColoresController implements the CRUD actions for AnimalesColores model.
@@ -46,8 +47,8 @@ class AnimalesColoresController extends Controller
 
     /**
      * Displays a single AnimalesColores model.
-     * @param integer $animal_id
-     * @param integer $color_id
+     * @param int $animal_id
+     * @param int $color_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -58,6 +59,17 @@ class AnimalesColoresController extends Controller
         ]);
     }
 
+
+    public function actionAgregarColores($animal_id)
+    {
+        $model = Animales::findOne($animal_id);
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+
     /**
      * Creates a new AnimalesColores model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -65,22 +77,21 @@ class AnimalesColoresController extends Controller
      */
     public function actionCreate()
     {
-        $model = new AnimalesColores();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'animal_id' => $model->animal_id, 'color_id' => $model->color_id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
+        $model = new AnimalesColores([
+            'animal_id' => Yii::$app->request->post('list'),
+            'color_id' => Yii::$app->request->post('item'),
         ]);
+
+        if (!$model->save()) {
+            throw new \Exception('No se ha ppodido agregar el color al animal', 1);
+        }
     }
 
     /**
      * Updates an existing AnimalesColores model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $animal_id
-     * @param integer $color_id
+     * @param int $animal_id
+     * @param int $color_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -100,23 +111,20 @@ class AnimalesColoresController extends Controller
     /**
      * Deletes an existing AnimalesColores model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $animal_id
-     * @param integer $color_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($animal_id, $color_id)
+    public function actionDelete()
     {
-        $this->findModel($animal_id, $color_id)->delete();
-
-        return $this->redirect(['index']);
+        extract(Yii::$app->request->post());
+        $this->findModel($list, $item)->delete();
     }
 
     /**
      * Finds the AnimalesColores model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $animal_id
-     * @param integer $color_id
+     * @param int $animal_id
+     * @param int $color_id
      * @return AnimalesColores the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

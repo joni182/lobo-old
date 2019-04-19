@@ -22,23 +22,15 @@ $this->title = $model->enfermedad;
 
 <?= Sortable::widget([
         'view' => $this,
+        'item_view' => '/sintomas/_sintoma',
+        'list_id' => $model->id,
         'sortable1' => [
             'accion' => Url::to(['enfermedades-sintomas/create']) ,
-            'list_id' => $model->id,
             'items' => $model->sintomas,
-            'item' => [
-                'name' => 'sintoma',
-                'accion' => 'sintomas/update',
-            ],
         ],
         'sortable2' => [
             'accion' => Url::to(['enfermedades-sintomas/delete']) ,
-            'list_id' => $model->id,
             'items' => $model->getSintomasQueNoTengo(),
-            'item' => [
-                'name' => 'sintoma',
-                'accion' => 'sintomas/update',
-            ],
         ],
     ])
 ?>

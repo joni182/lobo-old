@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\components\Sortable;
 use app\models\Animales;
 use app\models\AnimalesSearch;
 use Yii;
@@ -39,11 +38,6 @@ class AnimalesController extends Controller
         $searchModel = new AnimalesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return Sortable::widget([
-            'sortable1' => 'sortable1',
-            'sortable2' => 'sortable2',
-            'view' => 'view',
-        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

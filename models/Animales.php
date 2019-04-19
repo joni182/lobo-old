@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "animales".
  *
@@ -43,7 +41,9 @@ class Animales extends \yii\db\ActiveRecord
     {
         return [
             [['nombre'], 'required'],
-            [['nacimiento', 'created_at', 'updated_at'], 'safe'],
+            [['nacimiento', 'chip'], 'default', 'value' => null],
+            [['nacimiento'], 'date'],
+            [['created_at', 'updated_at'], 'safe'],
             [['peso'], 'number'],
             [['ppp', 'esterilizado'], 'boolean'],
             [['observaciones'], 'string'],
@@ -119,5 +119,23 @@ class Animales extends \yii\db\ActiveRecord
     public function getRazas()
     {
         return $this->hasMany(Razas::className(), ['id' => 'raza_id'])->viaTable('animales_razas', ['animal_id' => 'id']);
+    }
+
+    public function getColoresQueNoTengo()
+    {
+        // if (!isset($this->sintomasQueNoTengo)) {
+        //     return $this->sintomasQueNoTengo;
+        // }
+        $sql = <<<'EOT'
+select *
+  from colores
+except
+select colores.*
+  from colores
+  join animales_colores
+    on colores.id = animales_colores.color_id
+ where animales_colores.animal_id = :animal_id
+EOT;
+        return Colores::findBySql($sql, [':animal_id' => $this->id])->all();
     }
 }

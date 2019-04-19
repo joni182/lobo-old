@@ -4,7 +4,6 @@ namespace app\components;
 
 use app\assets\SortableAsset;
 use yii\base\Widget;
-use yii\helpers\Url;
 
 /**
  * Implementa el plugin de jQuery Sortable.
@@ -12,13 +11,15 @@ use yii\helpers\Url;
 class Sortable extends Widget
 {
     public $view;
+    public $list_id;
     public $sortable1;
     public $sortable2;
+    public $item_view;
 
     public function init()
     {
         parent::init();
-        if (empty($this->view) || empty($this->sortable1) || empty($this->sortable2)) {
+        if (empty($this->view) || empty($this->item_view) || empty($this->sortable1) || empty($this->sortable2 || empty($this->item_view))) {
             throw new \Exception('Falta algún parametro de configuración', 1);
         }
         SortableAsset::register($this->view);
@@ -26,45 +27,33 @@ class Sortable extends Widget
 
     public function run()
     {
+        $list_id = $this->list_id;
         $sortable1 = $this->sortable1;
         $sortable2 = $this->sortable2;
         $sortable1_action = $sortable1['accion'];
         $sortable2_action = $sortable2['accion'];
-        $html = <<<EOF
-        <ul id="sortable1" data-accion=" $sortable1_action " class="connectedSortable">
-EOF;
+        $html = "<ul id='sortable1' data-accion=' $sortable1_action ' class='connectedSortable'>";
         foreach ($sortable1['items'] as $item) {
-            $list_id = $sortable1['list_id'];
-            $name = $sortable1['item']['name'];
-            $name = $item->$name;
             $id = $item->id;
-            $url_item = Url::to([$sortable1['item']['accion'], 'id' => $id]);
-            $html .= <<<EOF
-            <li data-list="$list_id" data-item="$id"  data-url_accion="$sortable1_action" class="ui-state-default">
-                    <a href="$url_item" class="btn btn-warning btn-xs" style='margin:3px' data-toggle="tooltip" data-placement="right" title=" $item->descripcion">
-                        $name
-                    </a>
-                </li>
-EOF;
-        }
-        $html .= <<<EOF
-        </ul>
 
-        <ul id="sortable2" data-accion="$sortable2_action" class="connectedSortable">
-EOF;
+            $html .= "<li data-list='$list_id' data-item='$id'  data-url_accion='$sortable1_action' class='ui-state-default'>";
+
+            $html .= $this->render($this->item_view, ['model' => $item]);
+
+            $html .= '</li>';
+        }
+        $html .= '</ul>'
+        .
+        "<ul id='sortable2' data-accion='$sortable2_action' class='connectedSortable'>";
+
         foreach ($sortable2['items'] as $item) {
-            $list_id = $sortable2['list_id'];
-            $name = $sortable2['item']['name'];
-            $name = $item->$name;
             $id = $item->id;
-            $url_item = Url::to([$sortable2['item']['accion'], 'id' => $id]);
-            $html .= <<<EOF
-                <li data-list="$list_id" data-item="$id" data-url_accion="$sortable2_action" class="ui-state-default">
-                    <a href="$url_item" class="btn btn-warning btn-xs" style='margin:3px' data-toggle="tooltip" data-placement="right" title="$item->descripcion">
-                        $name
-                    </a>
-                </li>
-EOF;
+
+            $html .= "<li data-list='$list_id' data-item='$id' data-url_accion='$sortable2_action' class='ui-state-default'>";
+
+            $html .= $this->render($this->item_view, ['model' => $item]);
+
+            $html .= '</li>';
         }
         $html .= '</ul>';
         return $html;
