@@ -81,6 +81,12 @@ class Animales extends \yii\db\ActiveRecord
             [['chip'], 'unique'],
             [['especie_id'], 'integer'],
             [['especie_id'], 'exist', 'skipOnError' => true, 'targetClass' => Especies::className(), 'targetAttribute' => ['especie_id' => 'id']],
+            ['especie_id', function ($attribute, $params, $validator) {
+                $razasDiscordantes = AnimalesRazas::find()->joinWith('raza')->where(['animal_id' => $this->id])->andWhere(['<>', 'especie_id', $this->especie_id])->all();
+                foreach ($razasDiscordantes as $animal_raza) {
+                    $animal_raza->delete();
+                }
+            }],
         ];
     }
 

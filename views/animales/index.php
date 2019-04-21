@@ -24,17 +24,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            'especie.especie:text:Grupo',
             'nombre',
             'nacimiento',
             'chip',
-            'peso',
-            //'ppp:boolean',
-            //'esterilizado:boolean',
-            //'sexo',
-            //'observaciones:ntext',
+            'peso:weight',
+            'ppp:boolean',
+            'esterilizado:boolean',
+            'sexo',
+            'observaciones:ntext',
             //'created_at',
             //'updated_at',
 

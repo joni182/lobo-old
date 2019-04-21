@@ -94,7 +94,6 @@ class AnimalesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $especies = empty($model->razas) ? Especies::todas() : null;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
@@ -103,7 +102,7 @@ class AnimalesController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            'especies' => $especies,
+            'especies' => Especies::todas(),
         ]);
     }
 

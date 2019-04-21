@@ -38,9 +38,7 @@ use kartik\number\NumberControl;
 
     <?= $form->field($model, 'chip')->textInput(['maxlength' => true]) ?>
 
-    <?php if (isset($especies)): ?>
-        <?= $form->field($model, 'especie_id')->dropDownList($especies) ?>
-    <?php endif; ?>
+    <?= $form->field($model, 'especie_id')->dropDownList($especies) ?>
 
 
     <?= $form->field($model, 'ppp')->checkbox() ?>
