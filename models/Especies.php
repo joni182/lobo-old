@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "especies".
  *
@@ -48,8 +46,20 @@ class Especies extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getAnimales()
+    {
+        return $this->hasMany(Animales::className(), ['especie_id' => 'id'])->inverseOf('especie');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getRazas()
     {
         return $this->hasMany(Razas::className(), ['especie_id' => 'id'])->inverseOf('especie');
+    }
+    public static function todas()
+    {
+        return static::find()->select('especie')->indexBy('id')->column();
     }
 }

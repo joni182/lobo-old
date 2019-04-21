@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "razas".
  *
@@ -36,7 +34,6 @@ class Razas extends \yii\db\ActiveRecord
             [['especie_id'], 'integer'],
             [['raza'], 'string', 'max' => 255],
             [['raza', 'especie_id'], 'unique', 'targetAttribute' => ['raza', 'especie_id']],
-            [['raza'], 'unique'],
             [['especie_id'], 'exist', 'skipOnError' => true, 'targetClass' => Especies::className(), 'targetAttribute' => ['especie_id' => 'id']],
         ];
     }

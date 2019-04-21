@@ -2,18 +2,18 @@
 
 namespace app\controllers;
 
-use app\models\Enfermedades;
-use app\models\EnfermedadesSintomas;
-use app\models\EnfermedadesSintomasSearch;
+use app\models\Animales;
+use app\models\AnimalesColores;
+use app\models\AnimalesColoresSearch;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
- * EnfermedadesSintomasController implements the CRUD actions for EnfermedadesSintomas model.
+ * AnimalesColoresController implements the CRUD actions for AnimalesColores model.
  */
-class EnfermedadesSintomasController extends Controller
+class AnimalesColoresController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,12 +31,12 @@ class EnfermedadesSintomasController extends Controller
     }
 
     /**
-     * Lists all EnfermedadesSintomas models.
+     * Lists all AnimalesColores models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EnfermedadesSintomasSearch();
+        $searchModel = new AnimalesColoresSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,60 +45,66 @@ class EnfermedadesSintomasController extends Controller
         ]);
     }
 
-    public function actionAgregarSintomas($enfermedad_id)
+    /**
+     * Displays a single AnimalesColores model.
+     * @param int $animal_id
+     * @param int $color_id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($animal_id, $color_id)
     {
-        $model = Enfermedades::findOne($enfermedad_id);
+        return $this->render('view', [
+            'model' => $this->findModel($animal_id, $color_id),
+        ]);
+    }
+
+
+    public function actionAgregarColores($animal_id)
+    {
+        $model = Animales::findOne($animal_id);
+
+        if ($model === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
 
         return $this->render('update', [
             'model' => $model,
         ]);
     }
 
-    /**
-     * Displays a single EnfermedadesSintomas model.
-     * @param int $enfermedad_id
-     * @param int $sintoma_id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($enfermedad_id, $sintoma_id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($enfermedad_id, $sintoma_id),
-        ]);
-    }
 
     /**
-     * Creates a new EnfermedadesSintomas model.
+     * Creates a new AnimalesColores model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new EnfermedadesSintomas([
-            'enfermedad_id' => Yii::$app->request->post('list'),
-            'sintoma_id' => Yii::$app->request->post('item'),
+        $model = new AnimalesColores([
+            'animal_id' => Yii::$app->request->post('list'),
+            'color_id' => Yii::$app->request->post('item'),
         ]);
-        //dd($model->validate());
+
         if (!$model->save()) {
-            throw new \Exception('No se ha ppodido agregar el sintoma a la enfermedad', 1);
+            throw new \Exception('No se ha ppodido agregar el color al animal', 1);
         }
     }
 
     /**
-     * Updates an existing EnfermedadesSintomas model.
+     * Updates an existing AnimalesColores model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $enfermedad_id
-     * @param int $sintoma_id
+     * @param int $animal_id
+     * @param int $color_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($enfermedad_id, $sintoma_id)
+    public function actionUpdate($animal_id, $color_id)
     {
-        $model = $this->findModel($enfermedad_id, $sintoma_id);
+        $model = $this->findModel($animal_id, $color_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'enfermedad_id' => $model->enfermedad_id, 'sintoma_id' => $model->sintoma_id]);
+            return $this->redirect(['view', 'animal_id' => $model->animal_id, 'color_id' => $model->color_id]);
         }
 
         return $this->render('update', [
@@ -107,7 +113,7 @@ class EnfermedadesSintomasController extends Controller
     }
 
     /**
-     * Deletes an existing EnfermedadesSintomas model.
+     * Deletes an existing AnimalesColores model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -119,16 +125,16 @@ class EnfermedadesSintomasController extends Controller
     }
 
     /**
-     * Finds the EnfermedadesSintomas model based on its primary key value.
+     * Finds the AnimalesColores model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $enfermedad_id
-     * @param int $sintoma_id
-     * @return EnfermedadesSintomas the loaded model
+     * @param int $animal_id
+     * @param int $color_id
+     * @return AnimalesColores the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($enfermedad_id, $sintoma_id)
+    protected function findModel($animal_id, $color_id)
     {
-        if (($model = EnfermedadesSintomas::findOne(['enfermedad_id' => $enfermedad_id, 'sintoma_id' => $sintoma_id])) !== null) {
+        if (($model = AnimalesColores::findOne(['animal_id' => $animal_id, 'color_id' => $color_id])) !== null) {
             return $model;
         }
 
