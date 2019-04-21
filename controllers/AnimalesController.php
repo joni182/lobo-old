@@ -2,10 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\Acogidas;
 use app\models\Animales;
+use app\models\AnimalesColores;
+use app\models\AnimalesEnfermedades;
+use app\models\AnimalesRazas;
 use app\models\AnimalesSearch;
+use app\models\Especies;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -67,12 +73,14 @@ class AnimalesController extends Controller
     {
         $model = new Animales();
 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
         }
 
         return $this->render('create', [
             'model' => $model,
+            'especies' => Especies::todas(),
         ]);
     }
 
@@ -86,13 +94,16 @@ class AnimalesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $especies = empty($model->razas) ? Especies::todas() : null;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'especies' => $especies,
         ]);
     }
 
@@ -105,7 +116,12 @@ class AnimalesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $animal = $this->findModel($id);
+        Acogidas::deleteAll(['animal_id' => $animal->id]);
+        AnimalesColores::deleteAll(['animal_id' => $animal->id]);
+        AnimalesRazas::deleteAll(['animal_id' => $animal->id]);
+        AnimalesEnfermedades::deleteAll(['animal_id' => $animal->id]);
+        $animal->delete();
 
         return $this->redirect(['index']);
     }

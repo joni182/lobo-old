@@ -3,19 +3,18 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Animales */
+/* @var $model app\models\AnimalesRazas */
 
-$this->title = 'Create Animales';
-$this->params['breadcrumbs'][] = ['label' => 'Animales', 'url' => ['index']];
+$this->title = 'Create Animales Razas';
+$this->params['breadcrumbs'][] = ['label' => 'Animales Razas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="animales-create">
+<div class="animales-razas-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
-        'especies' => $especies,
     ]) ?>
 
 </div>

@@ -3,17 +3,17 @@
 namespace app\controllers;
 
 use app\models\Animales;
-use app\models\AnimalesColores;
-use app\models\AnimalesColoresSearch;
+use app\models\AnimalesRazas;
+use app\models\AnimalesRazasSearch;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
- * AnimalesColoresController implements the CRUD actions for AnimalesColores model.
+ * AnimalesRazasController implements the CRUD actions for AnimalesRazas model.
  */
-class AnimalesColoresController extends Controller
+class AnimalesRazasController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,12 +31,12 @@ class AnimalesColoresController extends Controller
     }
 
     /**
-     * Lists all AnimalesColores models.
+     * Lists all AnimalesRazas models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AnimalesColoresSearch();
+        $searchModel = new AnimalesRazasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,44 +46,29 @@ class AnimalesColoresController extends Controller
     }
 
     /**
-     * Displays a single AnimalesColores model.
+     * Displays a single AnimalesRazas model.
      * @param int $animal_id
-     * @param int $color_id
+     * @param int $raza_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($animal_id, $color_id)
+    public function actionView($animal_id, $raza_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($animal_id, $color_id),
+            'model' => $this->findModel($animal_id, $raza_id),
         ]);
     }
-
-
-    public function actionAgregarColores($animal_id)
-    {
-        $model = Animales::findOne($animal_id);
-
-        if ($model === null) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
-
 
     /**
-     * Creates a new AnimalesColores model.
+     * Creates a new AnimalesRazas model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new AnimalesColores([
+        $model = new AnimalesRazas([
             'animal_id' => Yii::$app->request->post('list'),
-            'color_id' => Yii::$app->request->post('item'),
+            'raza_id' => Yii::$app->request->post('item'),
         ]);
 
         if (!$model->save()) {
@@ -92,19 +77,19 @@ class AnimalesColoresController extends Controller
     }
 
     /**
-     * Updates an existing AnimalesColores model.
+     * Updates an existing AnimalesRazas model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $animal_id
-     * @param int $color_id
+     * @param int $raza_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($animal_id, $color_id)
+    public function actionUpdate($animal_id, $raza_id)
     {
-        $model = $this->findModel($animal_id, $color_id);
+        $model = $this->findModel($animal_id, $raza_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'animal_id' => $model->animal_id, 'color_id' => $model->color_id]);
+            return $this->redirect(['view', 'animal_id' => $model->animal_id, 'raza_id' => $model->raza_id]);
         }
 
         return $this->render('update', [
@@ -113,7 +98,7 @@ class AnimalesColoresController extends Controller
     }
 
     /**
-     * Deletes an existing AnimalesColores model.
+     * Deletes an existing AnimalesRazas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -124,17 +109,31 @@ class AnimalesColoresController extends Controller
         $this->findModel($list, $item)->delete();
     }
 
+    public function actionAgregarRazas($animal_id, $especie_id)
+    {
+        $model = Animales::findOne($animal_id);
+        if ($model === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $model->especie_id = $especie_id;
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
     /**
-     * Finds the AnimalesColores model based on its primary key value.
+     * Finds the AnimalesRazas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $animal_id
-     * @param int $color_id
-     * @return AnimalesColores the loaded model
+     * @param int $raza_id
+     * @return AnimalesRazas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($animal_id, $color_id)
+    protected function findModel($animal_id, $raza_id)
     {
-        if (($model = AnimalesColores::findOne(['animal_id' => $animal_id, 'color_id' => $color_id])) !== null) {
+        if (($model = AnimalesRazas::findOne(['animal_id' => $animal_id, 'raza_id' => $raza_id])) !== null) {
             return $model;
         }
 

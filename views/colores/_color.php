@@ -3,6 +3,12 @@
 use yii\helpers\Url;
 
 ?>
-<a href="<?= Url::to(['colores/update', 'id' => $model->id]) ?>" class="btn btn-xs" style='margin:3px;background-color:<?= $model->color ?>' data-toggle="tooltip" data-placement="right" title=" ">
+<div class="color-panel">
+
+<a href="<?= Url::to(['colores/update', 'id' => $model->id]) ?>">
+    <div class="color" style='background-color:<?= $model->color ?>'>
+
+    </div>
     <?= $model->nombre ?>
 </a>
+</div>

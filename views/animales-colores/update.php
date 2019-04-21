@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = 'Update';
     ?>
 
     <div class="">
-        <?= Html::a('He terminado', ['enfermedades/index'], ['class' => 'btn btn-info']) ?>
+        <?= Html::a('He terminado', ['animales/index'], ['class' => 'btn btn-info']) ?>
     </div>
 
 </div>

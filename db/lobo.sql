@@ -26,6 +26,17 @@ CREATE TABLE colores
                           CHECK (color ~* '^#[a-fA-F0-9]{6}')
 );
 
+INSERT INTO colores (nombre, color)
+     VALUES ('blanco', '#ffffff')
+          , ('negro', '#121117')
+          , ('canela', '#d1a582')
+          , ('marrón claro', '#ca9d74')
+          , ('marrón oscuro', '#4a3731')
+          , ('chocolate', '#190502')
+          , ('gris', '#696565')
+          , ('naranja', '#e9711e')
+          , ('beige', '#e3dec1');
+
 DROP TABLE IF EXISTS especies CASCADE;
 
 CREATE TABLE especies
@@ -54,16 +65,20 @@ CREATE TABLE animales
 (
       id            BIGSERIAL    PRIMARY KEY
     , nombre        VARCHAR(255) NOT NULL
-    , nacimiento                 TIMESTAMP
+    , nacimiento    DATE
+    , defuncion     DATE
     , chip          VARCHAR(255) UNIQUE
-    , peso          NUMERIC(5,2)
+    , peso          NUMERIC(6,2)
     , ppp           BOOL
     , esterilizado  BOOL
     , sexo          VARCHAR(6)   CONSTRAINT ck_sexo_valido
                                  CHECK (sexo = 'h' OR sexo = 'm') --HEMBRA/MACHO--
     , observaciones TEXT
-    , created_at    TIMESTAMP    DEFAULT LOCALTIMESTAMP
-    , updated_at    TIMESTAMP    DEFAULT LOCALTIMESTAMP
+    , especie_id    BIGINT NOT NULL
+                    REFERENCES especies(id)
+                    ON UPDATE CASCADE
+    , created_at    timestamp default current_timestamp
+    , updated_at    timestamp default current_timestamp
 );
 
 DROP TABLE IF EXISTS animales_razas CASCADE;
@@ -187,8 +202,9 @@ CREATE TABLE animales_enfermedades
                               REFERENCES animales(id)
                               ON UPDATE CASCADE
                               ON DELETE NO ACTION
-    , fecha         TIMESTAMP DEFAULT LOCALTIMESTAMP
-    , PRIMARY KEY(enfermedad_id, animal_id, fecha)
+    , desde         TIMESTAMP
+    , hasta         TIMESTAMP
+    , PRIMARY KEY(enfermedad_id, animal_id, desde)
 );
 
 DROP TABLE IF EXISTS vacunas CASCADE;
