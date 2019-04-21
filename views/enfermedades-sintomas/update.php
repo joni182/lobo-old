@@ -1,12 +1,39 @@
 <?php
 
-use app\components\Sortable;
-
 use yii\helpers\Url;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\EnfermedadesSintomas */
+
+$urlCreate = Url::to(['enfermedades-sintomas/create']);
+$urlDelete = Url::to(['enfermedades-sintomas/delete']);
+$js = <<<EOT
+$( function() {
+    var urlCreate = '$urlCreate';
+    var urlDelete = '$urlDelete';
+    $( "#sortable1, #sortable2" ).sortable({
+        connectWith: ".connectedSortable",
+        receive: function( event, ui ) {
+            var accion = $(event.target).data('accion');
+            var enfermedad = $(ui.item).data('enfermedad');
+            var sintoma = $(ui.item).data('sintoma');
+            var url = (accion == 'agregar' ? urlCreate : urlDelete);
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {
+                    enfermedad_id: enfermedad,
+                    sintoma_id: sintoma
+                }
+            });
+        }
+    }).disableSelection();
+} );
+EOT;
+
+$this->registerJs($js);
 
 $this->title = $model->enfermedad;
 // $this->params['breadcrumbs'][] = ['label' => 'Enfermedades Sintomas', 'url' => ['index']];
@@ -19,21 +46,27 @@ $this->title = $model->enfermedad;
 
 
 </div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-<?= Sortable::widget([
-        'view' => $this,
-        'item_view' => '/sintomas/_sintoma',
-        'list_id' => $model->id,
-        'sortable1' => [
-            'accion' => Url::to(['enfermedades-sintomas/create']) ,
-            'items' => $model->sintomas,
-        ],
-        'sortable2' => [
-            'accion' => Url::to(['enfermedades-sintomas/delete']) ,
-            'items' => $model->getSintomasQueNoTengo(),
-        ],
-    ])
-?>
+<ul id="sortable1" data-accion="agregar" class="connectedSortable">
+    <?php foreach ($model->sintomas as $sintoma): ?>
+        <li data-enfermedad="<?= $model->id ?>" data-sintoma="<?= $sintoma->id ?>"  class="ui-state-default">
+            <a href="<?= Url::to(['sintomas/update', 'id' => $sintoma->id]) ?>" class="btn btn-warning btn-xs" style='margin:3px' data-toggle="tooltip" data-placement="right" title="<?= $sintoma->descripcion ?>">
+                <?= $sintoma->sintoma ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<ul id="sortable2" data-accion="quitar" class="connectedSortable">
+    <?php foreach ($model->getSintomasQueNoTengo() as $sintoma): ?>
+        <li data-enfermedad="<?= $model->id ?>" data-sintoma="<?= $sintoma->id ?>" class="ui-state-default">
+            <a href="<?= Url::to(['sintomas/update', 'id' => $sintoma->id]) ?>" class="btn btn-warning btn-xs" style='margin:3px' data-toggle="tooltip" data-placement="right" title="<?= $sintoma->descripcion ?>">
+                <?= $sintoma->sintoma ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>
 
 <div class="">
     <?= Html::a('He terminado', ['enfermedades/index'], ['class' => 'btn btn-info']) ?>
