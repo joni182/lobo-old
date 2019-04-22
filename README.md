@@ -16,27 +16,27 @@ animales sin aplicaciones especialmente diseñadas para esa tarea.
  Una de las dos grandes funcionalidades de la aplicacion seran la de crear perfiles de los animales y recoger en ellos datos de interes como pueden ser enfermedades, tratamientos, la localizacion actual del animal (ya que el animal puede estar tanto en la protectora como acogido por algun particular) asociadas a esos animales, y la segunda es un sistema de notificaciones que de forma autamatica avisara a los responsables cuando les toca por ejemplo una vacuna a un animal. Además ayudará a los encargados de los seguimientos a llevar el control de los animales adoptados.
 
  ## Objetivos generales
- 
-• La aplicación debe de poder gestionar usuarios.
-• Se podrán gestionar personas, estas toman el rol de casa de acogida o adoptante. No confundir
+
+- La aplicación debe de poder gestionar usuarios.
+- Se podrán gestionar personas, estas toman el rol de casa de acogida o adoptante. No confundir
 con usuarios de la aplicación.
-• Se podrán gestionar animales, los cuales representará a un animal rescatado de la calle y
+- Se podrán gestionar animales, los cuales representará a un animal rescatado de la calle y
 contendrá toda la información relevante para su identificación
-• Se podrán gestionar adopciones, estas son una relación entre personas y animales y simboliza
+- Se podrán gestionar adopciones, estas son una relación entre personas y animales y simboliza
 una tramite de adopción entre un humano y un animal de la protectora
-• Se podrán gestionar medicamentos, estos representa a un medicamento que pudiera usarse en
+- Se podrán gestionar medicamentos, estos representa a un medicamento que pudiera usarse en
 un posible tratamiento para un animal, este contendrán información relevante sobre su función
 y uso, así como comentarios útiles de experiencias con tal medicamento
-• Se podrán gestionar tratamientos, estos son una relación entre medicamento, centro veterinario
+- Se podrán gestionar tratamientos, estos son una relación entre medicamento, centro veterinario
 que lo ha recetado y animal. Contendrá ademas fecha de inicio y fin del tratamiento, y dosis
 diarias del medicamento.
-• Se podrán gestionar vacunas, estos representa a una vacuna como podría ser la de la rabia o la
+- Se podrán gestionar vacunas, estos representa a una vacuna como podría ser la de la rabia o la
 de parvovirosis, esta contendrá información relevante sobre la vacuna: precio, periodicidad,
 edad ...etc.
-• Se generarán alertas automáticas para avisar de vacunaciones, castraciones, seguimientos de
+- Se generarán alertas automáticas para avisar de vacunaciones, castraciones, seguimientos de
 adopciones etc.
-• Se podrá consultar la medicación para un día especifico, ya sea para el total de animales como
+- Se podrá consultar la medicación para un día especifico, ya sea para el total de animales como
 para uno en concreto
-• Formará un catálogo de enfermedades con sus síntomas y posibles tratamientos para una
+- Formará un catálogo de enfermedades con sus síntomas y posibles tratamientos para una
 1detección temprana.
-• Cada animal podrá tener un catálogo de fotos
+- Cada animal podrá tener un catálogo de fotos
