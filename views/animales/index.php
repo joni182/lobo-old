@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'especie.especie:text:Grupo',
             'nombre',
-            'nacimiento',
+            'nacimiento:date',
             'chip',
             'peso:weight',
             'ppp:boolean',
