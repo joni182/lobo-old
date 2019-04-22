@@ -7,13 +7,13 @@
 ## Descripción
 
 Lobo es una herramienta de gestión orientada protectoras de animales las cuales se enfrentan con
-la dificil tarea de tener que manejar los datos de cientos de animales y personas asociadas a esos
+la difícil tarea de tener que manejar los datos de cientos de animales y personas asociadas a esos
 animales sin aplicaciones especialmente diseñadas para esa tarea.
 
 ## Funcionalidad principal de la aplicación
 
-*ACLARACIÓN: Cuando un animal es adoptado empieza un periodo de un año en el se controla que todo está yendo bien, se le recuerda al adoptante las vacunas y si el adoptado es cachorro el doptante tiene que acreditar que ha esterilizado al animal cuando el veterinario de el visto bueno. A esto lo llamamos seguimiento.*
- Una de las dos grandes funcionalidades de la aplicacion seran la de crear perfiles de los animales y recoger en ellos datos de interes como pueden ser enfermedades, tratamientos, la localizacion actual del animal (ya que el animal puede estar tanto en la protectora como acogido por algun particular) asociadas a esos animales, y la segunda es un sistema de notificaciones que de forma autamatica avisara a los responsables cuando les toca por ejemplo una vacuna a un animal. Además ayudará a los encargados de los seguimientos a llevar el control de los animales adoptados.
+*ACLARACIÓN: Cuando un animal es adoptado empieza un periodo de un año en el se controla que todo está yendo bien, se le recuerda al adoptante las vacunas y si el adoptado es cachorro el adoptante tiene que acreditar que ha esterilizado al animal cuando el veterinario de el visto bueno. A esto lo llamamos seguimiento.*
+ Una de las dos grandes funcionalidades de la aplicación serán la de crear perfiles de los animales y recoger en ellos datos de interés como pueden ser enfermedades, tratamientos, la localización actual del animal (ya que el animal puede estar tanto en la protectora como acogido por algún particular) asociadas a esos animales, y la segunda es un sistema de notificaciones que de forma automática avisara a los responsables cuando les toca por ejemplo una vacuna a un animal. Además ayudará a los encargados de los seguimientos a llevar el control de los animales adoptados.
 
  ## Objetivos generales
 
