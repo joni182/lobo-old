@@ -52,10 +52,6 @@ use kartik\number\NumberControl;
 
     <?= $form->field($model, 'observaciones')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
     <div class="form-group">
         <?= Html::submitButton('Siguiente >', ['class' => 'btn btn-success']) ?>
     </div>

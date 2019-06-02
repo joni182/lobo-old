@@ -12,6 +12,7 @@ use app\models\Especies;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
+use yii\httpclient\Client;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -84,6 +85,7 @@ class AnimalesController extends Controller
         ]);
     }
 
+
     /**
      * Updates an existing Animales model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -123,6 +125,23 @@ class AnimalesController extends Controller
         $animal->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionUpload($id)
+    {
+        $client = new Client();
+        $response = $client->createRequest();
+        $model = Animales::findOne(['id' => $id]);
+
+        if (!empty($_POST)) {
+            dd($_FILES);
+            return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
+        }
+
+        return $this->render('upload-imagenes', [
+            'model' => $model,
+            'especies' => Especies::todas(),
+        ]);
     }
 
     /**

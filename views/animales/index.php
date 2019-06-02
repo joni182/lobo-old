@@ -33,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'esterilizado:boolean',
             'sexo',
             'observaciones:ntext',
-            //'created_at',
-            //'updated_at',
+            'created_at:datetime:Creado el',
+            'updated_at:datetime:ültima actualización',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -72,7 +72,7 @@ class Animales extends \yii\db\ActiveRecord
                 return str_replace('.', '', $value);
             }],
             [['sexo'], 'match', 'pattern' => '/^[h|m]{1}$/'],
-            [['nacimiento', 'chip', 'peso', 'sexo', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['nacimiento', 'chip', 'peso', 'sexo'], 'default', 'value' => null],
             [['peso'], 'number', 'min' => 0, 'max' => 9999],
             [['ppp', 'esterilizado'], 'boolean'],
             [['observaciones'], 'string'],
