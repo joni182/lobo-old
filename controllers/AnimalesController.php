@@ -76,6 +76,12 @@ class AnimalesController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+            $response = $client->get("grupos/{$model->id}")->send();
+            if ($response->getData() == null) {
+                $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+                $response = $client->post('grupos', ['nombre' => $model->id])->send();
+            }
             return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
         }
 
@@ -122,25 +128,41 @@ class AnimalesController extends Controller
         AnimalesColores::deleteAll(['animal_id' => $animal->id]);
         AnimalesRazas::deleteAll(['animal_id' => $animal->id]);
         AnimalesEnfermedades::deleteAll(['animal_id' => $animal->id]);
+
+        $client = new Client();
+        $response = $client->createRequest()
+        ->setMethod('DELETE')
+        ->setUrl("http://localhost/rest/web/grupos/{$model->id}")
+        ->send();
+
         $animal->delete();
 
-        return $this->redirect(['index']);
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
     }
 
     public function actionUpload($id)
     {
-        $client = new Client();
-        $response = $client->createRequest();
         $model = Animales::findOne(['id' => $id]);
 
         if (!empty($_POST)) {
-            dd($_FILES);
+            $client = new Client();
+            $request = $client->createRequest()
+                ->setMethod('PUT')
+                ->setUrl("http://localhost/rest/web/grupos/{$id}");
+
+            foreach ($_FILES['imagenes']['tmp_name'] as $key => $file) {
+                $request = $request->addFile("upfile[{$key}]", $file);
+            }
+
+            $response = $request->send();
+
             return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
         }
 
         return $this->render('upload-imagenes', [
             'model' => $model,
-            'especies' => Especies::todas(),
         ]);
     }
 
