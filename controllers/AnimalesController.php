@@ -60,8 +60,12 @@ class AnimalesController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $imagenes = $this->getImagenes($model->id);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'imagenes' => $imagenes,
         ]);
     }
 
@@ -158,11 +162,54 @@ class AnimalesController extends Controller
 
             $response = $request->send();
 
-            return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
+            return $this->redirect(Url::to(['/animales/view', 'id' => $id]));
         }
 
         return $this->render('upload-imagenes', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionGestionarImagenes($id)
+    {
+        $model = $this->findModel($id);
+        $imagenes = $this->getImagenes($model->id);
+
+        return $this->render('imagenes', [
+            'model' => $model,
+            'imagenes' => $imagenes,
+        ]);
+    }
+
+    public function actionAvatar($id, $url)
+    {
+        $model = $this->findModel($id);
+        $model->avatar = $url;
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'Se ha cambiado el avatar correctamente');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha podido llevar a cabo la acción');
+        }
+        return $this->redirect(['animales/view', 'id' => $id]);
+    }
+
+    public function actionBorrarImagen($id, $imagen_id)
+    {
+        $model = $this->findModel($id);
+
+        $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+        $response = $client->delete("images/{$imagen_id}")->send();
+        if ($response->getData() === 1) {
+            Yii::$app->session->setFlash('success', 'Se ha borrado correctamente');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha borrado la imagen');
+        }
+
+        $imagenes = $this->getImagenes($model->id);
+
+        return $this->render('imagenes', [
+            'model' => $model,
+            'imagenes' => $imagenes,
         ]);
     }
 
@@ -180,5 +227,11 @@ class AnimalesController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function getImagenes($id)
+    {
+        $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+        $response = $client->get("grupos/{$id}")->send();
+        return $response->getData();
     }
 }

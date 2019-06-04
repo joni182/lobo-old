@@ -32,7 +32,8 @@ $this->params['breadcrumbs'][] = 'Update';
     ?>
 
     <div class="">
-        <?= Html::a('He terminado', ['animales/index'], ['class' => 'btn btn-info']) ?>
+        <?= Html::a('He terminado', ['animales/view', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+        <?= Html::a('Añadir imágenes', ['animales/upload', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
     </div>
 
 </div>
