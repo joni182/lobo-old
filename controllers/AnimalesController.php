@@ -47,6 +47,7 @@ class AnimalesController extends Controller
 
 
         return $this->render('index', [
+            'especies' => Especies::todas(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

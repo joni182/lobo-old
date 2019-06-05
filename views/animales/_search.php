@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 
 $js = <<<JS
-    $('a.avanzado').click((e)=>{
+    $('button.avanzado').click((e)=>{
         e.preventDefault();
         $('div.avanzado').toggle(500);
     });
@@ -88,7 +88,7 @@ $this->registerJs($js)
                         </fieldset>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <?= $form->field($model, 'ppp')->dropDownList([
                                 '' => '',
                                 '1' => 'PPP',
@@ -96,7 +96,7 @@ $this->registerJs($js)
                             ])
                             ?>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <?= $form->field($model, 'esterilizado')->dropDownList([
                                 '' => '',
                                 '1' => 'Esterilizado',
@@ -104,12 +104,13 @@ $this->registerJs($js)
                             ])
                             ?>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <?php echo $form->field($model, 'sexo')->dropDownList($model->sexosDisponibles()) ?>
                         </div>
+                        <div class="col-sm-3">
+                            <?= $form->field($model, 'especie')->dropDownList(array_merge(['' => ''], $especies))->label('Grupo')?>
+                        </div>
                     </div>
-
-
 
                     <?php echo $form->field($model, 'observaciones') ?>
 
@@ -120,7 +121,7 @@ $this->registerJs($js)
                 </div>
                     <div class="form-group">
                         <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
-                        <?= Html::a('Avanzado +', '',['class' => 'btn avanzado btn-default']) ?>
+                        <?= Html::button('Avanzado +',['class' => 'btn avanzado btn-default']) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>

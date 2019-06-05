@@ -15,6 +15,7 @@ class AnimalesSearch extends Animales
     public $nacimiento_hasta;
     public $peso_desde;
     public $peso_hasta;
+    public $especie;
     /**
      * {@inheritdoc}
      */
@@ -23,7 +24,7 @@ class AnimalesSearch extends Animales
         return [
             [['id'], 'integer'],
             [['nombre', 'nacimiento', 'nacimiento_desde', 'nacimiento_hasta', 'chip', 'sexo', 'observaciones', 'created_at', 'updated_at'], 'safe'],
-            [['peso', 'peso_desde', 'peso_hasta'], 'number'],
+            [['peso', 'peso_desde', 'peso_hasta', 'especie'], 'number'],
             //[['ppp', 'esterilizado'], 'boolean'],
             [['ppp', 'esterilizado'], 'default', 'value' => null],
         ];
@@ -40,7 +41,7 @@ class AnimalesSearch extends Animales
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['peso_desde', 'peso_hasta', 'nacimiento_desde', 'nacimiento_hasta']);
+        return array_merge(parent::attributes(), ['peso_desde', 'peso_hasta', 'nacimiento_desde', 'nacimiento_hasta', 'especie']);
     }
 
     /**
@@ -52,7 +53,7 @@ class AnimalesSearch extends Animales
      */
     public function search($params)
     {
-        $query = Animales::find();
+        $query = Animales::find()->joinWith('razas')->joinWith('especie');
 
         // add conditions that should always apply here
 
@@ -89,6 +90,7 @@ class AnimalesSearch extends Animales
 
         $query->andFilterWhere(['ilike', 'nombre', $this->nombre])
             ->andFilterWhere(['ilike', 'chip', $this->chip])
+            ->andFilterWhere(['=', 'especies.id', $this->especie])
             ->andFilterWhere(['ilike', 'sexo', $this->sexo])
             ->andFilterWhere(['ilike', 'observaciones', $this->observaciones])
             ->andFilterWhere([
