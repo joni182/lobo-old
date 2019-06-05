@@ -56,7 +56,6 @@ class Animales extends \yii\db\ActiveRecord
             ], 'trim'],
 
             [[
-                'nombre',
                 'chip',
                 'sexo',
                 'chip',
@@ -165,7 +164,7 @@ class Animales extends \yii\db\ActiveRecord
      */
     public function getAnimalesEnfermedades()
     {
-        return $this->hasMany(AnimalesEnfermedades::className(), ['animal_id' => 'id'])->inverseOf('animal');
+        return $this->hasMany(AnimalesEnfermedades::className(), ['animal_id' => 'id'])->inverseOf('animal')->orderBy('desde', 'ASC');
     }
 
     /**

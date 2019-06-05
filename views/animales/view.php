@@ -119,6 +119,31 @@ $this->registerJs($js);
                 'model' => $model,
                 'attributes' => [
                     'nombre',
+                    'especie.especie:text:Grupo',
+                    [
+                        'attribute' => 'razas',
+                        'label' => 'Razas',
+                        'value' => function ($model,$widget){
+                            $razas = '';
+                            foreach ($model->razas as $raza) {
+                                $razas .= $raza->raza . ' ';
+                            }
+                            return $razas;
+                        },
+
+                    ],
+                    [
+                        'attribute' => 'colores',
+                        'label' => 'Colores',
+                        'value' => function ($model,$widget){
+                            $colores = '';
+                            foreach ($model->colors as $color) {
+                                $colores .= $color->nombre . ' ';
+                            }
+                            return $colores;
+                        },
+
+                    ],
                     'nacimiento:datetime',
                     'chip',
                     'peso:weight',
@@ -134,4 +159,43 @@ $this->registerJs($js);
         </div>
     </div>
 
+
+    <br>
+    <h3>Información Veterinária</h3>
+    <hr>
+    <?= Html::a('Asignar enfermedad', ['animales-enfermedades/create', 'animal_id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
+    <h4>Historial</h4>
+
+    <table class="table table-hover">
+        <tr>
+            <th>Enfermedad</th>
+            <th>Desde</th>
+            <th>Hasta</th>
+            <th>Acciones</th>
+        </tr>
+        <?php foreach ($model->animalesEnfermedades as $key => $registro): ?>
+            <tr class="<?= $registro->hasta == null ? 'warning' : 'info'?>">
+                <td><?= $registro->enfermedad->enfermedad ?></td>
+                <td><?= Yii::$app->formatter->asDate($registro->desde) ?></td>
+                <td><?= $registro->hasta == null ? 'actualidad' : Yii::$app->formatter->asDate($registro->hasta) ?></td>
+                <td><?php if ($registro->hasta == null): ?>
+                    <?= Html::a('Terminar enfermedad', ['animales-enfermedades/terminar', 'enfermedad_id'=> $registro->enfermedad_id, 'animal_id'=> $registro->animal_id, 'desde'=> $registro->desde], [
+                        'class' => 'btn btn-info btn-xs',
+                        'data' => [
+                            'confirm' => '¿Sequro que quieres terminar la enfermedad?',
+                            'method' => 'post',
+                        ],
+                        ]) ?>
+                <?php endif; ?>
+                    <?= Html::a('Borrar registro', ['animales-enfermedades/delete', 'enfermedad_id'=> $registro->enfermedad_id, 'animal_id'=> $registro->animal_id, 'desde'=> $registro->desde], [
+                        'class' => 'btn btn-danger btn-xs',
+                        'data' => [
+                            'confirm' => '¿Sequro que quieres borrar?',
+                            'method' => 'post',
+                        ],
+                        ]) ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 </div>

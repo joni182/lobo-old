@@ -79,12 +79,17 @@ class Enfermedades extends \yii\db\ActiveRecord
         return $this->hasMany(Sintomas::className(), ['id' => 'sintoma_id'])->viaTable('enfermedades_sintomas', ['enfermedad_id' => 'id']);
     }
 
+    public static function todas()
+    {
+        return static::find()->select('enfermedad')->indexBy('id')->column();
+    }
+
     public function getSintomasQueNoTengo()
     {
         // if (!isset($this->sintomasQueNoTengo)) {
         //     return $this->sintomasQueNoTengo;
         // }
-        $sql = <<<EOT
+        $sql = <<<'EOT'
 select *
   from sintomas
 except
