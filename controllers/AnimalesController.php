@@ -214,6 +214,20 @@ class AnimalesController extends Controller
         ]);
     }
 
+    public function actionDefuncion()
+    {
+        $model = $this->findModel(Yii::$app->request->post('id'));
+        if ($model->defuncion === null) {
+            $model->defuncion = date('Y-m-d');
+        } else {
+            $model->defuncion = null;
+        }
+        if ($model->save()) {
+            return 0;
+        }
+        throw new \Exception('Error Processing Request', 1);
+    }
+
     /**
      * Finds the Animales model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

@@ -12,7 +12,49 @@ $this->params['breadcrumbs'][] = ['label' => 'Animales', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
+$js = <<<JS
+$('button#difunto').click((e)=>{
+    boton = $(e.target);
+    var url = boton.data('url');
+    var id = boton.data('id');
 
+    if (boton.hasClass('btn-warning')) {
+        boton.removeClass('btn-warning');
+        boton.addClass('btn-default');
+    } else {
+        boton.removeClass('btn-default');
+        boton.addClass('btn-warning');
+    }
+
+    $.ajax({
+        url:url,
+        type:'POST',
+        data:{
+            id:id
+        },
+        success:(data)=>{
+            if (data == 0) {
+                if (boton.hasClass('btn-warning')) {
+                    boton.text('Marcar como difunto');
+                } else {
+                    boton.text('Marcar como no difunto');
+                }
+            }
+        },
+        error:(data)=>{
+            if (boton.hasClass('btn-warning')) {
+                boton.removeClass('btn-warning');
+                boton.addClass('btn-default');
+            } else {
+                boton.removeClass('btn-default');
+                boton.addClass('btn-warning');
+            }
+        }
+    })
+});
+JS;
+
+$this->registerJs($js);
 ?>
 <div class="animales-view">
 
@@ -24,7 +66,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <a class="btn btn-info" href="<?= Url::to(['animales/upload', 'id' => $model->id]) ?>">Agregar imágenes</a>
         <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Borrar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -33,7 +74,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
             ]) ?>
+        <button type="button" data-id="<?= $model->id ?>" data-url="<?= Url::to(['animales/defuncion']) ?>" class="btn <?= $model->defuncion === null ? 'btn-warning' : 'btn-default' ?>" id="difunto"><?= $model->defuncion === null ? 'Marcar como difunto' : 'Marcar como no difunto' ?></button>
         </p>
+        <br>
+        <h3>Imágenes</h3>
+        <hr>
+
+        <a class="btn btn-info" href="<?= Url::to(['animales/upload', 'id' => $model->id]) ?>">Agregar imágenes</a>
     <div class="row ">
         <div class="col-sm-12 image-container">
             <ul class="cards">
@@ -62,6 +109,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </ul>
         </div>
     </div>
+    <br>
+    <h3>Información básica</h3>
+    <hr>
     <div class="row">
         <div class=" col-sm-12">
 
@@ -76,6 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'esterilizado:boolean',
                     'sexo',
                     'observaciones:ntext',
+                    'defuncion:date',
                     'created_at:datetime',
                     'updated_at:datetime',
                 ],

@@ -106,7 +106,8 @@ class Animales extends \yii\db\ActiveRecord
             'sexo' => 'Sexo',
             'especie_id' => 'Especie',
             'observaciones' => 'Observaciones',
-            'created_at' => 'Fecha Cçcreación',
+            'defuncion' => 'Fecha defunción',
+            'created_at' => 'Fecha Creación',
             'updated_at' => 'Última modificación',
         ];
     }
