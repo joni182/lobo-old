@@ -237,3 +237,15 @@ img {
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
+
+div.avanzado {
+    display: none;
+}
+
+.animales-search {
+    margin: 0% 25%;
+}
+
+body {
+    height: unset !important;
+}

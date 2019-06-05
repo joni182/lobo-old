@@ -2,15 +2,19 @@
 
 namespace app\models;
 
+use DateTime;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Animales;
 
 /**
  * AnimalesSearch represents the model behind the search form of `\app\models\Animales`.
  */
 class AnimalesSearch extends Animales
 {
+    public $nacimiento_desde;
+    public $nacimiento_hasta;
+    public $peso_desde;
+    public $peso_hasta;
     /**
      * {@inheritdoc}
      */
@@ -18,9 +22,10 @@ class AnimalesSearch extends Animales
     {
         return [
             [['id'], 'integer'],
-            [['nombre', 'nacimiento', 'chip', 'sexo', 'observaciones', 'created_at', 'updated_at'], 'safe'],
-            [['peso'], 'number'],
-            [['ppp', 'esterilizado'], 'boolean'],
+            [['nombre', 'nacimiento', 'nacimiento_desde', 'nacimiento_hasta', 'chip', 'sexo', 'observaciones', 'created_at', 'updated_at'], 'safe'],
+            [['peso', 'peso_desde', 'peso_hasta'], 'number'],
+            //[['ppp', 'esterilizado'], 'boolean'],
+            [['ppp', 'esterilizado'], 'default', 'value' => null],
         ];
     }
 
@@ -33,8 +38,13 @@ class AnimalesSearch extends Animales
         return Model::scenarios();
     }
 
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['peso_desde', 'peso_hasta', 'nacimiento_desde', 'nacimiento_hasta']);
+    }
+
     /**
-     * Creates data provider instance with search query applied
+     * Creates data provider instance with search query applied.
      *
      * @param array $params
      *
@@ -69,11 +79,32 @@ class AnimalesSearch extends Animales
             'updated_at' => $this->updated_at,
         ]);
 
+        // if ($this->ppp !== '') {
+        //     $query->andFilterWhere(['ppp' => $this->ppp]);
+        // }
+        //
+        // if ($this->esterilizado !== '') {
+        //     $query->andFilterWhere(['esterilizado' => $this->esterilizado]);
+        // }
+
         $query->andFilterWhere(['ilike', 'nombre', $this->nombre])
             ->andFilterWhere(['ilike', 'chip', $this->chip])
             ->andFilterWhere(['ilike', 'sexo', $this->sexo])
-            ->andFilterWhere(['ilike', 'observaciones', $this->observaciones]);
+            ->andFilterWhere(['ilike', 'observaciones', $this->observaciones])
+            ->andFilterWhere([
+                'between',
+                'peso',
+                $this->peso_desde == null ? 0 : $this->peso_desde,
+                $this->peso_hasta == null ? 9999 : $this->peso_hasta,
+            ])
+            ->andFilterWhere([
+                'between',
+                'nacimiento',
+                $this->nacimiento_desde == null ? (new DateTime('0001-01-01'))->format('Y-m-d') : $this->nacimiento_desde,
+                $this->nacimiento_hasta == null ? (new DateTime('9999-11-31'))->format('Y-m-d') : $this->nacimiento_hasta,
+            ]);
 
+        // dd($this);
         return $dataProvider;
     }
 }

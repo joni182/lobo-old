@@ -183,6 +183,15 @@ class Animales extends \yii\db\ActiveRecord
         return $this->hasMany(Razas::className(), ['id' => 'raza_id'])->viaTable('animales_razas', ['animal_id' => 'id']);
     }
 
+    public function sexosDisponibles()
+    {
+        return [
+            '' => '',
+            'h' => 'HEMBRA',
+            'm' => 'MACHO',
+        ];
+    }
+
     public function getColoresQueNoTengo()
     {
         // if (!isset($this->sintomasQueNoTengo)) {
