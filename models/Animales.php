@@ -56,7 +56,6 @@ class Animales extends \yii\db\ActiveRecord
             ], 'trim'],
 
             [[
-                'nombre',
                 'chip',
                 'sexo',
                 'chip',
@@ -72,7 +71,7 @@ class Animales extends \yii\db\ActiveRecord
                 return str_replace('.', '', $value);
             }],
             [['sexo'], 'match', 'pattern' => '/^[h|m]{1}$/'],
-            [['nacimiento', 'chip', 'peso', 'sexo', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['nacimiento', 'chip', 'peso', 'sexo'], 'default', 'value' => null],
             [['peso'], 'number', 'min' => 0, 'max' => 9999],
             [['ppp', 'esterilizado'], 'boolean'],
             [['observaciones'], 'string'],
@@ -106,7 +105,8 @@ class Animales extends \yii\db\ActiveRecord
             'sexo' => 'Sexo',
             'especie_id' => 'Especie',
             'observaciones' => 'Observaciones',
-            'created_at' => 'Fecha Cçcreación',
+            'defuncion' => 'Fecha defunción',
+            'created_at' => 'Fecha Creación',
             'updated_at' => 'Última modificación',
         ];
     }
@@ -164,7 +164,7 @@ class Animales extends \yii\db\ActiveRecord
      */
     public function getAnimalesEnfermedades()
     {
-        return $this->hasMany(AnimalesEnfermedades::className(), ['animal_id' => 'id'])->inverseOf('animal');
+        return $this->hasMany(AnimalesEnfermedades::className(), ['animal_id' => 'id'])->inverseOf('animal')->orderBy('desde', 'ASC');
     }
 
     /**
@@ -181,6 +181,16 @@ class Animales extends \yii\db\ActiveRecord
     public function getRazas()
     {
         return $this->hasMany(Razas::className(), ['id' => 'raza_id'])->viaTable('animales_razas', ['animal_id' => 'id']);
+    }
+
+
+    public function sexosDisponibles()
+    {
+        return [
+            '' => '',
+            'h' => 'HEMBRA',
+            'm' => 'MACHO',
+        ];
     }
 
     public function getColoresQueNoTengo()

@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -18,27 +19,45 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Animales', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel, 'especies' => $especies]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'especie.especie:text:Grupo',
-            'nombre',
-            'nacimiento:date',
-            'chip',
-            'peso:weight',
-            'ppp:boolean',
-            'esterilizado:boolean',
-            'sexo',
-            'observaciones:ntext',
-            //'created_at',
-            //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+
+<ul class="cards">
+    <?php foreach ($dataProvider->getModels() as $model): ?>
+        <li class="cards__item">
+            <div class="card">
+                <div class="card__image card__image--flowers">
+                    <a href="<?= Url::to(['animales/view', 'id' => $model->id]) ?>">
+                        <img src="http://<?= $model->avatar ?>" alt="">
+                    </a>
+                </div>
+                <div class="card__content">
+                    <div class="card__title"><?= $model->nombre ?></div>
+                    <p class="card__text">
+                        Estado: No definido<br>
+                        Sexo:
+                        <?php if ($model->sexo == null): ?>
+                            No definido
+                        <?php else: ?>
+                            <?php if ($model->sexo == 'h'): ?>
+                                HEMBRA
+                            <?php else: ?>
+                                MACHO
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <br>
+                        Esterilizado: <?= Yii::$app->formatter->asBoolean($model->esterilizado) ?>
+                        <br>
+                        Grupo: <?= $model->especie->especie ?>
+                    </p>
+                    <a href="<?= Url::to(['animales/view', 'id' => $model->id]) ?>" class="btn btn--block card__btn btn-default">Ver</a>
+                </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+
+</ul>
 
 
 </div>

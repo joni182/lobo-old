@@ -2,14 +2,13 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "animales_enfermedades".
  *
  * @property int $enfermedad_id
  * @property int $animal_id
- * @property string $fecha
+ * @property string desde
+ * @property string hasta
  *
  * @property Animales $animal
  * @property Enfermedades $enfermedad
@@ -30,11 +29,11 @@ class AnimalesEnfermedades extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['enfermedad_id', 'animal_id', 'fecha'], 'required'],
+            [['enfermedad_id', 'animal_id', 'desde'], 'required'],
             [['enfermedad_id', 'animal_id'], 'default', 'value' => null],
             [['enfermedad_id', 'animal_id'], 'integer'],
-            [['fecha'], 'safe'],
-            [['enfermedad_id', 'animal_id', 'fecha'], 'unique', 'targetAttribute' => ['enfermedad_id', 'animal_id', 'fecha']],
+            [['hasta'], 'safe'],
+            [['enfermedad_id', 'animal_id', 'desde'], 'unique', 'targetAttribute' => ['enfermedad_id', 'animal_id', 'desde']],
             [['animal_id'], 'exist', 'skipOnError' => true, 'targetClass' => Animales::className(), 'targetAttribute' => ['animal_id' => 'id']],
             [['enfermedad_id'], 'exist', 'skipOnError' => true, 'targetClass' => Enfermedades::className(), 'targetAttribute' => ['enfermedad_id' => 'id']],
         ];
@@ -46,9 +45,10 @@ class AnimalesEnfermedades extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'enfermedad_id' => 'Enfermedad ID',
+            'enfermedad_id' => 'Enfermedad',
             'animal_id' => 'Animal ID',
-            'fecha' => 'Fecha',
+            'desde' => 'Desde',
+            'hasta' => 'Hasta',
         ];
     }
 

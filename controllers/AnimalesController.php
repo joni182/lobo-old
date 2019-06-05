@@ -12,6 +12,7 @@ use app\models\Especies;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
+use yii\httpclient\Client;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -46,6 +47,7 @@ class AnimalesController extends Controller
 
 
         return $this->render('index', [
+            'especies' => Especies::todas(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -59,8 +61,12 @@ class AnimalesController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $imagenes = $this->getImagenes($model->id);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'imagenes' => $imagenes,
         ]);
     }
 
@@ -75,6 +81,12 @@ class AnimalesController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+            $response = $client->get("grupos/{$model->id}")->send();
+            if ($response->getData() == null) {
+                $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+                $response = $client->post('grupos', ['nombre' => $model->id])->send();
+            }
             return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
         }
 
@@ -83,6 +95,7 @@ class AnimalesController extends Controller
             'especies' => Especies::todas(),
         ]);
     }
+
 
     /**
      * Updates an existing Animales model.
@@ -120,9 +133,99 @@ class AnimalesController extends Controller
         AnimalesColores::deleteAll(['animal_id' => $animal->id]);
         AnimalesRazas::deleteAll(['animal_id' => $animal->id]);
         AnimalesEnfermedades::deleteAll(['animal_id' => $animal->id]);
+
+        $client = new Client();
+        $response = $client->createRequest()
+        ->setMethod('DELETE')
+        ->setUrl("http://localhost/rest/web/grupos/{$model->id}")
+        ->send();
+
         $animal->delete();
 
-        return $this->redirect(['index']);
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function actionUpload($id)
+    {
+        $model = Animales::findOne(['id' => $id]);
+
+        if (!empty($_POST)) {
+            $client = new Client();
+            $request = $client->createRequest()
+                ->setMethod('PUT')
+                ->setUrl("http://localhost/rest/web/grupos/{$id}");
+
+            foreach ($_FILES['imagenes']['tmp_name'] as $key => $file) {
+                $request = $request->addFile("upfile[{$key}]", $file);
+            }
+
+            $response = $request->send();
+
+            return $this->redirect(Url::to(['/animales/view', 'id' => $id]));
+        }
+
+        return $this->render('upload-imagenes', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionGestionarImagenes($id)
+    {
+        $model = $this->findModel($id);
+        $imagenes = $this->getImagenes($model->id);
+
+        return $this->render('imagenes', [
+            'model' => $model,
+            'imagenes' => $imagenes,
+        ]);
+    }
+
+    public function actionAvatar($id, $url)
+    {
+        $model = $this->findModel($id);
+        $model->avatar = $url;
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'Se ha cambiado el avatar correctamente');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha podido llevar a cabo la acción');
+        }
+        return $this->redirect(['animales/view', 'id' => $id]);
+    }
+
+    public function actionBorrarImagen($id, $imagen_id)
+    {
+        $model = $this->findModel($id);
+
+        $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+        $response = $client->delete("images/{$imagen_id}")->send();
+        if ($response->getData() === 1) {
+            Yii::$app->session->setFlash('success', 'Se ha borrado correctamente');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha borrado la imagen');
+        }
+
+        $imagenes = $this->getImagenes($model->id);
+
+        return $this->render('imagenes', [
+            'model' => $model,
+            'imagenes' => $imagenes,
+        ]);
+    }
+
+    public function actionDefuncion()
+    {
+        $model = $this->findModel(Yii::$app->request->post('id'));
+        if ($model->defuncion === null) {
+            $model->defuncion = date('Y-m-d');
+        } else {
+            $model->defuncion = null;
+        }
+        if ($model->save()) {
+            return 0;
+        }
+        throw new \Exception('Error Processing Request', 1);
     }
 
     /**
@@ -139,5 +242,11 @@ class AnimalesController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function getImagenes($id)
+    {
+        $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+        $response = $client->get("grupos/{$id}")->send();
+        return $response->getData();
     }
 }

@@ -1,11 +1,24 @@
 <?php
 
+use kartik\date\DatePicker;
+
+use kartik\number\NumberControl;
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\AnimalesSearch */
 /* @var $form yii\widgets\ActiveForm */
+
+$js = <<<JS
+    $('button.avanzado').click((e)=>{
+        e.preventDefault();
+        $('div.avanzado').toggle(500);
+    });
+JS;
+
+$this->registerJs($js)
 ?>
 
 <div class="animales-search">
@@ -15,33 +28,102 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
     <?= $form->field($model, 'nombre') ?>
-
-    <?= $form->field($model, 'nacimiento') ?>
+<div class="avanzado">
 
     <?= $form->field($model, 'chip') ?>
+    <div class="row">
+        <fieldset>
+            <legend>Nacimiento</legend>
+            <div class="col-sm-6">
+                <?= $form->field($model, 'nacimiento_desde')->widget(DatePicker::className(), [
+                    'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                    'pluginOptions' => [
+                        'autoclose'=>true,
+                        'format' => 'yyyy-mm-dd'
+                    ]
+                    ])->label('Desde') ?>
+                </div>
+                <div class="col-sm-6">
+                    <?= $form->field($model, 'nacimiento_hasta')->widget(DatePicker::className(), [
+                        'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                        'pluginOptions' => [
+                            'autoclose'=>true,
+                            'format' => 'yyyy-mm-dd'
+                        ]
+                        ])->label('Hasta') ?>
+                    </div>
+                </fieldset>
+            </div>
 
-    <?= $form->field($model, 'peso') ?>
 
-    <?php // echo $form->field($model, 'ppp')->checkbox() ?>
+            <div class="row">
+                <fieldset>
+                    <legend>Peso</legend>
+                    <div class="col-sm-6">
+                        <?= $form->field($model, 'peso_desde')->widget(NumberControl::class, [
+                            'maskedInputOptions' => [
+                                'suffix' => ' Kg',
+                                'allowMinus' => false,
+                                'groupSeparator' => '',
+                                'radixPoint' => ',',
+                                'min' => 0,
+                                'max' => 9999,
+                            ],
+                            ])->label('Desde') ?>
+                        </div>
 
-    <?php // echo $form->field($model, 'esterilizado')->checkbox() ?>
+                        <div class="col-sm-6">
+                            <?= $form->field($model, 'peso_hasta')->widget(NumberControl::class, [
+                                'maskedInputOptions' => [
+                                    'suffix' => ' Kg',
+                                    'allowMinus' => false,
+                                    'groupSeparator' => '',
+                                    'radixPoint' => ',',
+                                    'min' => 0,
+                                    'max' => 9999,
+                                ],
+                                ])->label('Hasta') ?>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <?= $form->field($model, 'ppp')->dropDownList([
+                                '' => '',
+                                '1' => 'PPP',
+                                '0' => 'NO PPP',
+                            ])
+                            ?>
+                        </div>
+                        <div class="col-sm-3">
+                            <?= $form->field($model, 'esterilizado')->dropDownList([
+                                '' => '',
+                                '1' => 'Esterilizado',
+                                '0' => 'NO Esterilizado',
+                            ])
+                            ?>
+                        </div>
+                        <div class="col-sm-3">
+                            <?php echo $form->field($model, 'sexo')->dropDownList($model->sexosDisponibles()) ?>
+                        </div>
+                        <div class="col-sm-3">
+                            <?= $form->field($model, 'especie')->dropDownList(array_merge(['' => ''], $especies))->label('Grupo')?>
+                        </div>
+                    </div>
 
-    <?php // echo $form->field($model, 'sexo') ?>
+                    <?php echo $form->field($model, 'observaciones') ?>
 
-    <?php // echo $form->field($model, 'observaciones') ?>
+                    <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
+                    <?php // echo $form->field($model, 'updated_at') ?>
 
-    <?php // echo $form->field($model, 'updated_at') ?>
+                </div>
+                    <div class="form-group">
+                        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+                        <?= Html::button('Avanzado +',['class' => 'btn avanzado btn-default']) ?>
+                    </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
-    </div>
+                    <?php ActiveForm::end(); ?>
 
-    <?php ActiveForm::end(); ?>
-
-</div>
+                </div>

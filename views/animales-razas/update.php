@@ -31,6 +31,7 @@ $this->title = 'Update Animales Razas: ' . $model->nombre;
     ?>
 
     <div class="">
+        <?= Html::a('He terminado', ['animales/view', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
         <?= Html::a('Siguiente', ['animales-colores/agregar-colores', 'animal_id' => $model->id], ['class' => 'btn btn-info']) ?>
     </div>
 

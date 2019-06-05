@@ -65,6 +65,7 @@ CREATE TABLE animales
 (
       id            BIGSERIAL    PRIMARY KEY
     , nombre        VARCHAR(255) NOT NULL
+    , avatar        VARCHAR(255)
     , nacimiento    DATE
     , defuncion     DATE
     , chip          VARCHAR(255) UNIQUE
