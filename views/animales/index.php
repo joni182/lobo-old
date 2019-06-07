@@ -2,7 +2,6 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AnimalesSearch */
@@ -16,10 +15,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Animales', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Registrar un animal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php echo $this->render('_search', ['model' => $searchModel, 'especies' => $especies]); ?>
+    <?php
+        $parametros =  [
+            'model' => $searchModel,
+            'especies' => $especies,
+        ];
+        if (isset($persona)) {
+            $parametros['url'] = ['acogidas/create', 'persona_id' => $persona->id];
+        }
+    ?>
+    <?php echo $this->render('_search', $parametros); ?>
 
 
 
@@ -35,7 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card__content">
                     <div class="card__title"><?= $model->nombre ?></div>
                     <p class="card__text">
-                        Estado: No definido<br>
+                        <?php $tipo = ($acogida = $model->getAcogidas()->one()) == null ? 'ACOGIDO' : $acogida->tipo->tipo ?>
+                        Estado: <?= $tipo ?><br>
                         Sexo:
                         <?php if ($model->sexo == null): ?>
                             No definido
@@ -49,9 +57,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         <br>
                         Esterilizado: <?= Yii::$app->formatter->asBoolean($model->esterilizado) ?>
                         <br>
+                        Peso: <?= Yii::$app->formatter->asWeight($model->peso) ?>
+                        <br>
                         Grupo: <?= $model->especie->especie ?>
                     </p>
-                    <a href="<?= Url::to(['animales/view', 'id' => $model->id]) ?>" class="btn btn--block card__btn btn-default">Ver</a>
+                    <?php if (isset($persona)): ?>
+                        <form class="" action="<?= Url::to(['acogidas/create']) ?>" method="post">
+                                <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+                            <input type="hidden" name="persona_id" value="<?= $persona->id ?>">
+                            <input type="hidden" name="animal_id" value="<?= $model->id ?>">
+                            <input type="hidden" name="fecha" value="<?= \date('Y-m-d') ?>">
+                            <textarea name="observaciones" rows="2" cols="20" placeholder="Observaciones sobre la adopción"></textarea>
+                            <button class="btn-warning" type="submit">Adoptar por <?= $persona->nombre . ' ' . $persona->primer_apellido ?></button>
+                        </form>
+                    <?php else: ?>
+                        <a href="<?= Url::to(['animales/view', 'id' => $model->id]) ?>" class="btn btn--block card__btn btn-default">Ver</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </li>

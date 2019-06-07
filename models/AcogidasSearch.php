@@ -4,23 +4,32 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Acogidas;
 
 /**
  * AcogidasSearch represents the model behind the search form of `\app\models\Acogidas`.
  */
 class AcogidasSearch extends Acogidas
 {
+    public $desde;
+    public $hasta;
+    public $animal;
+    public $persona;
+    public $grupo;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'tipo_id', 'animal_id', 'persona_id'], 'integer'],
+            [['id', 'tipo_id', 'animal_id', 'persona_id', 'grupo'], 'integer'],
             [['precio'], 'number'],
-            [['fecha', 'duracion', 'observaciones'], 'safe'],
+            [['fecha', 'duracion', 'observaciones', 'desde', 'hasta', 'animal', 'persona'], 'safe'],
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['desde', 'hasta', 'animal', 'persona', 'grupo']);
     }
 
     /**
@@ -33,7 +42,7 @@ class AcogidasSearch extends Acogidas
     }
 
     /**
-     * Creates data provider instance with search query applied
+     * Creates data provider instance with search query applied.
      *
      * @param array $params
      *
@@ -41,7 +50,7 @@ class AcogidasSearch extends Acogidas
      */
     public function search($params)
     {
-        $query = Acogidas::find();
+        $query = Acogidas::find()->joinWith('persona', 'acogidas.persona_id = personas.id')->joinWith('animal', 'acogidas.animal_id = animales.id');
 
         // add conditions that should always apply here
 
@@ -65,10 +74,23 @@ class AcogidasSearch extends Acogidas
             'tipo_id' => $this->tipo_id,
             'animal_id' => $this->animal_id,
             'persona_id' => $this->persona_id,
+            'animales.especie_id' => $this->grupo,
         ]);
 
+        if (($flip = $this->desde) > $this->hasta) {
+            $this->desde = $this->hasta;
+            $this->hasta = $flip;
+        }
+
         $query->andFilterWhere(['ilike', 'duracion', $this->duracion])
+            ->orFilterWhere(['ilike', 'personas.nombre', $this->persona])
+            ->orFilterWhere(['ilike', 'personas.primer_apellido', $this->persona])
+            ->orFilterWhere(['ilike', 'personas.segundo_apellido', $this->persona])
+            ->andFilterWhere(['between', 'fecha', $this->desde, $this->hasta])
             ->andFilterWhere(['ilike', 'observaciones', $this->observaciones]);
+
+
+
 
         return $dataProvider;
     }

@@ -1,13 +1,13 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PersonasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Personas';
+$this->title = 'Adoptantes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="personas-index">
@@ -18,26 +18,32 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Registrar adoptante', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    <ul class="cards">
+        <?php foreach ($dataProvider->getModels() as $model): ?>
+            <li class="cards__item">
+                <div class="card">
+                    <div class="card__content">
+                        <div class="card__title"><?= $model->nombre .' '. $model->primer_apellido .' '. $model->segundo_apellido ?></div>
+                        <p class="card__text">
+                            Direccion: <?= $model->direccion ?>
+                            <br>
+                            Telefono: <?= $model->telefono ?>
+                            <br>
+                            Email: <?= $model->email ?>
+                            <br>
+                            Observaciones: <?= $model->observaciones ?>
+                            <br>
+                        </p>
+                        <a href="<?= Url::to(['personas/view', 'id' => $model->id]) ?>" class="btn btn--block card__btn btn-default">Ver</a>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
 
-            'id',
-            'nombre',
-            'primer_apellido',
-            'segundo_apellido',
-            'direccion',
-            //'telefono',
-            //'email:email',
-            //'observaciones:ntext',
+    </ul>
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
 
 
 </div>

@@ -60,7 +60,12 @@ $this->registerJs($js);
 
     <div class="row">
         <div class="col-sm-12">
-            <img class="cabecera" src="http://<?= $model->avatar != null ? $model->avatar : $imagenes[0] ?>" alt="">
+            <?php if (empty($imagenes)) {
+                $avatar = 'picsum.photos/800/600?image=82';
+            } else {
+                $avatar = $imagenes[0];
+            } ?>
+            <img class="cabecera" src="http://<?= $model->avatar != null ? $model->avatar : $avatar ?>" alt="">
         </div>
     </div>
     <h1><?= Html::encode($this->title) ?></h1>

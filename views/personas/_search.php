@@ -6,6 +6,14 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\PersonasSearch */
 /* @var $form yii\widgets\ActiveForm */
+$js = <<<JS
+    $('button.avanzado').click((e)=>{
+        e.preventDefault();
+        $('div.avanzado').toggle(500);
+    });
+JS;
+
+$this->registerJs($js)
 ?>
 
 <div class="personas-search">
@@ -15,9 +23,8 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
     <?= $form->field($model, 'nombre') ?>
+<div class="avanzado">
 
     <?= $form->field($model, 'primer_apellido') ?>
 
@@ -25,15 +32,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'direccion') ?>
 
-    <?php // echo $form->field($model, 'telefono') ?>
+    <?= $form->field($model, 'telefono') ?>
 
-    <?php // echo $form->field($model, 'email') ?>
+    <?= $form->field($model, 'email') ?>
 
-    <?php // echo $form->field($model, 'observaciones') ?>
+    <?= $form->field($model, 'observaciones') ?>
 
+</div>
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+        <?= Html::button('Avanzado +',['class' => 'btn avanzado btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

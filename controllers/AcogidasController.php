@@ -2,12 +2,15 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\Acogidas;
 use app\models\AcogidasSearch;
+use app\models\AnimalesSearch;
+use app\models\Especies;
+use app\models\Personas;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * AcogidasController implements the CRUD actions for Acogidas model.
@@ -39,6 +42,7 @@ class AcogidasController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'especies' => Especies::todas(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -46,7 +50,7 @@ class AcogidasController extends Controller
 
     /**
      * Displays a single Acogidas model.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -61,24 +65,43 @@ class AcogidasController extends Controller
      * Creates a new Acogidas model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
+     * @param null|mixed $persona_id
      */
-    public function actionCreate()
+    public function actionCreate($persona_id = null)
     {
-        $model = new Acogidas();
+        $persona = Personas::findOne(['id' => $persona_id]);
+        $searchModel = new AnimalesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $dataProvider->query->leftJoin('acogidas', 'acogidas.animal_id = animales.id')->where(['acogidas.animal_id' => null]);
+
+
+        if (Yii::$app->request->isPost) {
+            $model = new Acogidas();
+            $model->animal_id = Yii::$app->request->post('animal_id');
+            $model->fecha = Yii::$app->request->post('fecha');
+            $model->persona_id = Yii::$app->request->post('persona_id');
+            $model->observaciones = Yii::$app->request->post('observaciones');
+            $model->tipo_id = 1;
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'La adopción se ha registrado correctamente');
+                return $this->redirect(['/personas/view', 'id' => $model->persona_id]);
+            }
+            Yii::$app->session->setFlash('error', 'No se a podido registrar la adopción.');
+            return $this->redirect(['/animales/index']);
         }
-
-        return $this->render('create', [
-            'model' => $model,
+        return $this->render('/animales/index', [
+            'especies' => Especies::todas(),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'persona' => $persona,
         ]);
     }
 
     /**
      * Updates an existing Acogidas model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -98,21 +121,26 @@ class AcogidasController extends Controller
     /**
      * Deletes an existing Acogidas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param int $id
+     * @param mixed $persona_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $persona_id)
     {
-        $this->findModel($id)->delete();
+        if ($this->findModel($id)->delete()) {
+            Yii::$app->session->setFlash('success', 'Se ha borrado correctamente');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha podido borrar');
+        }
 
-        return $this->redirect(['index']);
+        return $this->redirect(['personas/view', 'id' => $persona_id]);
     }
 
     /**
      * Finds the Acogidas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param int $id
      * @return Acogidas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
