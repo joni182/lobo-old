@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\Medicamentos;
 use app\models\MedicamentosSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * MedicamentosController implements the CRUD actions for Medicamentos model.
@@ -39,6 +39,7 @@ class MedicamentosController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'model' => new Medicamentos(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -46,7 +47,7 @@ class MedicamentosController extends Controller
 
     /**
      * Displays a single Medicamentos model.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -67,18 +68,19 @@ class MedicamentosController extends Controller
         $model = new Medicamentos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Se ha creado el medicamento correctamente');
+            return $this->redirect(['medicamentos/index']);
         }
 
-        return $this->render('create', [
-            'model' => $model,
+        return $this->render('index', [
+            'model' => empty($model->errors) ? new Medicamentos() : $model,
         ]);
     }
 
     /**
      * Updates an existing Medicamentos model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -98,13 +100,17 @@ class MedicamentosController extends Controller
     /**
      * Deletes an existing Medicamentos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if ($this->findModel($id)->delete()) {
+            Yii::$app->session->setFlash('success', 'Se ha borrado corectamente');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha podido llevar a cabo el borrado');
+        }
 
         return $this->redirect(['index']);
     }
@@ -112,7 +118,7 @@ class MedicamentosController extends Controller
     /**
      * Finds the Medicamentos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param int $id
      * @return Medicamentos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

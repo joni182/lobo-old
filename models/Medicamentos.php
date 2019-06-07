@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "medicamentos".
  *
@@ -46,8 +44,8 @@ class Medicamentos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'medicamento' => 'Medicamento',
-            'descripcion' => 'Descripcion',
-            'principio' => 'Principio',
+            'descripcion' => 'Descripción',
+            'principio' => 'Principio activo',
         ];
     }
 
