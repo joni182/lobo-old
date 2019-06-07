@@ -16,6 +16,7 @@ class AnimalesSearch extends Animales
     public $peso_desde;
     public $peso_hasta;
     public $especie;
+    public $adoptado;
     /**
      * {@inheritdoc}
      */
@@ -26,7 +27,7 @@ class AnimalesSearch extends Animales
             [['nombre', 'nacimiento', 'nacimiento_desde', 'nacimiento_hasta', 'chip', 'sexo', 'observaciones', 'created_at', 'updated_at'], 'safe'],
             [['peso', 'peso_desde', 'peso_hasta', 'especie'], 'number'],
             //[['ppp', 'esterilizado'], 'boolean'],
-            [['ppp', 'esterilizado'], 'default', 'value' => null],
+            [['ppp', 'esterilizado', 'adoptado'], 'default', 'value' => null],
         ];
     }
 
@@ -41,7 +42,7 @@ class AnimalesSearch extends Animales
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['peso_desde', 'peso_hasta', 'nacimiento_desde', 'nacimiento_hasta', 'especie']);
+        return array_merge(parent::attributes(), ['peso_desde', 'peso_hasta', 'nacimiento_desde', 'nacimiento_hasta', 'especie', 'adoptado']);
     }
 
     /**
@@ -54,6 +55,9 @@ class AnimalesSearch extends Animales
     public function search($params)
     {
         $query = Animales::find()->joinWith('razas')->joinWith('especie');
+        if ($this->adoptado == 1) {
+            $query->where(['IN', 'animales.id', Acogidas::find()->select('id')->column()]);
+        }
 
         // add conditions that should always apply here
 
@@ -87,6 +91,16 @@ class AnimalesSearch extends Animales
         // if ($this->esterilizado !== '') {
         //     $query->andFilterWhere(['esterilizado' => $this->esterilizado]);
         // }
+
+        if (($flip = $this->nacimiento_desde) > $this->nacimiento_hasta) {
+            $this->nacimiento_desde = $this->nacimiento_hasta;
+            $this->nacimiento_hasta = $flip;
+        }
+
+        if (($flip = $this->peso_desde) > $this->peso_hasta) {
+            $this->peso_desde = $this->peso_hasta;
+            $this->peso_hasta = $flip;
+        }
 
         $query->andFilterWhere(['ilike', 'nombre', $this->nombre])
             ->andFilterWhere(['ilike', 'chip', $this->chip])

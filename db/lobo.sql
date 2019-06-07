@@ -134,6 +134,8 @@ CREATE TABLE tipos
                         UNIQUE
 );
 
+INSERT INTO tipos (tipo) VALUES ('ADOPTADO');
+
 DROP TABLE IF EXISTS acogidas CASCADE;
 
 CREATE TABLE acogidas
@@ -147,14 +149,12 @@ CREATE TABLE acogidas
                            REFERENCES tipos(id)
                            ON UPDATE CASCADE
                            ON DELETE NO ACTION
-    , animal_id     BIGINT NOT NULL
-                           REFERENCES animales(id)
+    , animal_id     BIGINT REFERENCES animales(id)
                            ON UPDATE CASCADE
-                           ON DELETE NO ACTION
-    , persona_id    BIGINT NOT NULL
-                           REFERENCES personas(id)
+                           ON DELETE SET NULL
+    , persona_id    BIGINT REFERENCES personas(id)
                            ON UPDATE CASCADE
-                           ON DELETE NO ACTION
+                           ON DELETE SET NULL
 
 );
 

@@ -24,7 +24,7 @@ $this->registerJs($js)
 <div class="animales-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => isset($url) ? $url : ['index'],
         'method' => 'get',
     ]); ?>
 
@@ -108,7 +108,11 @@ $this->registerJs($js)
                             <?php echo $form->field($model, 'sexo')->dropDownList($model->sexosDisponibles()) ?>
                         </div>
                         <div class="col-sm-3">
-                            <?= $form->field($model, 'especie')->dropDownList(array_merge(['' => ''], $especies))->label('Grupo')?>
+                            <?php $especies = ['' => ''] + $especies ?>
+                            <?= $form->field($model, 'especie')->dropDownList($especies)->label('Grupo')?>
+                        </div>
+                        <div class="col-sm-3">
+                            <?= $form->field($model, 'adoptado')->checkbox()->label('Adoptado')?>
                         </div>
                     </div>
 

@@ -163,6 +163,15 @@ img {
   }
 }
 
+.acogidas-index .cards__item {
+    width: 100%;
+}
+
+.acogidas-index .card__text {
+    font-size: 1.875rem;
+    line-height: 1.8;
+}
+
 .card {
   background-color: white;
   border-radius: 0.25rem;
@@ -242,10 +251,29 @@ div.avanzado {
     display: none;
 }
 
-.animales-search {
+.animales-search , .personas-search{
     margin: 0% 25%;
 }
 
 body {
-    height: unset !important;
+    min-height: 100%;
+}
+
+.personas-view .cards__item, .personas-view .card {
+    width: 100%;
+}
+
+.card__title {
+    font-size: 2.25rem;
+}
+
+.flex-div {
+  height: 35rem;
+  display: flex;
+}
+.center-h {
+  justify-content: center;
+}
+.center-v {
+  align-items: center;
 }
