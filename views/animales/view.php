@@ -168,6 +168,16 @@ $this->registerJs($js);
     <br>
     <h3>Información Veterinária</h3>
     <hr>
+    <!-- Tratamientos   -->
+    <!-- Fin Tratamientos   -->
+
+    <fieldset>
+        <legend>Tratamientos</legend>
+    </fieldset>
+
+    <!-- Enfermedades -->
+    <fieldset>
+        <legend>Enfermedades</legend>
     <?= Html::a('Asignar enfermedad', ['animales-enfermedades/create', 'animal_id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
     <h4>Historial</h4>
@@ -203,4 +213,6 @@ $this->registerJs($js);
             </tr>
         <?php endforeach; ?>
     </table>
+</fieldset>
+<!-- Fin Enfermedades -->
 </div>
