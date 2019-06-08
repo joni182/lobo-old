@@ -8,16 +8,12 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AcogidasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Acogidas';
+$this->title = 'Adopciones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="acogidas-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Acogidas', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= $this->render('_search', ['model' => $searchModel, 'especies' => $especies ]); ?>
 

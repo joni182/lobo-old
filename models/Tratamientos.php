@@ -19,6 +19,7 @@ namespace app\models;
  */
 class Tratamientos extends \yii\db\ActiveRecord
 {
+    public $fin;
     /**
      * {@inheritdoc}
      */
@@ -38,10 +39,16 @@ class Tratamientos extends \yii\db\ActiveRecord
              [['medicamento_id', 'animal_id', 'veces_por_dia'], 'integer'],
              [['duracion', 'observaciones'], 'string'],
              [['dosis'], 'string', 'max' => 255],
+             [['fin'], 'safe'],
              [['medicamento_id', 'animal_id', 'inicio'], 'unique', 'targetAttribute' => ['medicamento_id', 'animal_id', 'inicio']],
              [['animal_id'], 'exist', 'skipOnError' => true, 'targetClass' => Animales::className(), 'targetAttribute' => ['animal_id' => 'id']],
              [['medicamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Medicamentos::className(), 'targetAttribute' => ['medicamento_id' => 'id']],
          ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['fin']);
     }
 
     /**
@@ -51,7 +58,7 @@ class Tratamientos extends \yii\db\ActiveRecord
     {
         return [
             'medicamento_id' => 'Medicamento',
-            'animal_id' => 'Animal ID',
+            'animal_id' => 'Animal',
             'inicio' => 'Inicio',
             'duracion' => 'Duración',
             'dosis' => 'Dosis',
