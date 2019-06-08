@@ -40,7 +40,7 @@ class TratamientosController extends Controller
         $searchModel = new TratamientosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $dataProvider->query->select('tratamientos.*, (inicio + duracion) AS fin')->joinWith('animal')->where('(inicio > now() AND (inicio + duracion) > now()) OR inicio < now() AND duracion IS NULL')->groupBy('animales.id, tratamientos.id');
+        $dataProvider->query->select('tratamientos.*')->joinWith('animal')->andWhere('(inicio > now() AND (inicio + duracion) > now()) OR inicio < now() AND duracion IS NULL');
 
         return $this->render('index', [
             'animales' => Animales::find()->select('nombre')->where('id in (SELECT animal_id from tratamientos)')->indexBy('id')->column(),
@@ -70,24 +70,26 @@ class TratamientosController extends Controller
      */
     public function actionCreate()
     {
-        extract(Yii::$app->request->post());
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         $model = new Tratamientos();
 
-        $model->animal_id = $animal_id;
-        $model->medicamento_id = $medicamento_id;
-        $model->veces_por_dia = $veces_por_dia;
-        $model->dosis = $dosis;
-        $model->inicio = $inicio;
-        $model->observaciones = $observaciones;
-        $model->duracion = $duracion;
-
-        if ($model->duracion) {
-            $model->duracion = "{$model->duracion} days";
-        }
-        if ($model->save()) {
-            Yii::$app->session->setFlash('success', 'Se ha registrado el nuevo tratamiento.');
+        // $model->animal_id = $animal_id;
+        // $model->medicamento_id = $medicamento_id;
+        // $model->veces_por_dia = $veces_por_dia;
+        // $model->dosis = $dosis;
+        // $model->inicio = $inicio;
+        // $model->observaciones = $observaciones;
+        // $model->duracion = $duracion;
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->duracion) {
+                $model->duracion = "{$model->duracion} days";
+            }
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Se ha registrado el nuevo tratamiento.');
+            } else {
+                Yii::$app->session->setFlash('error', 'No se ha podido registrar el nuevo tratamiento.');
+            }
         } else {
             Yii::$app->session->setFlash('error', 'No se ha podido registrar el nuevo tratamiento.');
         }

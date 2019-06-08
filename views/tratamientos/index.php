@@ -74,13 +74,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         12 => 'Cada 2H',
                                         24 => 'Cada 1H',
                                     ];
-
+                                    $fin = null;
                                     if ($model->duracion !== null) {
                                         $fin = (new \DateTime($model->inicio))->add(new \DateInterval($model->duracion));
                                     }
 
                                     ?>
-                                    <?= $model->medicamento->medicamento . ' ' . $cada_cuantas_horas[$model->veces_por_dia] ?>
+                                    <p class="text-danger">
+                                        <?= $model->medicamento->medicamento . ' ' . $cada_cuantas_horas[$model->veces_por_dia] ?>
+                                    </p>
                                 </div>
                                 <p class="card__text">
                                     Principio activo: <?= $model->medicamento->principio ?>
