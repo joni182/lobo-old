@@ -132,10 +132,10 @@ $this->registerJs($js);
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>Medicamento</th>
                         <th>Inicio</th>
                         <!-- <th>Duración</th> -->
                         <th>Fin</th>
-                        <th>Medicamento</th>
                         <th>Pauta</th>
                         <th>Dosis</th>
                         <th>Observaciones</th>
@@ -174,10 +174,10 @@ $this->registerJs($js);
 
                         ?>
                         <tr class="<?= $activo ? 'danger' : '' ?>">
+                            <td><?= $value->medicamento->medicamento.'('.$value->medicamento->principio.')' ?></td>
                             <td><?= Yii::$app->formatter->asDate($value->inicio) ?></td>
                             <!-- <td><?php // echo Yii::$app->formatter->asDuration($value->duracion) ?></td> -->
                             <td><?= Yii::$app->formatter->asDate(isset($fin) ? $fin->format('y-m-d') : null) ?></td>
-                            <td><?= $value->medicamento->medicamento ?></td>
                             <td><?= $cada_cuantas_horas[$value->veces_por_dia] ?></td>
                             <td><?= $value->dosis ?></td>
                             <td><?= $value->observaciones ?></td>
