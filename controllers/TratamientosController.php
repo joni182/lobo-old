@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Animales;
+use app\models\Medicamentos;
 use app\models\Tratamientos;
 use app\models\TratamientosSearch;
 use Yii;
@@ -38,7 +40,11 @@ class TratamientosController extends Controller
         $searchModel = new TratamientosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $dataProvider->query->select('tratamientos.*, (inicio + duracion) AS fin')->joinWith('animal')->where('(inicio > now() AND (inicio + duracion) > now()) OR inicio < now() AND duracion IS NULL')->groupBy('animales.id, tratamientos.id');
+
         return $this->render('index', [
+            'animales' => Animales::find()->select('nombre')->where('id in (SELECT animal_id from tratamientos)')->indexBy('id')->column(),
+            'medicamentos' => Medicamentos::todas(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

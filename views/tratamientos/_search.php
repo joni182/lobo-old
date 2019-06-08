@@ -1,5 +1,7 @@
 <?php
 
+use kartik\widgets\Select2;
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -15,15 +17,34 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="row">
+        <div class="col-sm-5">
+            <?= $form->field($model, 'animal_id')->widget(Select2::classname(), [
+                'data' => $animales,
+                'options' => ['placeholder' => 'Selecciona un animal ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
+        </div>
+        <div class="col-sm-5">
+            <?= $form->field($model, 'medicamento_id')->widget(Select2::classname(), [
+                'data' => $medicamentos,
+                'options' => ['placeholder' => 'Selecciona un medicamento ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
+            <div class="col-sm-2">
 
-    <?= $form->field($model, 'medicamento_id') ?>
+                <div class="form-group">
+                    <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'animal_id') ?>
 
-    <?= $form->field($model, 'inicio') ?>
-
-    <?= $form->field($model, 'duracion') ?>
 
     <?php // echo $form->field($model, 'dosis') ?>
 
@@ -31,10 +52,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'observaciones') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
-    </div>
 
     <?php ActiveForm::end(); ?>
 

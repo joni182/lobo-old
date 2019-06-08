@@ -259,7 +259,7 @@ body {
     min-height: 100%;
 }
 
-.personas-view .cards__item, .personas-view .card {
+.personas-view .cards__item, .personas-view .card , .tratamientos-index .cards__item {
     width: 100%;
 }
 
@@ -276,4 +276,9 @@ body {
 }
 .center-v {
   align-items: center;
+}
+
+.tratamientos-index .card__text {
+    font-size: 1.875rem;
+    line-height: 1.8;
 }
