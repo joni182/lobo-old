@@ -2,6 +2,8 @@
 
 use kartik\date\DatePicker;
 
+use kartik\widgets\Select2;
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,7 +16,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'enfermedad_id')->dropDownList($enfermedades) ?>
+    <?= $form->field($model, 'enfermedad_id')->widget(Select2::classname(), [
+        'data' => $enfermedades,
+        'options' => ['placeholder' => 'Selecciona una enfermedad ...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); ?>
 
     <?= $form->field($model, 'animal_id')->hiddenInput()->label(false) ?>
 

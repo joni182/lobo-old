@@ -46,6 +46,15 @@ CREATE TABLE especies
                            UNIQUE
 );
 
+INSERT INTO especies (especie)
+     VALUES ('Canino')  --1
+          , ('Felino')  --2
+          , ('Reptil')  --3
+          , ('Ave')     --4
+          , ('Roedor')  --5
+          , ('Porcino') --6
+          , ('Bovino'); --7
+
 DROP TABLE IF EXISTS razas CASCADE;
 
 CREATE TABLE razas
@@ -58,6 +67,87 @@ CREATE TABLE razas
                               ON DELETE NO ACTION
     , UNIQUE(raza,especie_id)
 );
+
+INSERT INTO razas (raza, especie_id)
+     VALUES ('Bulldog',1)
+          , ('Labrador',1)
+          , ('Chucho',1)
+          , ('Indeterminado',1)
+          , ('Pastor alemán',1)
+          , ('Chihuahua',1)
+          , ('Caniche',1)
+          , ('Galgo',1)
+          , ('Beagle',1)
+          , ('Yorkshire',1)
+          , ('Mastín',1)
+          , ('Golden retriever',1)
+          , ('Gran danés',1)
+          , ('Rottweiler',1)
+          , ('Bulldog francés',1)
+          , ('Bulldog inglés',1)
+          , ('Braco de Weimar',1)
+          , ('Dóberman',1)
+          , ('Jack Russell',1)
+          , ('American Staffordshire terrier',1)
+          , ('Pastor belga',1)
+          , ('Malamute de Alaska',1)
+          , ('Setter irlandés',1)
+          , ('Springer spaniel inglés',1)
+          , ('Bodeguero andaluz',1)
+          , ('Podenco',1)
+          , ('Staffordshire bull terrier',1)
+          , ('Braco Braco alemán',1)
+          , ('Pitbull',1)
+          , ('Podenco andaluz',1)
+          , ('Podenco Ibicenco',1)
+          , ('Bóxer',1)
+          , ('Persa',2)
+          , ('Azul ruso',2)
+          , ('Siamés',2)
+          , ('Scottish Fold',2)
+          , ('Munchkin',2)
+          , ('Maine Coon',2)
+          , ('Sphynx',2)
+          , ('Ragdoll',2)
+          , ('British Shorthair',2)
+          , ('Himalayo',2)
+          , ('Curl Americano',2)
+          , ('American shorthair',2)
+          , ('Bosque de noruega',2)
+          , ('Angora turco',2)
+          , ('Abisinio',2)
+          , ('Bengala',2)
+          , ('exótico',2)
+          , ('Europeo',2)
+          , ('Indeterminado',2)
+          , ('Tortuga de tierra',3)
+          , ('Tortuga de agua',3)
+          , ('Iguana',3)
+          , ('Serpiente',3)
+          , ('Camaleón',3)
+          , ('Paloma',4)
+          , ('Primilla',4)
+          , ('Cigueña',4)
+          , ('Periquito',4)
+          , ('Loro',4)
+          , ('Gabiota',4)
+          , ('Gorrión',4)
+          , ('Mirlo',4)
+          , ('Conejo',5)
+          , ('Hamster',5)
+          , ('Cobaya',5)
+          , ('Ratón',5)
+          , ('Rata',5)
+          , ('Jerbo',5)
+          , ('Ardilla',5)
+          , ('Cerdo',6)
+          , ('Ibérico',6)
+          , ('Vietnamita',6)
+          , ('Enano',6)
+          , ('Vaca',7)
+          , ('Toro',7)
+          , ('Cabra',7)
+          , ('Oveja',7);
 
 DROP TABLE IF EXISTS animales CASCADE;
 
@@ -86,7 +176,6 @@ DROP TABLE IF EXISTS animales_razas CASCADE;
 
 CREATE TABLE animales_razas
 (
-      --id        BIGSERIAL PRIMARY KEY--,
       animal_id BIGINT REFERENCES animales(id)
                        ON UPDATE CASCADE
                        ON DELETE NO ACTION
@@ -124,6 +213,10 @@ CREATE TABLE personas
     , observaciones    TEXT
 );
 
+INSERT INTO personas (nombre, primer_apellido, segundo_apellido, direccion, telefono, email, observaciones)
+     VALUES ('Jonathan', 'Cerezuela', 'López', 'C/Azorín nº 3', '666999888', 'jcerezuelalopez@gmail.com', 'Es muy despistado.')
+          , ('María', 'Muñoz', 'Crespo', 'C/Palmeras nº 3', '445577', 'mariaj@gmail.com', 'Es muy guapa.');
+
 DROP TABLE IF EXISTS tipos CASCADE;
 
 CREATE TABLE tipos
@@ -133,6 +226,10 @@ CREATE TABLE tipos
     , tipo VARCHAR(255) NOT NULL
                         UNIQUE
 );
+
+INSERT INTO tipos (tipo)
+     VALUES ('ADOPCIÖN')
+          , ('ACOGIDA');
 
 INSERT INTO tipos (tipo) VALUES ('ADOPTADO');
 
@@ -246,9 +343,9 @@ CREATE TABLE medicamentos
 (
       id          BIGSERIAL    PRIMARY KEY
     , medicamento VARCHAR(255) NOT NULL UNIQUE
-    , descripcion TEXT
     -- Principio activo --
     , principio   VARCHAR(255)
+    , descripcion TEXT
 );
 
 DROP TABLE IF EXISTS tratamientos CASCADE;
@@ -269,5 +366,5 @@ CREATE TABLE tratamientos
     , dosis          VARCHAR(255) DEFAULT 'un comprimido'
     , veces_por_dia  SMALLINT DEFAULT 1
     , observaciones  TEXT
-    , UNIQUE(medicamento_id, animal_id)
+    , UNIQUE(medicamento_id, animal_id, inicio)
 );

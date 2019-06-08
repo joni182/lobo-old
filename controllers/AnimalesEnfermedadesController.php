@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Animales;
 use app\models\AnimalesEnfermedades;
 use app\models\AnimalesEnfermedadesSearch;
 use app\models\Enfermedades;
@@ -69,17 +70,27 @@ class AnimalesEnfermedadesController extends Controller
     public function actionCreate($animal_id = null)
     {
         $model = new AnimalesEnfermedades();
-
+        $animal = null;
         if ($animal_id !== null) {
             $model->animal_id = $animal_id;
+            $animal = Animales::findOne($animal_id);
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['animales/view', 'id' => $model->animal_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if (new \DateTime($model->desde) > new \DateTime($model->hasta)) {
+                $flip = $model->hasta;
+                $model->hasta = $model->desde;
+                $model->desde = $flip;
+            }
+
+            if ($model->save()) {
+                return $this->redirect(['animales/view', 'id' => $model->animal_id]);
+            }
         }
         return $this->render('create', [
             'model' => $model,
             'enfermedades' => Enfermedades::todas(),
+            'animal' => $animal,
         ]);
     }
 

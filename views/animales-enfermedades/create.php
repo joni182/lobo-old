@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\AnimalesEnfermedades */
 
-$this->title = 'Create Animales Enfermedades';
+$this->title = 'Asigna una enfermedad a ' . $animal->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Animales Enfermedades', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

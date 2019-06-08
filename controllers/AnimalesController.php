@@ -9,6 +9,8 @@ use app\models\AnimalesEnfermedades;
 use app\models\AnimalesRazas;
 use app\models\AnimalesSearch;
 use app\models\Especies;
+use app\models\Medicamentos;
+use app\models\Tratamientos;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
@@ -67,6 +69,8 @@ class AnimalesController extends Controller
         return $this->render('view', [
             'model' => $model,
             'imagenes' => $imagenes,
+            'tratamiento' => new Tratamientos(['animal_id' => $model->id]),
+            'listaMedicamentos' => Medicamentos::todas(),
         ]);
     }
 
