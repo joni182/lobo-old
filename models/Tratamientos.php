@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "tratamientos".
  *
@@ -35,16 +33,15 @@ class Tratamientos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['medicamento_id', 'animal_id'], 'required'],
-            [['medicamento_id', 'animal_id', 'veces_por_dia'], 'default', 'value' => null],
-            [['medicamento_id', 'animal_id', 'veces_por_dia'], 'integer'],
-            [['inicio'], 'safe'],
-            [['duracion', 'observaciones'], 'string'],
-            [['dosis'], 'string', 'max' => 255],
-            [['medicamento_id', 'animal_id'], 'unique', 'targetAttribute' => ['medicamento_id', 'animal_id']],
-            [['animal_id'], 'exist', 'skipOnError' => true, 'targetClass' => Animales::className(), 'targetAttribute' => ['animal_id' => 'id']],
-            [['medicamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Medicamentos::className(), 'targetAttribute' => ['medicamento_id' => 'id']],
-        ];
+             [['medicamento_id', 'animal_id', 'inicio'], 'required'],
+             [['medicamento_id', 'animal_id', 'veces_por_dia', 'duracion'], 'default', 'value' => null],
+             [['medicamento_id', 'animal_id', 'veces_por_dia'], 'integer'],
+             [['duracion', 'observaciones'], 'string'],
+             [['dosis'], 'string', 'max' => 255],
+             [['medicamento_id', 'animal_id', 'inicio'], 'unique', 'targetAttribute' => ['medicamento_id', 'animal_id', 'inicio']],
+             [['animal_id'], 'exist', 'skipOnError' => true, 'targetClass' => Animales::className(), 'targetAttribute' => ['animal_id' => 'id']],
+             [['medicamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Medicamentos::className(), 'targetAttribute' => ['medicamento_id' => 'id']],
+         ];
     }
 
     /**
@@ -53,13 +50,12 @@ class Tratamientos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'medicamento_id' => 'Medicamento ID',
+            'medicamento_id' => 'Medicamento',
             'animal_id' => 'Animal ID',
             'inicio' => 'Inicio',
-            'duracion' => 'Duracion',
+            'duracion' => 'Duración',
             'dosis' => 'Dosis',
-            'veces_por_dia' => 'Veces Por Dia',
+            'veces_por_dia' => 'Pauta',
             'observaciones' => 'Observaciones',
         ];
     }

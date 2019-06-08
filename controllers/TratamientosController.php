@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\Tratamientos;
 use app\models\TratamientosSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * TratamientosController implements the CRUD actions for Tratamientos model.
@@ -46,7 +46,7 @@ class TratamientosController extends Controller
 
     /**
      * Displays a single Tratamientos model.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -64,21 +64,36 @@ class TratamientosController extends Controller
      */
     public function actionCreate()
     {
+        extract(Yii::$app->request->post());
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
         $model = new Tratamientos();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model->animal_id = $animal_id;
+        $model->medicamento_id = $medicamento_id;
+        $model->veces_por_dia = $veces_por_dia;
+        $model->dosis = $dosis;
+        $model->inicio = $inicio;
+        $model->observaciones = $observaciones;
+        $model->duracion = $duracion;
+
+        if ($model->duracion) {
+            $model->duracion = "{$model->duracion} days";
+        }
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'Se ha registrado el nuevo tratamiento.');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha podido registrar el nuevo tratamiento.');
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['/animales/view', 'id' => $model->animal_id]);
     }
+
 
     /**
      * Updates an existing Tratamientos model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -98,21 +113,29 @@ class TratamientosController extends Controller
     /**
      * Deletes an existing Tratamientos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
 
-        return $this->redirect(['index']);
+        $animal_id = $model->animal_id;
+
+        if ($model->delete()) {
+            Yii::$app->session->setFlash('success', 'No se ha llevado a cabo la acción requerida');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha podido llevar a cabo la acción');
+        }
+
+        return $this->redirect(['/animales/view', 'id' => $model->animal_id]);
     }
 
     /**
      * Finds the Tratamientos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param int $id
      * @return Tratamientos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
