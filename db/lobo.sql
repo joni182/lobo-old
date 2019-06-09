@@ -10,7 +10,7 @@ CREATE TABLE roles
     , nombre VARCHAR(255) UNIQUE
 );
 
-INSERT INTO usuarios (nombre)
+INSERT INTO roles (nombre)
      VALUES ('admin')
           , ('usuario')
           , ('visitante');
@@ -37,16 +37,18 @@ CREATE TABLE usuarios_info
     , access_token     VARCHAR(255)
     , validate_token   VARCHAR(255)
     , validated_at     TIMESTAMP
-    , rol_id           BIGINT
+    , rol_id           BIGINT DEFAULT 3
 );
 
-INSERT INTO usuarios ()
-     VALUES ()
-          , ();
+INSERT INTO usuarios (id)
+     VALUES (1)
+          , (2)
+          , (3);
 
-INSERT INTO usuarios_info (login, password, usuario_id, nombre, primer_apellido, segundo_apellido, email, validated_at)
-     VALUES ('pepe', crypt('pepe', gen_salt('bf', 10)), 1, 'Pepe', 'Dominguez', 'Perez', 'pepe@pepe.com', current_timestamp)
-          , ('admin', crypt('admin', gen_salt('bf', 10)), 2, 'Adim', 'Jefe', 'Supremo', 'admin@admin.com', current_timestamp);
+INSERT INTO usuarios_info (login, password, usuario_id, nombre, primer_apellido, segundo_apellido, email, validated_at, rol_id)
+     VALUES ('pepe', crypt('pepe', gen_salt('bf', 10)), 1, 'Pepe', 'Dominguez', 'Perez', 'pepe@pepe.com', current_timestamp, 3)
+          , ('joni', crypt('joni', gen_salt('bf', 10)), 2, 'Joni', 'Cere', 'Lopez', 'joni@joni.com', current_timestamp, 2)
+          , ('admin', crypt('admin', gen_salt('bf', 10)), 3, 'Adim', 'Jefe', 'Supremo', 'admin@admin.com', current_timestamp, 1);
 
 DROP TABLE IF EXISTS colores CASCADE;
 
