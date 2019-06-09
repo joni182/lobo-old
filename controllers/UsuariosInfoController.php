@@ -28,6 +28,31 @@ class UsuariosInfoController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                       'allow' => true,
+                       'matchCallback' => function ($rule, $action) {
+                           return Yii::$app->user->identity !== null && Yii::$app->user->identity->rol_id == 1;
+                       },
+                    ],
+                    [
+                       'allow' => false,
+                       'actions' => ['index', 'view', 'delete', 'create'],
+                       'matchCallback' => function ($rule, $action) {
+                           return Yii::$app->user->identity !== null && Yii::$app->user->identity->rol_id == 3;
+                       },
+                    ],
+                    [
+                       'allow' => true,
+                       'actions' => ['update'],
+                       'matchCallback' => function ($rule, $action) {
+                           return Yii::$app->user->identity !== null && in_array(Yii::$app->user->identity->rol_id, [2, 3]);
+                       },
+                    ],
+                ],
+            ],
         ];
     }
 

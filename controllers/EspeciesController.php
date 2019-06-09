@@ -5,30 +5,13 @@ namespace app\controllers;
 use app\models\Especies;
 use app\models\EspeciesSearch;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * EspeciesController implements the CRUD actions for Especies model.
  */
-class EspeciesController extends Controller
+class EspeciesController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Especies models.
      * @return mixed

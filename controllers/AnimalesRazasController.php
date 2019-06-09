@@ -6,30 +6,13 @@ use app\models\Animales;
 use app\models\AnimalesRazas;
 use app\models\AnimalesRazasSearch;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * AnimalesRazasController implements the CRUD actions for AnimalesRazas model.
  */
-class AnimalesRazasController extends Controller
+class AnimalesRazasController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all AnimalesRazas models.
      * @return mixed

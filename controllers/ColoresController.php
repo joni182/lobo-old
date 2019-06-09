@@ -5,30 +5,13 @@ namespace app\controllers;
 use app\models\Colores;
 use app\models\ColoresSearch;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * ColoresController implements the CRUD actions for Colores model.
  */
-class ColoresController extends Controller
+class ColoresController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Colores models.
      * @return mixed

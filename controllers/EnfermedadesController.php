@@ -6,30 +6,13 @@ use app\models\Enfermedades;
 use app\models\EnfermedadesSearch;
 use app\models\EnfermedadesSintomas;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * EnfermedadesController implements the CRUD actions for Enfermedades model.
  */
-class EnfermedadesController extends Controller
+class EnfermedadesController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Enfermedades models.
      * @return mixed

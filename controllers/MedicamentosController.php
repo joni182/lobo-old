@@ -5,30 +5,13 @@ namespace app\controllers;
 use app\models\Medicamentos;
 use app\models\MedicamentosSearch;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * MedicamentosController implements the CRUD actions for Medicamentos model.
  */
-class MedicamentosController extends Controller
+class MedicamentosController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Medicamentos models.
      * @return mixed

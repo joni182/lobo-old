@@ -7,54 +7,19 @@ use app\models\Animales;
 use app\models\AnimalesColores;
 use app\models\AnimalesEnfermedades;
 use app\models\AnimalesRazas;
-use app\models\AnimalesSearch;
 use app\models\Especies;
 use app\models\Medicamentos;
 use app\models\Tratamientos;
 use Yii;
-use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\httpclient\Client;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * AnimalesController implements the CRUD actions for Animales model.
  */
-class AnimalesController extends Controller
+class AnimalesController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * Lists all Animales models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new AnimalesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-
-        return $this->render('index', [
-            'especies' => Especies::todas(),
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
     /**
      * Displays a single Animales model.
      * @param int $id
