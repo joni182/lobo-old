@@ -230,4 +230,20 @@ select Razas.*
 EOT;
         return Razas::findBySql($sql, [':animal_id' => $this->id, ':especie_id' => $this->especie_id])->all();
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVacunaciones()
+    {
+        return $this->hasMany(Vacunaciones::className(), ['animal_id' => 'id'])->inverseOf('animal')->orderBy('vacunaciones.fecha');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVacunas()
+    {
+        return $this->hasMany(Vacunas::className(), ['id' => 'medicamento_id'])->viaTable('vacunaciones', ['animal_id' => 'id'])->orderBy('vacunas.vacuna');
+    }
 }

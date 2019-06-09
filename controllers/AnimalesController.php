@@ -11,6 +11,8 @@ use app\models\AnimalesSearch;
 use app\models\Especies;
 use app\models\Medicamentos;
 use app\models\Tratamientos;
+use app\models\Vacunaciones;
+use app\models\Vacunas;
 use Yii;
 use yii\helpers\Url;
 use yii\httpclient\Client;
@@ -54,6 +56,8 @@ class AnimalesController extends ControllerControlAccess
             'imagenes' => $imagenes,
             'tratamiento' => new Tratamientos(['animal_id' => $model->id]),
             'listaMedicamentos' => Medicamentos::todas(),
+            'vacunacion' => new Vacunaciones(['animal_id' => $model->id]),
+            'vacunas' => Vacunas::todas(),
         ]);
     }
 

@@ -8,7 +8,7 @@ use yii\helpers\Html;
 ?>
 <div class="tratamientos-create">
 
-    <h4>Requistrar un tratamiento </h4>(<a href="<?= Url::to(['medicamentos/index']) ?>">Ir a Medicamentos</a>)
+(<a href="<?= Url::to(['medicamentos/index']) ?>">Ir a Medicamentos</a>)
 
     <?= $this->render('_form', [
         'model' => $model,
