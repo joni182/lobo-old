@@ -19,7 +19,8 @@ DROP TABLE IF EXISTS usuarios CASCADE;
 
 CREATE TABLE usuarios
 (
-      id BIGSERIAL PRIMARY KEY
+      id      BIGSERIAL  PRIMARY KEY
+    , control VARCHAR(7)
 );
 
 DROP TABLE IF EXISTS usuarios_info CASCADE;
@@ -27,7 +28,9 @@ DROP TABLE IF EXISTS usuarios_info CASCADE;
 CREATE TABLE usuarios_info
 (
       id               BIGSERIAL    PRIMARY KEY
-    , usuario_id       BIGINT       UNIQUE
+    , usuario_id       BIGINT       REFERENCES usuarios(id)
+                                    ON UPDATE CASCADE
+                                    ON DELETE SET NULL
     , nombre           VARCHAR(255)
     , primer_apellido  VARCHAR(255)
     , segundo_apellido VARCHAR(255)
@@ -35,15 +38,16 @@ CREATE TABLE usuarios_info
     , password         VARCHAR(255) NOT NULL
     , email            VARCHAR(255) NOT NULL UNIQUE
     , access_token     VARCHAR(255)
+    , auth_key         VARCHAR(255)
     , validate_token   VARCHAR(255)
     , validated_at     TIMESTAMP
     , rol_id           BIGINT DEFAULT 3
 );
 
-INSERT INTO usuarios (id)
-     VALUES (1)
-          , (2)
-          , (3);
+INSERT INTO usuarios (control)
+     VALUES ('control')
+          , ('control')
+          , ('control');
 
 INSERT INTO usuarios_info (login, password, usuario_id, nombre, primer_apellido, segundo_apellido, email, validated_at, rol_id)
      VALUES ('pepe', crypt('pepe', gen_salt('bf', 10)), 1, 'Pepe', 'Dominguez', 'Perez', 'pepe@pepe.com', current_timestamp, 3)

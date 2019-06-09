@@ -271,6 +271,12 @@ body {
   height: 35rem;
   display: flex;
 }
+
+.flex {
+    width: 100%;
+  display: flex;
+}
+
 .center-h {
   justify-content: center;
 }
