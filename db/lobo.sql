@@ -2,18 +2,51 @@
 -- Archivo de base de datos --
 ------------------------------
 
+DROP TABLE IF EXISTS roles CASCADE;
+
+CREATE TABLE roles
+(
+      id     BIGSERIAL    PRIMARY KEY
+    , nombre VARCHAR(255) UNIQUE
+);
+
+INSERT INTO usuarios (nombre)
+     VALUES ('admin')
+          , ('usuario')
+          , ('visitante');
+
 DROP TABLE IF EXISTS usuarios CASCADE;
 
 CREATE TABLE usuarios
 (
+      id BIGSERIAL PRIMARY KEY
+);
+
+DROP TABLE IF EXISTS usuarios_info CASCADE;
+
+CREATE TABLE usuarios_info
+(
       id               BIGSERIAL    PRIMARY KEY
+    , usuario_id       BIGINT       UNIQUE
     , nombre           VARCHAR(255)
     , primer_apellido  VARCHAR(255)
     , segundo_apellido VARCHAR(255)
     , login            VARCHAR(255) NOT NULL UNIQUE
     , password         VARCHAR(255) NOT NULL
     , email            VARCHAR(255) NOT NULL UNIQUE
+    , access_token     VARCHAR(255)
+    , validate_token   VARCHAR(255)
+    , validated_at     TIMESTAMP
+    , rol_id           BIGINT
 );
+
+INSERT INTO usuarios ()
+     VALUES ()
+          , ();
+
+INSERT INTO usuarios_info (login, password, usuario_id, nombre, primer_apellido, segundo_apellido, email, validated_at)
+     VALUES ('pepe', crypt('pepe', gen_salt('bf', 10)), 1, 'Pepe', 'Dominguez', 'Perez', 'pepe@pepe.com', current_timestamp)
+          , ('admin', crypt('admin', gen_salt('bf', 10)), 2, 'Adim', 'Jefe', 'Supremo', 'admin@admin.com', current_timestamp);
 
 DROP TABLE IF EXISTS colores CASCADE;
 
