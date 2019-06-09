@@ -14,9 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Registrar un animal', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php if (Yii::$app->user->identity->rol_id != 3): ?>
+        <p>
+            <?= Html::a('Registrar un animal', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php endif; ?>
+    
     <?php
         $parametros =  [
             'model' => $searchModel,

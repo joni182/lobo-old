@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Personas;
 use app\models\PersonasSearch;
 use Yii;
+use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -12,6 +13,35 @@ use yii\web\NotFoundHttpException;
  */
 class PersonasController extends ControllerControlAccess
 {
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                       'allow' => true,
+                       'matchCallback' => function ($rule, $action) {
+                           return Yii::$app->user->identity !== null && in_array(Yii::$app->user->identity->rol_id, [1, 2]);
+                       },
+                    ],
+                    [
+                       'allow' => false,
+                       'actions' => ['update', 'delete', 'create', 'view', 'index'],
+                       'matchCallback' => function ($rule, $action) {
+                           return Yii::$app->user->identity !== null && Yii::$app->user->identity->rol_id == 3;
+                       },
+                    ],
+                ],
+            ],
+        ];
+    }
     /**
      * Lists all Personas models.
      * @return mixed
