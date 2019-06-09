@@ -7,30 +7,13 @@ use app\models\Razas;
 use app\models\RazasSearch;
 use Exception;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * RazasController implements the CRUD actions for Razas model.
  */
-class RazasController extends Controller
+class RazasController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Razas models.
      * @return mixed

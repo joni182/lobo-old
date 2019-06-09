@@ -8,30 +8,13 @@ use app\models\AnimalesSearch;
 use app\models\Especies;
 use app\models\Personas;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * AcogidasController implements the CRUD actions for Acogidas model.
  */
-class AcogidasController extends Controller
+class AcogidasController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Acogidas models.
      * @return mixed

@@ -13,46 +13,57 @@ use kartik\number\NumberControl;
 <div class="animales-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-sm-3">
+            <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'peso')->widget(NumberControl::class, [
+                'maskedInputOptions' => [
+                    'suffix' => ' Kg',
+                    'allowMinus' => false,
+                    'groupSeparator' => '',
+                    'radixPoint' => ',',
+                    'min' => 0,
+                    'max' => 9999,
+                ],
+            ])
+            ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(), [
+                'type' => DatePicker::TYPE_COMPONENT_APPEND,
+                'pluginOptions' => [
+                    'autoclose'=>true,
+                    'format' => 'yyyy-mm-dd'
+                ]
+                ]) ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'especie_id')->dropDownList($especies) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <?= $form->field($model, 'chip')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-12 flex center-h">
+            <?= $form->field($model, 'ppp')->checkbox() ?>
+        </div>
+        <div class="col-sm-12 flex center-h">
+            <?= $form->field($model, 'esterilizado')->checkbox() ?>
+        </div>
+        <div class="col-sm-12 flex center-h">
+            <?= $form->field($model, 'sexo')->radioList([
+                'h' => 'Hembra',
+                'm' => 'Macho',
+                ]) ?>
+        </div>
 
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    </div>
+    <?= $form->field($model, 'observaciones')->textarea(['rows' => 3]) ?>
 
-    <?= $form->field($model, 'peso')->widget(NumberControl::class, [
-            'maskedInputOptions' => [
-                'suffix' => ' Kg',
-                'allowMinus' => false,
-                'groupSeparator' => '',
-                'radixPoint' => ',',
-                'min' => 0,
-                'max' => 9999,
-            ],
-        ])
-    ?>
-
-    <?= $form->field($model, 'nacimiento')->widget(DatePicker::className(), [
-        'type' => DatePicker::TYPE_COMPONENT_APPEND,
-        'pluginOptions' => [
-            'autoclose'=>true,
-            'format' => 'yyyy-mm-dd'
-        ]
-        ]) ?>
-
-    <?= $form->field($model, 'chip')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'especie_id')->dropDownList($especies) ?>
-
-
-    <?= $form->field($model, 'ppp')->checkbox() ?>
-
-    <?= $form->field($model, 'esterilizado')->checkbox() ?>
-
-    <?= $form->field($model, 'sexo')->radioList([
-        'h' => 'Hembra',
-        'm' => 'Macho',
-        ]) ?>
-
-    <?= $form->field($model, 'observaciones')->textarea(['rows' => 6]) ?>
-
-    <div class="form-group">
+    <div class="form-group  flex center-h">
         <?= Html::submitButton('Siguiente >', ['class' => 'btn btn-success']) ?>
     </div>
 

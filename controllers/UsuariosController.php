@@ -2,23 +2,23 @@
 
 namespace app\controllers;
 
-use app\models\Especies;
-use app\models\EspeciesSearch;
+use app\models\Usuarios;
+use app\models\UsuariosSearch;
 use Yii;
 use yii\web\NotFoundHttpException;
 
 /**
- * EspeciesController implements the CRUD actions for Especies model.
+ * UsuariosController implements the CRUD actions for Usuarios model.
  */
-class EspeciesController extends ControllerControlAccess
+class UsuariosController extends ControllerControlAccess
 {
     /**
-     * Lists all Especies models.
+     * Lists all Usuarios models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EspeciesSearch();
+        $searchModel = new UsuariosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -28,7 +28,7 @@ class EspeciesController extends ControllerControlAccess
     }
 
     /**
-     * Displays a single Especies model.
+     * Displays a single Usuarios model.
      * @param int $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -41,16 +41,16 @@ class EspeciesController extends ControllerControlAccess
     }
 
     /**
-     * Creates a new Especies model.
+     * Creates a new Usuarios model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Especies();
+        $model = new Usuarios();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -59,7 +59,7 @@ class EspeciesController extends ControllerControlAccess
     }
 
     /**
-     * Updates an existing Especies model.
+     * Updates an existing Usuarios model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id
      * @return mixed
@@ -79,7 +79,7 @@ class EspeciesController extends ControllerControlAccess
     }
 
     /**
-     * Deletes an existing Especies model.
+     * Deletes an existing Usuarios model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id
      * @return mixed
@@ -93,15 +93,15 @@ class EspeciesController extends ControllerControlAccess
     }
 
     /**
-     * Finds the Especies model based on its primary key value.
+     * Finds the Usuarios model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id
-     * @return Especies the loaded model
+     * @return Usuarios the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Especies::findOne($id)) !== null) {
+        if (($model = Usuarios::findOne($id)) !== null) {
             return $model;
         }
 

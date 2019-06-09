@@ -67,6 +67,6 @@ class Medicamentos extends \yii\db\ActiveRecord
 
     public static function todas()
     {
-        return static::find()->select('medicamento')->indexBy('id')->column();
+        return static::find()->select(["CONCAT(medicamento,'(',principio,')')"])->indexBy('id')->column();
     }
 }

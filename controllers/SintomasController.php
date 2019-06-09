@@ -6,30 +6,13 @@ use app\models\EnfermedadesSintomas;
 use app\models\Sintomas;
 use app\models\SintomasSearch;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * SintomasController implements the CRUD actions for Sintomas model.
  */
-class SintomasController extends Controller
+class SintomasController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Sintomas models.
      * @return mixed

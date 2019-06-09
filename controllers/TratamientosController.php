@@ -7,30 +7,13 @@ use app\models\Medicamentos;
 use app\models\Tratamientos;
 use app\models\TratamientosSearch;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * TratamientosController implements the CRUD actions for Tratamientos model.
  */
-class TratamientosController extends Controller
+class TratamientosController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Tratamientos models.
      * @return mixed

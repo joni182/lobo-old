@@ -12,32 +12,15 @@ use app\models\Especies;
 use app\models\Medicamentos;
 use app\models\Tratamientos;
 use Yii;
-use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\httpclient\Client;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * AnimalesController implements the CRUD actions for Animales model.
  */
-class AnimalesController extends Controller
+class AnimalesController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Animales models.
      * @return mixed

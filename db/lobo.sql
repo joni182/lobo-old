@@ -2,18 +2,57 @@
 -- Archivo de base de datos --
 ------------------------------
 
+DROP TABLE IF EXISTS roles CASCADE;
+
+CREATE TABLE roles
+(
+      id     BIGSERIAL    PRIMARY KEY
+    , nombre VARCHAR(255) UNIQUE
+);
+
+INSERT INTO roles (nombre)
+     VALUES ('admin')
+          , ('usuario')
+          , ('visitante');
+
 DROP TABLE IF EXISTS usuarios CASCADE;
 
 CREATE TABLE usuarios
 (
+      id      BIGSERIAL  PRIMARY KEY
+    , control VARCHAR(7)
+);
+
+DROP TABLE IF EXISTS usuarios_info CASCADE;
+
+CREATE TABLE usuarios_info
+(
       id               BIGSERIAL    PRIMARY KEY
+    , usuario_id       BIGINT       REFERENCES usuarios(id)
+                                    ON UPDATE CASCADE
+                                    ON DELETE SET NULL
     , nombre           VARCHAR(255)
     , primer_apellido  VARCHAR(255)
     , segundo_apellido VARCHAR(255)
     , login            VARCHAR(255) NOT NULL UNIQUE
     , password         VARCHAR(255) NOT NULL
     , email            VARCHAR(255) NOT NULL UNIQUE
+    , access_token     VARCHAR(255)
+    , auth_key         VARCHAR(255)
+    , validate_token   VARCHAR(255)
+    , validated_at     TIMESTAMP
+    , rol_id           BIGINT DEFAULT 3
 );
+
+INSERT INTO usuarios (control)
+     VALUES ('control')
+          , ('control')
+          , ('control');
+
+INSERT INTO usuarios_info (login, password, usuario_id, nombre, primer_apellido, segundo_apellido, email, validated_at, rol_id)
+     VALUES ('pepe', crypt('pepe', gen_salt('bf', 10)), 1, 'Pepe', 'Dominguez', 'Perez', 'pepe@pepe.com', current_timestamp, 3)
+          , ('joni', crypt('joni', gen_salt('bf', 10)), 2, 'Joni', 'Cere', 'Lopez', 'joni@joni.com', current_timestamp, 2)
+          , ('admin', crypt('admin', gen_salt('bf', 10)), 3, 'Adim', 'Jefe', 'Supremo', 'admin@admin.com', current_timestamp, 1);
 
 DROP TABLE IF EXISTS colores CASCADE;
 

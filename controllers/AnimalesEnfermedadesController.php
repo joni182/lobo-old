@@ -7,30 +7,13 @@ use app\models\AnimalesEnfermedades;
 use app\models\AnimalesEnfermedadesSearch;
 use app\models\Enfermedades;
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * AnimalesEnfermedadesController implements the CRUD actions for AnimalesEnfermedades model.
  */
-class AnimalesEnfermedadesController extends Controller
+class AnimalesEnfermedadesController extends ControllerControlAccess
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all AnimalesEnfermedades models.
      * @return mixed
