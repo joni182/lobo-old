@@ -364,7 +364,8 @@ DROP TABLE IF EXISTS vacunaciones CASCADE;
 
 CREATE TABLE vacunaciones
 (
-      vacuna_id BIGINT    NOT NULL
+      id        BIGSERIAL PRIMARY KEY
+    , vacuna_id BIGINT    NOT NULL
                               REFERENCES vacunas(id)
                               ON UPDATE CASCADE
                               ON DELETE NO ACTION
@@ -373,7 +374,7 @@ CREATE TABLE vacunaciones
                               ON UPDATE CASCADE
                               ON DELETE NO ACTION
     , fecha         TIMESTAMP DEFAULT LOCALTIMESTAMP
-    , PRIMARY KEY(vacuna_id, animal_id, fecha)
+    , UNIQUE(vacuna_id, animal_id, fecha)
 );
 
 DROP TABLE IF EXISTS medicamentos CASCADE;

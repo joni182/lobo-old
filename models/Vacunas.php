@@ -32,7 +32,7 @@ class Vacunas extends \yii\db\ActiveRecord
     {
         return [
             [['vacuna'], 'required'],
-            [['dosis'], 'default', 'value' => null],
+            [['dosis', 'entre_dosis', 'observaciones'], 'default', 'value' => null],
             [['dosis'], 'integer'],
             [['entre_dosis', 'periodicidad', 'observaciones'], 'string'],
             [['vacuna'], 'string', 'max' => 255],

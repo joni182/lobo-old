@@ -149,15 +149,15 @@ $this->registerJs($js);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($model->getVacunaciones()->orderBy('fecha', 'DESC')->all() as $value): ?>
+                        <?php foreach ($model->getVacunaciones()->orderBy('fecha', 'ASC')->all() as $value): ?>
                             <tr class="">
                                 <td><?= $value->vacuna->vacuna ?></td>
                                 <td><?= Yii::$app->formatter->asDate($value->fecha) ?></td>
                                 <?php if (Yii::$app->user->identity->rol_id != 3): ?>
                                     <td>
-                                        <?= Html::a('Modificar', ['vacunacciones/update', 'animal_id' => $value->animal_id, 'vacuna_id' => $value->vacuna_id, 'fecha' => $value->fecha], ['class' => 'btn btn-info btn-xs btn-default']) ?>
+                                        <?= Html::a('Modificar', ['vacunaciones/update', 'id' => $value->id], ['class' => 'btn btn-info btn-xs btn-default']) ?>
 
-                                        <?= Html::a('Borrar', ['vacunacciones/delete', 'animal_id' => $value->animal_id, 'vacuna_id' => $value->vacuna_id, 'fecha' => $value->fecha], [
+                                        <?= Html::a('Borrar', ['vacunaciones/delete', 'id' => $value->id], [
                                             'class' => 'btn btn-xs btn-danger',
                                             'data' => [
                                                 'confirm' => '¿Sequro que quieres borrar?',
@@ -215,7 +215,7 @@ $this->registerJs($js);
                             12 => 'Cada 2H',
                             24 => 'Cada 1H',
                         ];
-                        foreach ($model->getTratamientos()->orderBy('inicio', 'DESC')->all() as $value):
+                        foreach ($model->getTratamientos()->orderBy('inicio', 'ASC')->all() as $value):
 
                             $activo = false;
                             $ahora = new \DateTime('now');
@@ -237,7 +237,6 @@ $this->registerJs($js);
                             <tr class="<?= $activo ? 'danger' : '' ?>">
                                 <td><?= $value->medicamento->medicamento.'('.$value->medicamento->principio.')' ?></td>
                                 <td><?= Yii::$app->formatter->asDate($value->inicio) ?></td>
-                                <!-- <td><?php // echo Yii::$app->formatter->asDuration($value->duracion) ?></td> -->
                                 <td><?= Yii::$app->formatter->asDate(isset($fin) ? $fin->format('y-m-d') : null) ?></td>
                                 <td><?= $cada_cuantas_horas[$value->veces_por_dia] ?></td>
                                 <td><?= $value->dosis ?></td>
