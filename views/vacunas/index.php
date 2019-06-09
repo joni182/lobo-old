@@ -13,29 +13,25 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="vacunas-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Vacunas', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <fieldset>
+        <legend>Registrar vacuna</legend>
+        <?= $this->render('create',['model' => $model]) ?>
+    </fieldset>
+    <fieldset>
+        <legend>Lista vacunas</legend>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'vacuna',
             'dosis',
-            'entre_dosis',
-            'periodicidad',
-            //'observaciones:ntext',
-
+            'entre_dosis:duration',
+            // 'periodicidad:duration',
+            'observaciones:ntext',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
+</fieldset>
 
 </div>

@@ -1,20 +1,20 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Vacunaciones */
 
-$this->title = 'Create Vacunaciones';
-$this->params['breadcrumbs'][] = ['label' => 'Vacunaciones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="vacunaciones-create">
+    (<a href="<?= Url::to(['vacunas/index']) ?>">Ir a Vacunas</a>)
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
+        'url' => ['action' => ['vacunaciones/create']],
         'model' => $model,
+        'vacunas' => $vacunas,
     ]) ?>
 
 </div>

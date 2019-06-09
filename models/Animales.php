@@ -236,7 +236,7 @@ EOT;
      */
     public function getVacunaciones()
     {
-        return $this->hasMany(Vacunaciones::className(), ['animal_id' => 'id'])->inverseOf('animal');
+        return $this->hasMany(Vacunaciones::className(), ['animal_id' => 'id'])->inverseOf('animal')->orderBy('vacunaciones.fecha');
     }
 
     /**
@@ -244,6 +244,6 @@ EOT;
      */
     public function getVacunas()
     {
-        return $this->hasMany(Vacunas::className(), ['id' => 'medicamento_id'])->viaTable('vacunaciones', ['animal_id' => 'id']);
+        return $this->hasMany(Vacunas::className(), ['id' => 'medicamento_id'])->viaTable('vacunaciones', ['animal_id' => 'id'])->orderBy('vacunas.vacuna');
     }
 }

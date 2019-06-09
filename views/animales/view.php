@@ -132,81 +132,137 @@ $this->registerJs($js);
     <br>
     <h3>Información Veterinária</h3>
     <hr>
+    <!-- Vacunaciones   -->
+    <fieldset>
+        <legend>Vacunaciones</legend>
+        <fieldset>
+            <legend>Historial</legend>
+            <div class="tabla-tratamientos">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Vacuna</th>
+                            <th>Fecha</th>
+                            <?php if (Yii::$app->user->identity->rol_id != 3): ?>
+                                <th>Acciones</th>
+                            <?php endif; ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($model->getVacunaciones()->orderBy('fecha', 'DESC')->all() as $value): ?>
+                            <tr class="">
+                                <td><?= $value->vacuna->vacuna ?></td>
+                                <td><?= Yii::$app->formatter->asDate($value->fecha) ?></td>
+                                <?php if (Yii::$app->user->identity->rol_id != 3): ?>
+                                    <td>
+                                        <?= Html::a('Modificar', ['vacunacciones/update', 'animal_id' => $value->animal_id, 'vacuna_id' => $value->vacuna_id, 'fecha' => $value->fecha], ['class' => 'btn btn-info btn-xs btn-default']) ?>
+
+                                        <?= Html::a('Borrar', ['vacunacciones/delete', 'animal_id' => $value->animal_id, 'vacuna_id' => $value->vacuna_id, 'fecha' => $value->fecha], [
+                                            'class' => 'btn btn-xs btn-danger',
+                                            'data' => [
+                                                'confirm' => '¿Sequro que quieres borrar?',
+                                                'method' => 'post',
+                                            ],
+                                            ]) ?>
+                                        </td>
+                                    <?php endif; ?>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+        </fieldset>
+        <fieldset>
+            <legend>Registrar vacunación</legend>
+            <?php if (Yii::$app->user->identity->rol_id != 3): ?>
+                <?php if (Yii::$app->user->identity->rol_id != 3): ?>
+                    <?= $this->render('/vacunaciones/create', ['model' => $vacunacion, 'vacunas' => $vacunas]) ?>
+                <?php endif; ?>
+            <?php endif; ?>
+        </fieldset>
+
+    </fieldset>
+    <!-- Fin Vacunaciones   -->
+
     <!-- Tratamientos   -->
     <fieldset>
         <legend>Tratamientos</legend>
-
-        <div class="tabla-tratamientos">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Medicamento</th>
-                        <th>Inicio</th>
-                        <!-- <th>Duración</th> -->
-                        <th>Fin</th>
-                        <th>Pauta</th>
-                        <th>Dosis</th>
-                        <th>Observaciones</th>
-                        <th>Borrar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $cada_cuantas_horas = [
-                        1 => 'Cada 24H',
-                        2 => 'Cada 12H',
-                        3 => 'Cada 8H',
-                        4 => 'Cada 6H',
-                        6 => 'Cada 4H',
-                        8 => 'Cada 3H',
-                        12 => 'Cada 2H',
-                        24 => 'Cada 1H',
-                    ];
-                    foreach ($model->getTratamientos()->orderBy('inicio', 'DESC')->all() as $value):
-
-                        $activo = false;
-                        $ahora = new \DateTime('now');
-                        $inicio = new \DateTime($value->inicio);
-                        $fin = null;
-
-                        if ($value->duracion === null ) {
-                            if ($inicio < $ahora) {
-                                $activo = true;
-                            }
-                        } else {
-                            $fin = (new \DateTime($value->inicio))->add(new \DateInterval($value->duracion));
-                            if ($inicio < $ahora && $ahora  < $fin ) {
-                                $activo = true;
-                            }
-                        }
-
-                        ?>
-                        <tr class="<?= $activo ? 'danger' : '' ?>">
-                            <td><?= $value->medicamento->medicamento.'('.$value->medicamento->principio.')' ?></td>
-                            <td><?= Yii::$app->formatter->asDate($value->inicio) ?></td>
-                            <!-- <td><?php // echo Yii::$app->formatter->asDuration($value->duracion) ?></td> -->
-                            <td><?= Yii::$app->formatter->asDate(isset($fin) ? $fin->format('y-m-d') : null) ?></td>
-                            <td><?= $cada_cuantas_horas[$value->veces_por_dia] ?></td>
-                            <td><?= $value->dosis ?></td>
-                            <td><?= $value->observaciones ?></td>
-                            <td>
-                                <?= Html::a('Borrar', ['tratamientos/delete', 'id' => $value->id], [
-                                'class' => 'btn btn-xs btn-danger',
-                                'data' => [
-                                'confirm' => '¿Sequro que quieres borrar?',
-                                'method' => 'post',
-                                ],
-                                ]) ?>
-                            </td>
+        <fieldset>
+            <legend>Historial</legend>
+            <div class="tabla-tratamientos">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Medicamento</th>
+                            <th>Inicio</th>
+                            <!-- <th>Duración</th> -->
+                            <th>Fin</th>
+                            <th>Pauta</th>
+                            <th>Dosis</th>
+                            <th>Observaciones</th>
+                            <th>Borrar</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $cada_cuantas_horas = [
+                            1 => 'Cada 24H',
+                            2 => 'Cada 12H',
+                            3 => 'Cada 8H',
+                            4 => 'Cada 6H',
+                            6 => 'Cada 4H',
+                            8 => 'Cada 3H',
+                            12 => 'Cada 2H',
+                            24 => 'Cada 1H',
+                        ];
+                        foreach ($model->getTratamientos()->orderBy('inicio', 'DESC')->all() as $value):
 
-        <?php if (Yii::$app->user->identity->rol_id != 3): ?>
-            <?= $this->render('/tratamientos/create', ['model' => $tratamiento, 'listaMedicamentos' => $listaMedicamentos]) ?>
-        <?php endif; ?>
+                            $activo = false;
+                            $ahora = new \DateTime('now');
+                            $inicio = new \DateTime($value->inicio);
+                            $fin = null;
+
+                            if ($value->duracion === null ) {
+                                if ($inicio < $ahora) {
+                                    $activo = true;
+                                }
+                            } else {
+                                $fin = (new \DateTime($value->inicio))->add(new \DateInterval($value->duracion));
+                                if ($inicio < $ahora && $ahora  < $fin ) {
+                                    $activo = true;
+                                }
+                            }
+
+                            ?>
+                            <tr class="<?= $activo ? 'danger' : '' ?>">
+                                <td><?= $value->medicamento->medicamento.'('.$value->medicamento->principio.')' ?></td>
+                                <td><?= Yii::$app->formatter->asDate($value->inicio) ?></td>
+                                <!-- <td><?php // echo Yii::$app->formatter->asDuration($value->duracion) ?></td> -->
+                                <td><?= Yii::$app->formatter->asDate(isset($fin) ? $fin->format('y-m-d') : null) ?></td>
+                                <td><?= $cada_cuantas_horas[$value->veces_por_dia] ?></td>
+                                <td><?= $value->dosis ?></td>
+                                <td><?= $value->observaciones ?></td>
+                                <td>
+                                    <?= Html::a('Borrar', ['tratamientos/delete', 'id' => $value->id], [
+                                    'class' => 'btn btn-xs btn-danger',
+                                    'data' => [
+                                    'confirm' => '¿Sequro que quieres borrar?',
+                                    'method' => 'post',
+                                    ],
+                                    ]) ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Registrar tratamiento</legend>
+            <?php if (Yii::$app->user->identity->rol_id != 3): ?>
+                <?= $this->render('/tratamientos/create', ['model' => $tratamiento, 'listaMedicamentos' => $listaMedicamentos]) ?>
+            <?php endif; ?>
+        </fieldset>
 
     </fieldset>
     <!-- Fin Tratamientos   -->
@@ -215,6 +271,7 @@ $this->registerJs($js);
     <!-- Enfermedades -->
     <fieldset>
         <legend>Enfermedades</legend>
+
 
         <?php if (Yii::$app->user->identity->rol_id != 3): ?>
             <?= Html::a('Asignar enfermedad', ['animales-enfermedades/create', 'animal_id' => $model->id], ['class' => 'btn btn-primary']) ?>

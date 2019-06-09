@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "vacunaciones".
  *
@@ -34,9 +32,9 @@ class Vacunaciones extends \yii\db\ActiveRecord
             [['vacuna_id', 'animal_id'], 'default', 'value' => null],
             [['vacuna_id', 'animal_id'], 'integer'],
             [['fecha'], 'safe'],
-            [['vacuna_id', 'animal_id'], 'unique', 'targetAttribute' => ['vacuna_id', 'animal_id']],
-            [['vacuna_id'], 'exist', 'skipOnError' => true, 'targetClass' => Enfermedades::className(), 'targetAttribute' => ['vacuna_id' => 'id']],
-            [['animal_id'], 'exist', 'skipOnError' => true, 'targetClass' => Vacunas::className(), 'targetAttribute' => ['animal_id' => 'id']],
+            [['vacuna_id', 'animal_id', 'fecha'], 'unique', 'targetAttribute' => ['vacuna_id', 'animal_id', 'fecha']],
+            [['vacuna_id'], 'exist', 'skipOnError' => true, 'targetClass' => Vacunas::className(), 'targetAttribute' => ['vacuna_id' => 'id']],
+            [['animal_id'], 'exist', 'skipOnError' => true, 'targetClass' => Animales::className(), 'targetAttribute' => ['animal_id' => 'id']],
         ];
     }
 
@@ -46,7 +44,7 @@ class Vacunaciones extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'vacuna_id' => 'Vacuna ID',
+            'vacuna_id' => 'Vacuna',
             'animal_id' => 'Animal ID',
             'fecha' => 'Fecha',
         ];
@@ -57,7 +55,7 @@ class Vacunaciones extends \yii\db\ActiveRecord
      */
     public function getVacuna()
     {
-        return $this->hasOne(Enfermedades::className(), ['id' => 'vacuna_id'])->inverseOf('vacunaciones');
+        return $this->hasOne(Vacunas::className(), ['id' => 'vacuna_id'])->inverseOf('vacunaciones');
     }
 
     /**
@@ -65,6 +63,6 @@ class Vacunaciones extends \yii\db\ActiveRecord
      */
     public function getAnimal()
     {
-        return $this->hasOne(Vacunas::className(), ['id' => 'animal_id'])->inverseOf('vacunaciones');
+        return $this->hasOne(Animales::className(), ['id' => 'animal_id'])->inverseOf('vacunaciones');
     }
 }

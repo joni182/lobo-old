@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "vacunas".
  *
@@ -71,5 +69,10 @@ class Vacunas extends \yii\db\ActiveRecord
     public function getVacunas()
     {
         return $this->hasMany(Enfermedades::className(), ['id' => 'vacuna_id'])->viaTable('vacunaciones', ['animal_id' => 'id']);
+    }
+
+    public static function todas()
+    {
+        return static::find()->select('vacuna')->orderBy('vacuna')->indexBy('id')->column();
     }
 }
