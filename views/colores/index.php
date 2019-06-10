@@ -15,24 +15,36 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Colores', ['create'], ['class' => 'btn btn-success']) ?>
+        <fieldset>
+            <legend>Registrar color</legend>
+            <?= $this->render('create',compact('model')) ?>
+        </fieldset>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <fieldset>
+        <legend>Lista</legend>
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                'nombre',
+                [
+                    'attribute' => 'color',
+                    'format' => 'html',
+                    'value' => function ($model) {
+                        return $this->render('_color', ['model' => $model]);
+                    }
+                ],
 
-            'id',
-            'nombre',
-            'color',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'template' => '{update}{delete}'
+                ],
+            ],
+        ]); ?>
+    </fieldset>
 
 
 </div>

@@ -18,10 +18,12 @@ class ColoresController extends ControllerControlAccess
      */
     public function actionIndex()
     {
+        $model = new Colores();
         $searchModel = new ColoresSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -50,12 +52,12 @@ class ColoresController extends ControllerControlAccess
         $model = new Colores();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Se ha llevado a cabo la acción');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha podido llevar a cabo la acción');
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['/colores/index']);
     }
 
     /**
@@ -70,12 +72,12 @@ class ColoresController extends ControllerControlAccess
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Se ha llevado a cabo la acción');
+        } else {
+            Yii::$app->session->setFlash('error', 'No se ha podido llevar a cabo la acción');
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['/colores/index']);
     }
 
     /**

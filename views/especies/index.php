@@ -38,7 +38,7 @@ $('.registrar-raza').click((e)=>{
 EOT;
 $this->registerJs($js);
 
-$this->title = 'Especies';
+$this->title = 'Grupos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="especies-index">

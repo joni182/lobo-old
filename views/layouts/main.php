@@ -48,12 +48,16 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home','url' => ['site/index']],
             ['label' => 'Animales','url' => ['animales/index']],
-            ['label' => 'Personas','url' => ['personas/index']],
-            ['label' => 'colores','url' => ['colores/index']],
-            ['label' => 'razas','url' => ['razas/index']],
-            ['label' => 'especies','url' => ['especies/index']],
-            ['label' => 'Enfermedades', 'url' => ['/enfermedades/index']],
-            ['label' => 'Síntomas', 'url' => ['/sintomas/index']],
+            ['label' => 'Tratamientos','url' => ['tratamientos/index']],
+            ['label' => 'Adopcionens','url' => ['acogidas/index']],
+            [
+                'label' => 'Otros',
+                'items' => [
+                    ['label' => 'Colores','url' => ['colores/index']],
+                    ['label' => 'Grupos','url' => ['especies/index']],
+                    ['label' => 'Enfermedades', 'url' => ['/enfermedades/index']],
+                ],
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

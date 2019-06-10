@@ -15,15 +15,22 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-
-    <?= $form->field($model, 'enfermedad') ?>
-
-    <?= $form->field($model, 'descripcion') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, 'enfermedad') ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'descripcion') ?>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <br>
+                <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+            </div>
+        </div>
     </div>
+
+
 
     <?php ActiveForm::end(); ?>
 
