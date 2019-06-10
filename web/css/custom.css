@@ -288,3 +288,19 @@ body {
     font-size: 1.875rem;
     line-height: 1.8;
 }
+
+span.badge {
+    background-color: cadetblue;
+}
+
+.brand-logo {
+    margin-top: -10px;
+}
+
+nav#w1..navbar-inverse {
+    background-color: #5b0672;
+}
+
+nav#w1.navbar-inverse .active > a {
+    background-color: #af50e5;
+}

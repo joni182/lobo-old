@@ -2,13 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\ContactForm;
+use app\models\LoginForm;
+use app\models\Vacunaciones;
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -23,7 +24,7 @@ class SiteController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'alertas'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -124,5 +125,13 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionAlertas()
+    {
+        $vacunacionesHoy = Vacunaciones::find()->where('fecha::date = now()::date')->orderBy('fecha', 'DESC')->all();
+        $vacunacionesInminentes = Vacunaciones::find()->where("fecha < (now() + '7 days'::interval)  AND fecha > (now() + '1 days'::interval)")->orderBy('fecha', 'DESC')->all();
+
+        return $this->render('/alertas/index', compact(['vacunacionesHoy', 'vacunacionesInminentes']));
     }
 }

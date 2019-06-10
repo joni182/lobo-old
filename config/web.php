@@ -6,6 +6,7 @@ $log = require __DIR__ . '/log.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'lobo',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
