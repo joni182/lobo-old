@@ -3,7 +3,10 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use app\models\Vacunaciones;
+
 use app\widgets\Alert;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -37,17 +40,20 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => '<img src="logo.png" class="pull-left brand-logo"/>',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    $alertas = Vacunaciones::find()->where('fecha::date = now()::date')->orderBy('fecha', 'DESC')->count();
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home','url' => ['site/index']],
             ['label' => 'Animales','url' => ['animales/index']],
+            '<li><a href="'. Url::to(['site/alertas']) .'">Alertas <span class="badge">'. $alertas .'</span></a></li>',
+            ['label' => 'Alertas' . $alertas,'url' => ['site/alertas']],
             ['label' => 'Tratamientos','url' => ['tratamientos/index']],
             ['label' => 'Adopcionens','url' => ['acogidas/index']],
             [
@@ -87,9 +93,8 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left"> Lobo <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 
 </footer>
