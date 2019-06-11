@@ -39,16 +39,23 @@ class UsuariosInfoController extends Controller
                     ],
                     [
                        'allow' => false,
-                       'actions' => ['index', 'view', 'delete', 'create'],
+                       'actions' => ['index', 'view', 'delete'],
                        'matchCallback' => function ($rule, $action) {
                            return Yii::$app->user->identity !== null && Yii::$app->user->identity->rol_id == 3;
                        },
                     ],
                     [
                        'allow' => true,
-                       'actions' => ['update'],
+                       'actions' => ['update', 'create'],
                        'matchCallback' => function ($rule, $action) {
                            return Yii::$app->user->identity !== null && in_array(Yii::$app->user->identity->rol_id, [2, 3]);
+                       },
+                    ],
+                    [
+                       'allow' => true,
+                       'actions' => ['create'],
+                       'matchCallback' => function ($rule, $action) {
+                           return Yii::$app->user->isGuest;
                        },
                     ],
                 ],
@@ -82,6 +89,12 @@ class UsuariosInfoController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function actionCambiarRol()
+    {
+        $usuario = $this->findModel(Yii::$app->request->post('id'));
+        $usuario->rol_id = Yii::$app->request->post('rol_id');
     }
 
     /**

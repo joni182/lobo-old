@@ -61,14 +61,6 @@ use yii\widgets\ActiveForm;
             ])->label(false) ?>
         </div>
 
-        <div class="col-md-6">
-            <?= $form->field($model, 'rol_id')->dropDownList($roles,
-                [
-                    'placeholder' => 'Roles',
-                ]
-            )->label(false) ?>
-        </div>
-
 
         <div class="form-group row flex center-h">
             <?= Html::submitButton('Guardar', ['class' => 'btn btn-success ']) ?>

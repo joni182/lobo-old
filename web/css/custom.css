@@ -278,10 +278,22 @@ span.badge {
     margin-top: -10px;
 }
 
-nav#w1.navbar-inverse {
+nav.navbar-inverse {
     background-color: #5b0672;
 }
 
-nav#w1.navbar-inverse .active > a {
-    background-color: #af50e5;
+.navbar-inverse .navbar-nav > .active > a {
+    background-color: #af50e5 !important;
+}
+
+.btn-success {
+    background-color: #06725b !important;
+    border-color: #06725b;
+}
+.btn-primary {
+    background-color: #5b0672 !important;
+}
+
+.container>ul>li>a {
+    color: #5b0672 !important;
 }
