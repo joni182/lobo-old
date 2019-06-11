@@ -2,8 +2,10 @@
 
 ## Diagramas de clases
 
-Incluir.
+![Diagramas de clases controladores](/home/ubu/controladores.png)
+![Diagramas de clases modelos](/home/ubu/modelos.png)
+
 
 ## Diagramas de estructura lógica de datos
 
-Incluir.
+![estructura lógica de datos](/home/ubu/lobodb.png)
