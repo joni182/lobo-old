@@ -10,15 +10,15 @@ particular) asociadas a esos animales, y poder revisar que vacunas y tratamiento
 ## Objetivos generales
 
 La aplicación debe de poder gestionar usuarios.
-• Se podrán gestionar personas, estas toman el rol adoptante. No confundir con usuarios de la aplicación.
-• Se podrán gestionar animales, los cuales representará a un animal rescatado de la calle y contendrá toda la información relevante para su identificación
-• Se podrán gestionar adopciones, estas son una relación entre personas y       animales y simboliza una tramite de adopción entre un humano y un animal de la protectora
-• Se podrán gestionar medicamentos, estos representa a un medicamento que pudiera usarse en un posible tratamiento para un animal, este contendrán  información relevante sobre su función y uso, así como comentarios útiles de experiencias con tal medicamento
-• Se podrán gestionar tratamientos, estos son una relación entre medicamento y animal. Contendrá ademas fecha de inicio y fin del tratamiento, y dosis diarias del medicamento.
-• Se podrán gestionar vacunas, estos representa a una vacuna como podría ser la de la rabia o la de parvovirosis, esta contendrá información relevante sobre la vacuna: nombre, numero de dosis ...etc.
-• Se generarán alertas automáticas para avisar de vacunaciones.
-• Se podrá consultar la medicación para un día especifico, ya sea para el total de animales como para uno en concreto
-• Cada animal podrá tener un catálogo de fotos
+- Se podrán gestionar personas, estas toman el rol adoptante. No confundir con usuarios de la aplicación.
+- Se podrán gestionar animales, los cuales representará a un animal rescatado de la calle y contendrá toda la información relevante para su identificación
+- Se podrán gestionar adopciones, estas son una relación entre personas y       animales y simboliza una tramite de adopción entre un humano y un animal de la protectora
+- Se podrán gestionar medicamentos, estos representa a un medicamento que pudiera usarse en un posible tratamiento para un animal, este contendrán  información relevante sobre su función y uso, así como comentarios útiles de experiencias con tal medicamento
+- Se podrán gestionar tratamientos, estos son una relación entre medicamento y animal. Contendrá ademas fecha de inicio y fin del tratamiento, y dosis diarias del medicamento.
+- Se podrán gestionar vacunas, estos representa a una vacuna como podría ser la de la rabia o la de parvovirosis, esta contendrá información relevante sobre la vacuna: nombre, numero de dosis ...etc.
+- Se generarán alertas automáticas para avisar de vacunaciones.
+- Se podrá consultar la medicación para un día especifico, ya sea para el total de animales como para uno en concreto
+- Cada animal podrá tener un catálogo de fotos
 
 ## URL del repositorio
 
