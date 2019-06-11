@@ -65,6 +65,11 @@ class Medicamentos extends \yii\db\ActiveRecord
         return $this->hasMany(Animales::className(), ['id' => 'animal_id'])->viaTable('tratamientos', ['medicamento_id' => 'id']);
     }
 
+    /**
+     * Devuelve todas los medicamentos indexados por su id
+     * @return array nombre de medicamentos indexados por su id
+     */
+
     public static function todas()
     {
         return static::find()->select(["CONCAT(medicamento,'(',principio,')')"])->indexBy('id')->column();

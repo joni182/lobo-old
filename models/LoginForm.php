@@ -12,15 +12,31 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
+    /**
+     * Nombre del usuario
+     * @var string
+     */
     public $username;
+    /**
+    * Contraseña del usuario
+    * @var string
+    */
     public $password;
-    public $rememberMe = true;
+    /**
+    * Casilla para login automático
+    * @var bool
+    */
+    public $rememberMe = false;
 
+     /**
+      * Modelo del usuario
+      * @var object
+      */
     private $_user = false;
 
 
     /**
-     * @return array the validation rules.
+     * @return bool|array the validation rules.
      */
     public function rules()
     {

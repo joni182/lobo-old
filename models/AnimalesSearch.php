@@ -11,11 +11,35 @@ use yii\data\ActiveDataProvider;
  */
 class AnimalesSearch extends Animales
 {
+    /**
+     * Límite inferior de la busquedad por fecha de nacimiento
+     * @var string
+     */
     public $nacimiento_desde;
+    /**
+    * Límite inferior de la busquedad por fecha de nacimiento
+    * @var string
+    */
     public $nacimiento_hasta;
+    /**
+    * Límite inferior de la busquedad por peso
+    * @var int
+    */
     public $peso_desde;
+    /**
+    * Límite superior de la busquedad por peso
+    * @var int
+    */
     public $peso_hasta;
+    /**
+     * Busqueda por especie
+     * @var int
+     */
     public $especie;
+    /**
+     * busqueda de adoptados
+     * @var bool
+     */
     public $adoptado;
     /**
      * {@inheritdoc}

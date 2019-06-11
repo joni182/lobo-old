@@ -127,6 +127,11 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    /**
+     * Muestra las alertas de vacunaciones
+     * @return mixed Devuelve la vista de alertas
+     */
+
     public function actionAlertas()
     {
         $vacunacionesHoy = Vacunaciones::find()->where('fecha::date = now()::date')->orderBy('fecha', 'DESC')->all();

@@ -39,6 +39,12 @@ class Roles extends \yii\db\ActiveRecord
             'nombre' => 'Nombre',
         ];
     }
+
+    /**
+     * Devuelve todas los roles indexados por su id
+     * @return array nombre de roles indexados por su id
+     */
+
     public static function todas()
     {
         return static::find()->select('nombre')->indexBy('id')->column();

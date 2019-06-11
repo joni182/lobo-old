@@ -38,7 +38,7 @@ class Enfermedades extends \yii\db\ActiveRecord
         ];
     }
 
-    public function attributas()
+    public function attributes()
     {
         return array_merge([parent::attributes(), ['sintomasQueNoTengo']]);
     }
@@ -79,10 +79,20 @@ class Enfermedades extends \yii\db\ActiveRecord
         return $this->hasMany(Sintomas::className(), ['id' => 'sintoma_id'])->viaTable('enfermedades_sintomas', ['enfermedad_id' => 'id']);
     }
 
+    /**
+     * Devuelve todas las enfermedades indexadas por su id
+     * @return array nombre de enfermedades indexadas por su id
+     */
+
     public static function todas()
     {
         return static::find()->select('enfermedad')->indexBy('id')->column();
     }
+
+    /**
+     * SIntomas que no pertenecen a la enfermedad
+     * @return array modelos de los síntomas
+     */
 
     public function getSintomasQueNoTengo()
     {

@@ -183,7 +183,10 @@ class Animales extends \yii\db\ActiveRecord
         return $this->hasMany(Razas::className(), ['id' => 'raza_id'])->viaTable('animales_razas', ['animal_id' => 'id']);
     }
 
-
+    /**
+     * sexos disponibles de un animal
+     * @return array los sexos disponibles.
+     */
     public function sexosDisponibles()
     {
         return [
@@ -192,6 +195,11 @@ class Animales extends \yii\db\ActiveRecord
             'm' => 'MACHO',
         ];
     }
+
+    /**
+    * Colores que no tiene el animal
+    * @return array Array con los modelos de razas.
+    */
 
     public function getColoresQueNoTengo()
     {
@@ -210,6 +218,11 @@ select colores.*
 EOT;
         return Colores::findBySql($sql, [':animal_id' => $this->id])->all();
     }
+
+    /**
+    * Razas a las que no pertenece el animal
+    * @return array Array con los modelos de razas.
+    */
 
     public function getRazasQueNoTengo()
     {

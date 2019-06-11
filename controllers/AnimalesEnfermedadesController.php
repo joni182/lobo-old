@@ -118,6 +118,15 @@ class AnimalesEnfermedadesController extends ControllerControlAccess
         }
         return $this->redirect(['animales/view', 'id' => $animal_id]);
     }
+
+    /**
+     * Representa el final se una enfermedad
+     * @param  int      $enfermedad_id  id de la enfermedad
+     * @param  int      $animal_id      id del animal enfermo
+     * @param  string   $desde          fecha de incio de una enfermedad
+     * @return mixed                    devuelve la vista del animal enfermo
+     */
+
     public function actionTerminar($enfermedad_id, $animal_id, $desde)
     {
         $model = $this->findModel($enfermedad_id, $animal_id, $desde);

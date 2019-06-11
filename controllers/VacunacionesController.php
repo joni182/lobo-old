@@ -47,12 +47,11 @@ class VacunacionesController extends Controller
 
     /**
      * Displays a single Vacunaciones model.
-     * @param int $vacuna_id
-     * @param int $animal_id
      * @param mixed $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+
     public function actionView($id)
     {
         return $this->render('view', [

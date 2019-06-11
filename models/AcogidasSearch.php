@@ -10,10 +10,30 @@ use yii\data\ActiveDataProvider;
  */
 class AcogidasSearch extends Acogidas
 {
+    /**
+     * limite inferior del rango de fechas a buscar
+     * @var string
+     */
     public $desde;
+    /**
+    * limite superior del rango de fechas a buscar
+    * @var string
+    */
     public $hasta;
+    /**
+     * Id del animal adoptado por el que se va a buscar
+     * @var int
+     */
     public $animal;
+    /**
+    * Id de la persona adoptadora por el que se va a buscar
+    * @var int
+    */
     public $persona;
+    /**
+     * Id de la especie por la que se va a buscar
+     * @var [type]
+     */
     public $grupo;
     /**
      * {@inheritdoc}

@@ -41,7 +41,7 @@ CREATE TABLE usuarios_info
     , auth_key         VARCHAR(255)
     , validate_token   VARCHAR(255)
     , validated_at     TIMESTAMP
-    , rol_id           BIGINT DEFAULT 3
+    , rol_id           BIGINT DEFAULT 3 REFERENCES roles(id)
 );
 
 INSERT INTO usuarios (control)

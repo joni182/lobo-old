@@ -92,6 +92,13 @@ class AnimalesRazasController extends ControllerControlAccess
         $this->findModel($list, $item)->delete();
     }
 
+    /**
+     * Agrega una raza a un animal
+     * @param  int      $animal_id      Id del animal
+     * @param  int      $especie_id     Id de la especie a la que pertenece la raza
+     * @return mixed                    devuelve la vista de un animal
+     */
+
     public function actionAgregarRazas($animal_id, $especie_id)
     {
         $model = Animales::findOne($animal_id);

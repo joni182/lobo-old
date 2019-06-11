@@ -138,6 +138,12 @@ class AnimalesController extends ControllerControlAccess
         ]);
     }
 
+    /**
+     * Envia al servicio de almacenamiento la imagenes subidas
+     * @param  int $id id del modelo al que corresponden las imágenes
+     * @return mixed     Devuelve la vista del modelo
+     */
+
     public function actionUpload($id)
     {
         $model = Animales::findOne(['id' => $id]);
@@ -162,6 +168,12 @@ class AnimalesController extends ControllerControlAccess
         ]);
     }
 
+    /**
+     * Coge  las imagenes referentes a un modelo
+     * @param  int $id id del modelo
+     * @return mixed     devuelve la vista imagenes
+     */
+
     public function actionGestionarImagenes($id)
     {
         $model = $this->findModel($id);
@@ -172,6 +184,13 @@ class AnimalesController extends ControllerControlAccess
             'imagenes' => $imagenes,
         ]);
     }
+
+    /**
+     * Establece el avatar de un animal
+     * @param  int $id  id del animal
+     * @param  int $url url de la imagen
+     * @return mixed      redirige a la vista del animal
+     */
 
     public function actionAvatar($id, $url)
     {
@@ -184,6 +203,13 @@ class AnimalesController extends ControllerControlAccess
         }
         return $this->redirect(['animales/view', 'id' => $id]);
     }
+
+    /**
+     * Borra una imagen a traves de una api
+     * @param  int $id        id del modelo a la que pertenece ña imagen
+     * @param  int $imagen_id id de la imagen
+     * @return mixed            Devuelve una vista
+     */
 
     public function actionBorrarImagen($id, $imagen_id)
     {
@@ -204,6 +230,12 @@ class AnimalesController extends ControllerControlAccess
             'imagenes' => $imagenes,
         ]);
     }
+
+    /**
+     * Actualiza el estado de un animal
+     * @return int valor de referencia
+     * @throws  NotFoundHttpException if the model cannot be found
+     */
 
     public function actionDefuncion()
     {
@@ -234,6 +266,13 @@ class AnimalesController extends ControllerControlAccess
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    /**
+     * Devuelve las rutas de las imagenes asocuados a un modelo
+     * @param  int $id id del modelo
+     * @return array     Array con las rutas
+     */
+
     protected function getImagenes($id)
     {
         $client = new Client(['baseUrl' => 'http://localhost/rest/web']);

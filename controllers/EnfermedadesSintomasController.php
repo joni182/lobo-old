@@ -28,6 +28,12 @@ class EnfermedadesSintomasController extends ControllerControlAccess
         ]);
     }
 
+    /**
+     * Agrega un sintoma a una enfermedad
+     * @param  int $enfermedad_id id de la enfermedad
+     * @return mixed                Devuelve la vista
+     */
+
     public function actionAgregarSintomas($enfermedad_id)
     {
         $model = Enfermedades::findOne($enfermedad_id);

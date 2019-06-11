@@ -71,6 +71,11 @@ class Vacunas extends \yii\db\ActiveRecord
         return $this->hasMany(Enfermedades::className(), ['id' => 'vacuna_id'])->viaTable('vacunaciones', ['animal_id' => 'id']);
     }
 
+    /**
+     * Devuelve todas las vacunas indexadas por su id
+     * @return array nombre de las vacunas indexadas por su id
+     */
+
     public static function todas()
     {
         return static::find()->select('vacuna')->orderBy('vacuna')->indexBy('id')->column();

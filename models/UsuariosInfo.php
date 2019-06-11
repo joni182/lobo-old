@@ -23,8 +23,21 @@ use yii\web\IdentityInterface;
  */
 class UsuariosInfo extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    /**
+     * Escenario activo para la creación de usuarios
+     * @var string
+     */
     const SCENARIO_CREATE = 'create';
+    /**
+    * Escenario activo para la actualización de usuarios
+    * @var string
+    */
     const SCENARIO_UPDATE = 'update';
+
+    /**
+     * Para verificar el password
+     * @var string
+     */
     public $password_repeat;
 
     /**

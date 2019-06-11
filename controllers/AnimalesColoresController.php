@@ -42,7 +42,11 @@ class AnimalesColoresController extends ControllerControlAccess
         ]);
     }
 
-
+ /**
+  * Agrega un color a un animal
+  * @param  int $animal_id Id del animal
+  * @return mixed            Vista animales-colores/update
+  */
     public function actionAgregarColores($animal_id)
     {
         $model = Animales::findOne($animal_id);

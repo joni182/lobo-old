@@ -68,6 +68,11 @@ class Sintomas extends \yii\db\ActiveRecord
         return $this->hasMany(Enfermedades::className(), ['id' => 'enfermedad_id'])->viaTable('enfermedades_sintomas', ['sintoma_id' => 'id']);
     }
 
+    /**
+     * Devuelve todas los sintomas indexados por su id
+     * @return array nombre de sintomas indexados por su id
+     */
+
     public static function todos()
     {
         return static::find()

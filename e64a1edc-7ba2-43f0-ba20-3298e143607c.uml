@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>e64a1edc-7ba2-43f0-ba20-3298e143607c</OriginalElement>
+  <nodes>
+    <node x="1029.9608609233705" y="710.3447019883497">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.colores</node>
+    <node x="1324.8726309200338" y="774.1276672316683">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.personas</node>
+    <node x="146.92722865376288" y="861.7129804405723">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.vacunaciones</node>
+    <node x="1467.7461266907244" y="1280.1475112713724">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.tipos</node>
+    <node x="1115.0794600240579" y="195.33333333333326">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.usuarios_info</node>
+    <node x="1215.2372311011886" y="1092.4371993626569">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.acogidas</node>
+    <node x="921.9149444870093" y="917.7571051629454">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_colores</node>
+    <node x="255.09295210960363" y="258.00147369029855">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.enfermedades_sintomas</node>
+    <node x="293.37813279543724" y="504.0831925352934">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.enfermedades</node>
+    <node x="309.81223548009746" y="1472.269816855669">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_razas</node>
+    <node x="1433.996675344585" y="63.33333333333326">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.roles</node>
+    <node x="973.2492028873132" y="1503.5454972339248">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.especies</node>
+    <node x="1825.713853231137" y="195.33333333333317">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.usuarios</node>
+    <node x="0.0" y="604.6458709717756">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.vacunas</node>
+    <node x="641.4809869622801" y="1588.2232485021805">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.razas</node>
+    <node x="357.86802479269795" y="762.0022086255266">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_enfermedades</node>
+    <node x="210.3514256850102" y="0.0">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.sintomas</node>
+    <node x="666.8146815854545" y="681.4369629030487">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.tratamientos</node>
+    <node x="721.6814562249468" y="415.0310952546158">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.medicamentos</node>
+    <node x="657.720981474444" y="1018.3585465353574">e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.tratamientos" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.medicamentos">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.acogidas" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_colores" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.vacunaciones" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.vacunas">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.enfermedades_sintomas" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.sintomas">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_razas" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.razas">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.razas" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.especies">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_enfermedades" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.enfermedades">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.vacunaciones" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.acogidas" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.personas">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.especies">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_razas" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_colores" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.colores">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.usuarios_info" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.usuarios">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.enfermedades_sintomas" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.enfermedades">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales_enfermedades" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.acogidas" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.tipos">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.usuarios_info" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.roles">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.tratamientos" target="e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.animales">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000004" x="906.0000000000009" y="653.3333333333335" />
+  <SelectedNodes>
+    <node>e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.roles</node>
+    <node>e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.usuarios_info</node>
+    <node>e64a1edc-7ba2-43f0-ba20-3298e143607c.TABLE:lobo.public.usuarios</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
