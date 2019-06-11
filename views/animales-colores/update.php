@@ -13,8 +13,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Animales Colores', 'url' => ['inde
 $this->params['breadcrumbs'][] = ['label' => $model->nombre, 'url' => ['view', 'animal_id' => $model->nombre, 'color_id' => $model->nombre]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <div class="animales-colores-update">
-
     <h1><?= Html::encode($this->title) ?></h1>
     <?= Sortable::widget([
             'view' => $this,

@@ -157,6 +157,8 @@ class UsuariosInfo extends \yii\db\ActiveRecord implements IdentityInterface
         }
         if ($insert) {
             if ($this->scenario === self::SCENARIO_CREATE) {
+                $usuario = new Usuarios(['control' => 'control']);
+                $this->usuario_id = $usuario->id;
                 goto salto;
             }
         } elseif ($this->scenario === self::SCENARIO_UPDATE) {

@@ -1,14 +1,10 @@
 <?php
 
-use kartik\date\DatePicker;
 
-use kartik\number\NumberControl;
 
-use kartik\widgets\Select2;
 
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -70,7 +66,7 @@ $this->registerJs($js);
             <?php if (empty($imagenes)) {
                 $avatar = 'picsum.photos/800/600?image=82';
             } else {
-                $avatar = $imagenes[0];
+                $avatar = isset($imagenes[0]) ? $imagenes[0] : '';
             } ?>
             <img class="cabecera" src="http://<?= $model->avatar != null ? $model->avatar : $avatar ?>" alt="foto de <?= $model->nombre ?>">
         </div>
@@ -102,6 +98,7 @@ $this->registerJs($js);
     <div class="row ">
         <div class="col-sm-12 image-container">
             <ul class="cards">
+            <?php if (isset($imagenes[0])): ?>
 
             <?php foreach ($imagenes as $key => $imagen): ?>
                     <li class="cards__item">
@@ -126,6 +123,7 @@ $this->registerJs($js);
                             </div>
                         </li>
             <?php endforeach; ?>
+        <?php endif; ?>
         </ul>
         </div>
     </div>

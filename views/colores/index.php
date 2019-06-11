@@ -10,6 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Colores';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <div class="colores-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

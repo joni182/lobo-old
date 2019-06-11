@@ -31,8 +31,9 @@ AppAsset::register($this);
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
  <link rel="stylesheet" href="css/jquery.justified.css" />
- <script src="js/jquery.justified.min.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script src="js/jquery.justified.min.js"></script>
+ <script src="js/jquery-ui.min.js"></script>
 
 
 </head>
@@ -52,10 +53,8 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home','url' => ['site/index']],
             ['label' => 'Animales','url' => ['animales/index']],
             '<li><a href="'. Url::to(['site/alertas']) .'">Alertas <span class="badge">'. $alertas .'</span></a></li>',
-            ['label' => 'Alertas' . $alertas,'url' => ['site/alertas']],
             ['label' => 'Tratamientos','url' => ['tratamientos/index']],
             ['label' => 'Adopcionens','url' => ['acogidas/index']],
             [
@@ -64,6 +63,9 @@ AppAsset::register($this);
                     ['label' => 'Colores','url' => ['colores/index']],
                     ['label' => 'Grupos','url' => ['especies/index']],
                     ['label' => 'Enfermedades', 'url' => ['/enfermedades/index']],
+                    !Yii::$app->user->isGuest && Yii::$app->user->identity->rol_id == 1 ? (
+                        ['label' => 'Usuarios', 'url' => ['/usuarios-info/index']]
+                        ) : ( ['label' => '', 'url' => ''] ),
                 ],
             ],
             Yii::$app->user->isGuest ? (
@@ -78,7 +80,7 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ),
         ],
     ]);
     NavBar::end();
@@ -96,6 +98,9 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left"> Lobo <?= date('Y') ?></p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script src="js/notify.min.js"></script>
+
 
     </div>
 
