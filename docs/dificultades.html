@@ -49,8 +49,33 @@
 <a class="list-group-item" href="#navigation-44" data-toggle="collapse" data-parent="#navigation">Conclusiones <b class="caret"></b></a><div id="navigation-44" class="submenu panel-collapse collapse"><a class="list-group-item" href="./conclusiones.html">Conclusiones</a></div>
 <a class="list-group-item" href="#navigation-45" data-toggle="collapse" data-parent="#navigation">Anexos <b class="caret"></b></a><div id="navigation-45" class="submenu panel-collapse collapse"><a class="list-group-item" href="./anexos.html">Anexos</a></div></div>    </div>
     <div class="col-md-9 guide-content" role="main">
-        <h1>Dificultades encontradas <span id="dificultades-encontradas"></span><a href="#dificultades-encontradas" class="hashlink">&para;</a></h1><p>Explicar, indicando también las soluciones adoptadas en cada caso.</p>
-<p>Incluir aquí el elemento de innovación que se indicó en la propuesta.</p>
+        <h1>Dificultades encontradas <span id="dificultades-encontradas"></span><a href="#dificultades-encontradas" class="hashlink">&para;</a></h1><ul>
+<li>A la hora de enviar imágenes mediante peticiones PUT. Las peticiones PUT son más simples que las peticiones POST, por ello el servidor no carga los ficheros recibidos en la variable <code>$_FILES</code>.</li>
+</ul>
+<p>Yii2 permite cargar <code>$_FILES</code> de forma manual.</p>
+<p>Segun la documentaciín de Yii2:</p>
+<blockquote><p>When implementing RESTful APIs, you often need to retrieve parameters that are submitted via PUT, PATCH or other request methods. You can get these parameters by calling the <code>yii\web\Request::getBodyParam()</code>-- The Definitive Guide to Yii 2.0</p>
+</blockquote>
+<ul>
+<li>Generar una Request HTTP y una Response a medida para comunicar mi aplicación y mi servicio de almacenamiento.</li>
+</ul>
+<p>Yii2 proporciona clases especificas para esa tarea.</p>
+<ul>
+<li>En alguna ocasión he querido hacer uso de una relación para recuperar los modelos relacionados con el modelo en uso, pero necesitaba alguna manera de personalizar la consulta.
+Esto se consigue recuperando la relación y agregándolo clausulas a la consulta para así poder modificarla.</li>
+</ul>
+<pre><code class="hljs php language-php"><span class="hljs-comment"># Recuperando los modelos relacionados</span>
+
+$models = $model-&gt;attrName;
+
+<span class="hljs-comment"># Recuperando la relación para personalizarla</span>
+
+$relation = $model-&gt;getAttrName();
+
+$models = $relation-&gt;where([<span class="hljs-string">'ILIKE'</span>, <span class="hljs-string">'nombre'</span>, <span class="hljs-string">'lobo'</span>])-&gt;all();
+</code></pre>
+<h2>Elemento de innovación <span id="elemento-de-innovacion"></span><a href="#elemento-de-innovacion" class="hashlink">&para;</a></h2><p>Como elemento de innovación se desarrollado un servicio REST de almacenamiento de imágenes desarrollado en Yii el cual sera consumido por Lobo, la aplicación principal.
+El servicio expone una API que permite enviar imágenes para que las almacene, recuperarlas y algunas opciones de gestión para su gestión.</p>
         <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
     </div>
 </div>
@@ -59,7 +84,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Tue, 11 Jun 2019 04:49:25 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Tue, 11 Jun 2019 09:56:25 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {
