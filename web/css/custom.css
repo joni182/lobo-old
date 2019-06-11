@@ -161,7 +161,7 @@ img {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  &:hover {
+ .card:hover {
     .card__image {
       filter: contrast(100%);
     }
@@ -175,6 +175,11 @@ img {
   padding: 1rem;
 }
 
+.card__image::before {
+  content: "";
+    display: block;
+  padding-top: 56.25%;
+}
 .card__image {
   background-position: center center;
   background-repeat: no-repeat;
@@ -182,17 +187,12 @@ img {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   filter: contrast(70%);
-  //filter: saturate(180%);
   overflow: hidden;
   position: relative;
   transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
-  &::before {
-    content: "";
-	  display: block;
-    padding-top: 56.25%;
-  }
+
   @media(min-width: 40rem) {
-    &::before {
+    .card__image::before {
       padding-top: 66.6%;
     }
   }
