@@ -2,6 +2,7 @@
 
 use app\models\Roles;
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -11,6 +12,31 @@ use yii\grid\GridView;
 
 $this->title = 'Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
+
+$url = Url::to(['usuarios-info/cambiar-rol']);
+$js = <<<JS
+    $('#usuariosinfo-rol_id').click((e) => {
+        var id = $(e.target).parents('tr').data('key');
+        var rol_id = $(e.target).val();
+
+        $.ajax({
+            type:'POST',
+            url:'$url',
+            data:{
+                id:id,
+                rol_id:rol_id
+            },
+            success: () => {
+                $.notify('Se ha llevado a cabo la acción','success')
+            },
+            error: () => {
+                $.notify('No se ha podido llevar a cabo la acción','error')
+            }
+        });
+    });
+JS;
+
+$this->registerJs($js);
 ?>
 <div class="usuarios-info-index">
 

@@ -91,10 +91,20 @@ class UsuariosInfoController extends Controller
         ]);
     }
 
+    /**
+     * Cambia el rol de un usuario via ajax
+     * @return int codigo estado
+     */
     public function actionCambiarRol()
     {
         $usuario = $this->findModel(Yii::$app->request->post('id'));
         $usuario->rol_id = Yii::$app->request->post('rol_id');
+        if ($usuario->save()) {
+            return 0;
+        }
+
+        throw new \Exception("Error Processing Request", 1);
+
     }
 
     /**

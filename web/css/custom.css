@@ -70,15 +70,35 @@
 .color {
     text-align: center;
     height: 47px;
-    width: 79px;
+    width: 79 px;
     border-radius: 5px;
 }
+/* .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+ }
+
+.image-container img {
+    margin: 2px;
+    height: 150px;
+    width: auto;
+} */
 
 img.cabecera {
+    /* width: 100%; */
     object-fit: cover;
     width: 100%;
     height: 400px;
 }
+
+@gray-darker:               #444444;
+@gray-dark:                 #696969;
+@gray:                      #999999;
+@gray-light:                #cccccc;
+@gray-lighter:              #ececec;
+@gray-lightest:             lighten(@gray-lighter,4%);
 
 *,
 *::before,
@@ -91,7 +111,7 @@ html {
 }
 
 body {
-  color: #999999;
+  color: @gray;
   font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -111,8 +131,9 @@ img {
 
 .btn {
   background-color: white;
-  border: 1px solid #cccccc;
-  color: #696969;
+  border: 1px solid @gray-light;
+  //border-radius: 1rem;
+  color: @gray-dark;
   padding: 0.5rem;
   text-transform: lowercase;
 }
@@ -134,13 +155,11 @@ img {
   width: 20%;
   display: flex;
   padding: 1rem;
-
   @media(min-width: 40rem) {
     width: 50%;
   }
-
   @media(min-width: 56rem) {
-      width: 33.33333%;
+    width: 33.3333%;
   }
 }
 
@@ -160,7 +179,7 @@ img {
   display: flex;
   flex-direction: column;
   overflow: hidden;
- .card:hover {
+  &:hover {
     .card__image {
       filter: contrast(100%);
     }
@@ -174,11 +193,6 @@ img {
   padding: 1rem;
 }
 
-.card__image::before {
-  content: "";
-    display: block;
-  padding-top: 56.25%;
-}
 .card__image {
   background-position: center center;
   background-repeat: no-repeat;
@@ -186,13 +200,18 @@ img {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   filter: contrast(70%);
+  //filter: saturate(180%);
   overflow: hidden;
   position: relative;
   transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
-
+  &::before {
+    content: "";
+	  display: block;
+    padding-top: 56.25%; // 16:9 aspect ratio
+  }
   @media(min-width: 40rem) {
-    .card__image::before {
-      padding-top: 66.6%;
+    &::before {
+      padding-top: 66.6%; // 3:2 aspect ratio
     }
   }
 }
@@ -214,7 +233,7 @@ img {
 }
 
 .card__title {
-  color: #696969;
+  color: @gray-dark;
   font-size: 1.25rem;
   font-weight: 300;
   letter-spacing: 2px;
@@ -240,7 +259,7 @@ body {
     min-height: 100%;
 }
 
-.personas-view .cards__item, .personas-view .card , .tratamientos-index .cards__item {
+.personas-view .cards__item, .personas-view .card {
     width: 100%;
 }
 
@@ -252,18 +271,13 @@ body {
   height: 35rem;
   display: flex;
 }
-
-.flex {
-    width: 100%;
-  display: flex;
-}
-
 .center-h {
   justify-content: center;
 }
 .center-v {
   align-items: center;
 }
+
 
 .tratamientos-index .card__text {
     font-size: 1.875rem;

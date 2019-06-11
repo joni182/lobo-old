@@ -13,6 +13,7 @@ class SortableAsset extends AssetBundle
     ];
     public $js = [
         'js/sortable.js',
+        'js/jquery-ui.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

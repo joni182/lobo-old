@@ -53,18 +53,16 @@ class TratamientosController extends ControllerControlAccess
      */
     public function actionCreate()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
+        extract($_POST);
         $model = new Tratamientos();
+        $model->animal_id = $animal_id;
+        $model->medicamento_id = $medicamento_id;
+        $model->veces_por_dia = $veces_por_dia;
+        $model->dosis = $dosis;
+        $model->inicio = $inicio;
+        $model->observaciones = $observaciones;
+        $model->duracion = $duracion;
 
-        // $model->animal_id = $animal_id;
-        // $model->medicamento_id = $medicamento_id;
-        // $model->veces_por_dia = $veces_por_dia;
-        // $model->dosis = $dosis;
-        // $model->inicio = $inicio;
-        // $model->observaciones = $observaciones;
-        // $model->duracion = $duracion;
-        if ($model->load(Yii::$app->request->post())) {
             if ($model->duracion) {
                 $model->duracion = "{$model->duracion} days";
             }
@@ -73,9 +71,7 @@ class TratamientosController extends ControllerControlAccess
             } else {
                 Yii::$app->session->setFlash('error', 'No se ha podido registrar el nuevo tratamiento.');
             }
-        } else {
-            Yii::$app->session->setFlash('error', 'No se ha podido registrar el nuevo tratamiento.');
-        }
+
 
         return $this->redirect(['/animales/view', 'id' => $model->animal_id]);
     }
