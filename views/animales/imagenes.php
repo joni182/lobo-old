@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php foreach ($imagenes as $imagen): ?>
             <li class="cards__item">
                 <div class="card">
-                    <div class="card__image card__image--flowers"><img src="http://<?= $imagen ?>" alt=""></div>
+                    <div class="card__image card__image--flowers"><img src="http://<?= $imagen ?>" alt="Imagen de animal"></div>
                     <div class="card__content">
                         <?= Html::a('Hacer Avatar', ['avatar', 'id' => $model->id, 'url' => $imagen], ['class' => 'btn btn--block card__btn btn-default']) ?>
                         <?= Html::a('Borrar', ['animales/borrar-imagen', 'id' => $model->id, 'imagen_id' => substr($imagen,strripos($imagen, '/') + 1)], [

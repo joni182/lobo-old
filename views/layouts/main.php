@@ -40,7 +40,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => '<img src="logo.png" class="pull-left brand-logo"/>',
+        'brandLabel' => '<img src="logo.png" alt="logo de lobo" class="pull-left brand-logo"/>',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',

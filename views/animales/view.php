@@ -72,7 +72,7 @@ $this->registerJs($js);
             } else {
                 $avatar = $imagenes[0];
             } ?>
-            <img class="cabecera" src="http://<?= $model->avatar != null ? $model->avatar : $avatar ?>" alt="">
+            <img class="cabecera" src="http://<?= $model->avatar != null ? $model->avatar : $avatar ?>" alt="foto de <?= $model->nombre ?>">
         </div>
     </div>
     <h1><?= Html::encode($this->title) ?></h1>
