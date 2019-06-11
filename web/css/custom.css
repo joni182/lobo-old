@@ -93,13 +93,6 @@ img.cabecera {
     height: 400px;
 }
 
-@gray-darker:               #444444;
-@gray-dark:                 #696969;
-@gray:                      #999999;
-@gray-light:                #cccccc;
-@gray-lighter:              #ececec;
-@gray-lightest:             lighten(@gray-lighter,4%);
-
 *,
 *::before,
 *::after {
@@ -111,7 +104,7 @@ html {
 }
 
 body {
-  color: @gray;
+  color: #999999;
   font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -131,9 +124,9 @@ img {
 
 .btn {
   background-color: white;
-  border: 1px solid @gray-light;
+  border: 1px solid #cccccc;
   //border-radius: 1rem;
-  color: @gray-dark;
+  color: #696969;
   padding: 0.5rem;
   text-transform: lowercase;
 }
@@ -210,7 +203,7 @@ img {
     padding-top: 56.25%; // 16:9 aspect ratio
   }
   @media(min-width: 40rem) {
-    &::before {
+    ::before {
       padding-top: 66.6%; // 3:2 aspect ratio
     }
   }
@@ -233,7 +226,7 @@ img {
 }
 
 .card__title {
-  color: @gray-dark;
+  color: #696969;
   font-size: 1.25rem;
   font-weight: 300;
   letter-spacing: 2px;
