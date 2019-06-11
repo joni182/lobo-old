@@ -15,6 +15,10 @@ namespace app\models;
  */
 class Enfermedades extends \yii\db\ActiveRecord
 {
+    /**
+     * sintomas que no pertenecen a la enfermedad
+     * @var array
+     */
     public $sintomasQueNoTengo;
     /**
      * {@inheritdoc}
