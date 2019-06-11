@@ -1,11 +1,8 @@
 # Anexos
 
-Documentos específicos vinculados a determinados requisitos funcionales o
-técnicos ("prueba del seis" y similares).
+## Uso de micro-datos
 
-Poner cada uno en un apartado separado, indicando en el título de cada apartado
-el código y la descripción corta del requisito asociado (por ejemplo,
-**(RF24) Prueba del seis**).
+![html](/home/ubu/Imágenes/micro.png)
 
 ## Prueba del seis
 
@@ -34,6 +31,10 @@ A través de las migas de pan el usuario se encuentra localizado todo el tiempo.
 
 La web está categorizada, además existen distintos buscadores en las distintas secciones.
 
-## Accesibilidad
+## Validador Accesibilidad
 
 ![Accesibilidad](/home/ubu/Imágenes/accesibilidad.png)
+
+## Validador html
+
+![html](/home/ubu/Imágenes/html.png)
