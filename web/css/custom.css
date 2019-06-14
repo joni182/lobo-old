@@ -163,7 +163,7 @@ img {
   }
 }
 
-.acogidas-index .cards__item {
+.acogidas-index .cards__item, .tratamientos-index .cards__item {
     width: 100%;
 }
 
