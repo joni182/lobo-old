@@ -72,10 +72,10 @@ class AnimalesController extends ControllerControlAccess
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+            $client = new Client(['baseUrl' => 'http://104.248.139.77/web']);
             $response = $client->get("grupos/{$model->id}")->send();
             if ($response->getData() == null) {
-                $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+                $client = new Client(['baseUrl' => 'http://104.248.139.77/web']);
                 $response = $client->post('grupos', ['nombre' => $model->id])->send();
             }
             return $this->redirect(Url::to(['/animales-razas/agregar-razas', 'animal_id' => $model->id, 'especie_id' => $model->especie_id]));
@@ -128,7 +128,7 @@ class AnimalesController extends ControllerControlAccess
         $client = new Client();
         $response = $client->createRequest()
         ->setMethod('DELETE')
-        ->setUrl("http://localhost/rest/web/grupos/{$model->id}")
+        ->setUrl("http://104.248.139.77/web/grupos/{$model->id}")
         ->send();
 
         $animal->delete();
@@ -152,7 +152,7 @@ class AnimalesController extends ControllerControlAccess
             $client = new Client();
             $request = $client->createRequest()
                 ->setMethod('PUT')
-                ->setUrl("http://localhost/rest/web/grupos/{$id}");
+                ->setUrl("http://104.248.139.77/web/grupos/{$id}");
 
             foreach ($_FILES['imagenes']['tmp_name'] as $key => $file) {
                 $request = $request->addFile("upfile[{$key}]", $file);
@@ -215,7 +215,7 @@ class AnimalesController extends ControllerControlAccess
     {
         $model = $this->findModel($id);
 
-        $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+        $client = new Client(['baseUrl' => 'http://104.248.139.77/web']);
         $response = $client->delete("images/{$imagen_id}")->send();
         if ($response->getData() === 1) {
             Yii::$app->session->setFlash('success', 'Se ha borrado correctamente');
@@ -275,7 +275,7 @@ class AnimalesController extends ControllerControlAccess
 
     protected function getImagenes($id)
     {
-        $client = new Client(['baseUrl' => 'http://localhost/rest/web']);
+        $client = new Client(['baseUrl' => 'http://104.248.139.77/web']);
         $response = $client->get("grupos/{$id}")->send();
         return $response->getData();
     }
