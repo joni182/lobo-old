@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <li class="cards__item">
                 <div class="card">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-12">
                             <div class="card__image card__image--flowers">
 
                             </div>
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-12">
                             <div class="card__content">
                                 <div class="card__title">
                                     <a href="<?= Url::to(['animales/view', 'id' => $model->animal->id]) ?>">
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-12">
                             <div class="card__content">
                                 <div class="card__title">
                                     <a href="<?= Url::to(['personas/view', 'id' => $model->persona->id]) ?>">
